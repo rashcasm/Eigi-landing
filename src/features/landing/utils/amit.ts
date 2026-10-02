@@ -1,18 +1,19 @@
 /*
- * Amit: Eigi's AI onboarding agent on WhatsApp.
+ * Amit: Eigi's AI onboarding agent. Visitors reach him on WhatsApp or with a phone call, on the same number.
  * The first message is pre-written from where the visitor is on the climb, so Amit starts with context
  * and the closing ref tag shows which section the conversation came from. Pure: no DOM here.
  */
 
 export const AMIT_NUMBER = '919225299611'
 export const AMIT_DISPLAY = '+91 92252 99611'
+export const AMIT_TEL = `tel:+${AMIT_NUMBER}`
 
 /** What a visitor at each stage most likely wants, in their own words. */
 const INTENT: Record<string, string> = {
   'Base camp': 'I want to start using AI in my business.',
   'The problem': 'I can see what AI can do, but not where it fits in my business.',
   'Where we stand': 'I have tried AI tools on my own. I would like a sherpa instead.',
-  'Eigi stories': 'I read the Eigi stories and would like one like that for my business.',
+  'Stories': 'I read the Eigi stories and would like one like that for my business.',
   'The gateway': 'I am ready to step through the gateway.',
   'Camp I': 'I would like you to map where AI fits in my business.',
   'Camp II': 'I would like to wire agents into the tools I already use.',

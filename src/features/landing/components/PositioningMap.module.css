@@ -1,7 +1,7 @@
 .map { width: 100%; overflow: visible; }
 .rings path { fill: none; stroke: var(--line); }
 .axis { stroke: var(--fg); stroke-width: 1; opacity: .5; }
-.axisLabel { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; fill: var(--muted); }
+.axisLabel { font-family: var(--font-mono); font-size: 11px; letter-spacing: var(--track-label); fill: var(--muted); }
 
 .point { opacity: 0; transition: opacity .6s; }
 .point circle { fill: var(--bg); stroke: var(--fg); stroke-width: 1.5; }
@@ -12,11 +12,12 @@
   opacity: 0; transition: stroke-dashoffset 1.6s 1.2s ease, opacity .3s 1.2s;
 }
 .eigi { opacity: 0; transition: opacity .5s 2.6s; }
-.core { fill: var(--accent); }
-.pulse { fill: none; stroke: var(--accent); animation: pulse 2s infinite; transform-origin: center; transform-box: fill-box; }
-.flag { fill: var(--accent); stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
-.name { font-weight: 800; font-size: 26px; letter-spacing: -.03em; fill: var(--fg); }
-.tagline { font-family: var(--font-mono); font-size: 11px; fill: var(--accent); letter-spacing: .06em; }
+/* Eigi's flag is the one key moment on the map, so it carries the sage */
+.core { fill: var(--signal); }
+.pulse { fill: none; stroke: var(--signal); animation: pulse 2s infinite; transform-origin: center; transform-box: fill-box; }
+.flag { fill: var(--signal); stroke: var(--signal); stroke-width: 2; stroke-linejoin: round; }
+.name { font-family: var(--font-display); font-stretch: 112%; font-weight: 800; font-size: 26px; letter-spacing: -.03em; fill: var(--fg); }
+.tagline { font-family: var(--font-mono); font-size: 11px; fill: var(--fg); letter-spacing: .04em; }
 @keyframes pulse {
   0% { transform: scale(1); opacity: .9; }
   100% { transform: scale(4); opacity: 0; }

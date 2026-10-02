@@ -11,7 +11,7 @@
 .equation {
   position: absolute; top: 96px; left: 0; right: 0; z-index: 2;
   display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 12px;
-  font-size: 12px; letter-spacing: .14em; text-transform: uppercase; padding: 0 var(--gutter);
+  font-size: var(--fs-label); letter-spacing: var(--track-label); text-transform: uppercase; padding: 0 var(--gutter);
 }
 .equation span { color: rgba(255, 255, 255, .25); transition: color .9s var(--ease-out); }
 .equation b { font-weight: 400; margin-right: 12px; }
@@ -24,9 +24,9 @@
   transition: opacity .9s var(--ease-out), transform .9s var(--ease-out), filter .9s var(--ease-out);
 }
 .shown { opacity: 1; transform: none; filter: none; transition-delay: .15s; }
-.stepLabel { font-size: 11px; letter-spacing: .14em; color: var(--muted); }
-.step h3 { font-size: clamp(26px, 2.8vw, 40px); letter-spacing: -.03em; line-height: 1.05; margin: 10px 0 12px; }
-.step p { color: var(--muted); font-weight: 300; font-size: 16px; line-height: 1.55; }
+.stepLabel { font-size: var(--fs-label); letter-spacing: var(--track-label); color: var(--muted); }
+.step h3 { margin: 12px 0 12px; }
+.step p { color: var(--muted); line-height: 1.55; }
 
 .finale {
   position: absolute; inset: 0; z-index: 3;
@@ -35,9 +35,9 @@
 }
 .finale h2 { max-width: 14ch; }
 .finale :global(.btn) { align-self: center; pointer-events: auto; margin-top: 28px; }
-.finaleLead { color: var(--muted); font-size: clamp(16px, 1.4vw, 20px); font-weight: 300; margin-top: 20px; }
+.finaleLead { color: var(--muted); font-size: var(--fs-lead); line-height: 1.45; max-width: 40ch; margin-top: 22px; }
 
 @media (max-width: 820px) {
-  .equation { top: 76px; font-size: 9px; letter-spacing: .08em; }
+  .equation { top: 76px; font-size: 10px; letter-spacing: .06em; }
   .steps { bottom: 12vh; }
 }

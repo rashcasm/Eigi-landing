@@ -11,12 +11,12 @@ import styles from './Minds.module.css'
  * (the same ones fde.eigi.ai uses); self-host them before launch.
  */
 const MINDS = [
-  { title: 'Product strategy', line: 'From the right question to a clear direction', img: 'https://cdn.21st.dev/assets/mirror/f4/f43137dada970ee6a29a0497d1f699d54b92e5381350eaa66dc827e3ffb11645.jpg' },
-  { title: 'Experience design', line: 'Interfaces shaped around real people', img: 'https://cdn.21st.dev/assets/mirror/d5/d549c11c16ad2335895c39339d1a4307b648b24a6baae68662246cf9bd37ac13.jpg' },
-  { title: 'Systems engineering', line: 'Connected tools. Thoughtful architecture.', img: 'https://cdn.21st.dev/assets/mirror/e0/e058437411e954b747056a494f26349751828f12c2137a883e5aebbd1fcf5eef.jpg' },
-  { title: 'AI engineering', line: 'Intelligence, context, and evaluation', img: 'https://cdn.21st.dev/assets/mirror/45/45ba21cbafae178989cd3652799f42123a80e0ac44065ac00cbb265ea948bc41.jpg' },
-  { title: 'Eigi_ai research', line: 'Explore possibilities. Test assumptions.', img: 'https://cdn.21st.dev/assets/mirror/90/904d97602d25b1b5ef0f4058abad6d8185d8cebd0750771404a934a44dd537fb.jpg' },
-  { title: 'Delivery engineering', line: 'From working prototype to daily use', img: 'https://cdn.21st.dev/assets/mirror/3b/3b6a929c98b85177bcc2eb4606a71b7487011128756dbf0adda24e803ca70ed7.jpg' },
+  { title: 'Product strategy', line: 'Deciding what to build first.', img: 'https://cdn.21st.dev/assets/mirror/f4/f43137dada970ee6a29a0497d1f699d54b92e5381350eaa66dc827e3ffb11645.jpg' },
+  { title: 'Experience design', line: 'Agents people find easy to talk to.', img: 'https://cdn.21st.dev/assets/mirror/d5/d549c11c16ad2335895c39339d1a4307b648b24a6baae68662246cf9bd37ac13.jpg' },
+  { title: 'Systems engineering', line: 'Connecting agents to the systems a business runs on.', img: 'https://cdn.21st.dev/assets/mirror/e0/e058437411e954b747056a494f26349751828f12c2137a883e5aebbd1fcf5eef.jpg' },
+  { title: 'AI engineering', line: 'Prompts, context and evals that keep agents accurate.', img: 'https://cdn.21st.dev/assets/mirror/45/45ba21cbafae178989cd3652799f42123a80e0ac44065ac00cbb265ea948bc41.jpg' },
+  { title: 'Research', line: 'Testing ideas and assumptions before they ship.', img: 'https://cdn.21st.dev/assets/mirror/90/904d97602d25b1b5ef0f4058abad6d8185d8cebd0750771404a934a44dd537fb.jpg' },
+  { title: 'Delivery engineering', line: 'Taking a prototype into daily use.', img: 'https://cdn.21st.dev/assets/mirror/3b/3b6a929c98b85177bcc2eb4606a71b7487011128756dbf0adda24e803ca70ed7.jpg' },
 ]
 
 /** Colour opens out from wherever the cursor enters the photo. */
@@ -30,11 +30,11 @@ function markEntry(e: PointerEvent<HTMLElement>) {
 const FOUNDERS = [
   {
     name: 'Aman Khandelwal', role: 'Founder & CEO', img: aman,
-    line: 'On a relentless pursuit of digital singularity: building the bridge between human intent and machine intelligence, one voice at a time.',
+    line: 'Working toward digital singularity, starting with voice agents that understand what people mean.',
   },
   {
     name: 'Mrunmay Chichkhede', role: 'Co-Founder', img: mrunmay,
-    line: 'Building the engineering backbone that powers real-time, intelligent voice experiences at scale.',
+    line: 'Builds the real-time voice systems Eigi’s agents run on.',
   },
 ]
 
@@ -81,14 +81,13 @@ export function Minds() {
   return (
     <section id="minds" ref={ref} className={styles.minds} data-page>
       <div className={styles.head}>
-        <motion.p className="eyebrow mono" {...reveal}>Human ingenuity. Shared ambition.</motion.p>
-        <motion.h2 {...reveal}>Creative eigi_ai minds.</motion.h2>
+        <motion.p className="eyebrow" {...reveal}>§ 09 · The team</motion.p>
+        <motion.h2 {...reveal}>Who’s behind Eigi.</motion.h2>
         <motion.p className="lead" {...reveal}>
-          Eigi_ai brings engineering, design, and research together to turn ambitious ideas into useful systems,
-          with clear communication throughout.
+          Engineers, designers and researchers who build the agents, then stay to run them with you.
         </motion.p>
         <motion.p className={cx(styles.note, 'mono')} {...reveal}>
-          Meet the disciplines behind the work. Portraits are illustrative, not staff profiles.
+          Portraits in the strip are stock images.
         </motion.p>
       </div>
 

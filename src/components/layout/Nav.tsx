@@ -61,7 +61,8 @@ const ringMotion: Variants = {
 
 /**
  * Fixed top bar: transparent at the top, frosted once you scroll; tucks away while you scroll down and
- * drops back when you scroll up. Holds Go to Studio and the menu toggle; Documentation and Contact live in the menu.
+ * drops back when you scroll up. Holds Start your ascent (`data-amit` opens Amit, the onboarding agent) and the
+ * menu toggle; Documentation, Studio and Contact live in the menu.
  * The menu is a full-screen route map that rises over the page as a mountain range.
  */
 export function Nav({ links, formatProgress }: NavProps) {
@@ -95,9 +96,10 @@ export function Nav({ links, formatProgress }: NavProps) {
       >
         <a href="#top" className={styles.logo} aria-label="eigi.ai, back to top" onClick={close} />
         <div className={styles.links}>
-          <a className={styles.studio} href={STUDIO_URL}>
-            Go to Studio <span aria-hidden="true">→</span>
-          </a>
+          {/* closes the menu first, so Amit's card isn't hidden under the curtain */}
+          <button type="button" className={styles.start} data-amit onClick={close}>
+            Start your ascent <span aria-hidden="true">→</span>
+          </button>
           <button
             ref={toggleRef}
             type="button"

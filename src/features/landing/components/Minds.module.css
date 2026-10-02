@@ -1,14 +1,13 @@
 /* Sits after the summit, on the black sky, just above the footer. */
 .minds { min-height: auto; padding: 120px 0 100px; overflow: hidden; }
 
-.head { padding: 0 var(--gutter); display: flex; flex-direction: column; align-items: center; text-align: center; }
-.head h2 { max-width: none; }
-.head :global(.lead) { max-width: 56ch; }
-.note { margin-top: 18px; font-size: 11px; letter-spacing: .06em; color: var(--muted); }
+/* left-aligned on the gutter, like every other section */
+.head { padding: 0 var(--gutter); }
+.note { margin-top: 20px; font-size: var(--fs-label); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--muted); }
 
 .count {
   padding: 0 var(--gutter); margin: 64px 0 20px;
-  font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
+  font-size: var(--fs-label); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--muted);
 }
 
 /* ---------- founders: real people, so still cards rather than the drifting strip ---------- */
@@ -16,13 +15,14 @@
   list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;
   padding: 0 var(--gutter); max-width: 1180px;
 }
+/* top-aligned, so both founders' names sit on the same line whatever the length of their bios */
 .founder {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 24px; align-items: end;
-  padding: 14px; border: 1px solid var(--line); border-radius: 22px;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 24px; align-items: start;
+  padding: 14px; border: 1px solid var(--line); border-radius: var(--radius-lg);
   transition: border-color .4s;
 }
 .founder:hover { border-color: color-mix(in srgb, var(--fg) 40%, transparent); }
-.photo { position: relative; aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: #111; }
+.photo { position: relative; aspect-ratio: 4 / 5; border-radius: calc(var(--radius-lg) - 14px); overflow: hidden; background: #111; }
 .photo img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
   filter: grayscale(1) contrast(1.05);
@@ -35,10 +35,10 @@
   transition: transform 1s var(--ease-out), clip-path .8s var(--ease-out);
 }
 .founder:hover .photo img.colour { clip-path: circle(150% at var(--x, 50%) var(--y, 50%)); }
-.bio { padding: 0 8px 10px 0; }
-.role { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
-.bio h3 { font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -.03em; line-height: 1.1; margin: 10px 0 14px; }
-.line { font-size: 14px; line-height: 1.55; color: var(--muted); font-weight: 300; }
+.bio { padding: 10px 8px 10px 0; }
+.role { font-size: var(--fs-label); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--muted); }
+.bio h3 { margin: 12px 0 14px; }
+.line { font-size: var(--fs-small); line-height: 1.55; color: var(--muted); }
 
 /* soft fade at both edges so cards drift in and out instead of being cut */
 .viewport {
@@ -58,7 +58,7 @@
 
 .card {
   position: relative; flex: 0 0 var(--card); aspect-ratio: 270 / 360;
-  border-radius: 18px; overflow: hidden; background: #111;
+  border-radius: var(--radius); overflow: hidden; background: #111;
   transition: transform .5s var(--ease-out);
 }
 .card img {
@@ -79,21 +79,20 @@
 .card:hover img.colour { clip-path: circle(150% at var(--x, 50%) var(--y, 50%)); }
 
 .badge {
-  position: absolute; top: 14px; left: 14px;
-  font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: #fff;
-  padding: 5px 9px; border-radius: 99px;
-  background: rgba(0, 0, 0, .45); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  position: absolute; top: 10px; left: 10px;
+  font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: #fff;
+  padding: 5px 9px; border-radius: var(--radius-sm); background: #000;
 }
 
 /* a white caption card, as on fde.eigi.ai; fixed colours so it reads the same on any sky */
 .caption {
   position: absolute; left: 10px; right: 10px; bottom: 10px;
-  padding: 16px 16px 18px; border-radius: 12px;
-  background: rgba(255, 255, 255, .94); color: #000;
+  padding: 16px 16px 18px; border-radius: calc(var(--radius) - 10px);
+  background: #fff; color: #000;
   transform: translateY(0); transition: transform .5s var(--ease-out);
 }
-.caption h3 { font-size: 17px; letter-spacing: -.02em; line-height: 1.2; }
-.caption p { font-size: 12px; line-height: 1.45; color: #555; margin-top: 4px; }
+.caption h3 { font-size: var(--fs-h4); line-height: 1.15; }
+.caption p { font-size: var(--fs-small); line-height: 1.4; color: #555; margin-top: 6px; }
 .card:hover .caption { transform: translateY(-4px); }
 
 @media (max-width: 980px) {

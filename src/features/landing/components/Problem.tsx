@@ -39,11 +39,11 @@ export function Problem() {
 
   return (
     <section id="problem" data-stage="The problem">
-      <motion.p className="eyebrow mono" {...reveal}>The problem · adoption</motion.p>
+      <motion.p className="eyebrow" {...reveal}>§ 02 · The problem</motion.p>
       <motion.h2 {...reveal}>Everyone can see the summit. Almost no one knows the route.</motion.h2>
       <motion.p className="lead" {...reveal}>
-        Claude, GPT, Fable, Gemini: the most powerful tools ever built are one login away. Yet most
-        businesses stall at the foot of the mountain: where does it fit, what do we automate first, who sets it up?
+        Claude, GPT, Fable and Gemini are one login away, and businesses still stall at the foot of the
+        mountain. Where does AI fit? What do we automate first? Who sets it up, and who fixes it when it breaks?
       </motion.p>
       <div ref={ridgeRef} className={styles.ridgeWrap}>
         <svg
@@ -55,7 +55,7 @@ export function Problem() {
           <path className={styles.ghost} d={RIDGE} />
           <motion.path className={styles.line} d={RIDGE} style={{ pathLength: drawn }} />
           {PEAKS.map((p) => <Peak key={p.name} peak={p} drawn={drawn} />)}
-          <motion.text x="20" y="200" style={{ opacity: here }}>▲ you are here · 0 m, no route</motion.text>
+          <motion.text x="20" y="200" style={{ opacity: here }}><tspan fill="var(--signal)">▲</tspan> you are here · 0 m, no route</motion.text>
         </svg>
       </div>
     </section>

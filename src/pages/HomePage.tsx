@@ -11,12 +11,12 @@ const SECTIONS = [
   { href: '#base-camp', label: 'Base camp' },
   { href: '#problem', label: 'The problem' },
   { href: '#stand', label: 'Where we stand' },
-  { href: '#stories', label: 'Eigi stories' },
+  { href: '#stories', label: 'Stories' },
   { href: '#gateway', label: 'The gateway' },
   { href: '#route', label: 'The route' },
   { href: '#sherpas', label: 'Sherpas' },
   { href: '#summit', label: 'Summit' },
-  { href: '#minds', label: 'Eigi minds' },
+  { href: '#minds', label: 'The team' },
   { href: '#contact', label: 'Contact' },
 ] as const
 

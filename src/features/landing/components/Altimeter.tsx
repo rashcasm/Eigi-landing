@@ -1,4 +1,4 @@
-import { motion, useMotionValueEvent, useScroll, useTransform } from 'motion/react'
+import { frame, motion, useMotionValueEvent, useScroll, useTransform } from 'motion/react'
 import { useState, type RefObject } from 'react'
 import { cx } from '../../../utils/cx.ts'
 import { altitude as toAltitude } from '../utils/altitude.ts'
@@ -12,7 +12,8 @@ export function Altimeter({ climb }: { climb: RefObject<HTMLElement | null> }) {
   const altitude = useTransform(scrollYProgress, toAltitude)
   const [stage, setStage] = useState('Base camp') // page loads at the top; any scroll (incl. restored position) updates it
   const { scrollY } = useScroll()
-  useMotionValueEvent(scrollY, 'change', () => setStage(readStage()))
+  // after the frame renders: the route sets its camp in the same frame, so a jump reads the new camp
+  useMotionValueEvent(scrollY, 'change', () => frame.postRender(() => setStage(readStage())))
   // past the summit the footer takes over: fade the gauge out so it never sits on the contact form
   const { scrollYProgress: pastSummit } = useScroll({ target: climb, offset: ['end end', 'end 0.6'] })
   const opacity = useTransform(pastSummit, [0, 1], [1, 0])

@@ -10,40 +10,40 @@ import styles from './Stories.module.css'
  */
 const STORIES = [
   {
-    industry: 'Customer support', altitude: '1,140 m', peep: 4, agent: 'Voice agent',
-    title: 'The inbox that never sleeps',
+    industry: 'Customer support', peep: 4, agent: 'Voice agent',
+    title: 'Every call picked up',
     before: 'Calls after 7 pm went to voicemail, and most callers never tried again.',
     after: 'A voice agent picks up around the clock, solves the routine questions and hands the hard ones to a human.',
   },
   {
-    industry: 'E-commerce', altitude: '2,310 m', peep: 17, agent: 'Voice + chat agents',
+    industry: 'E-commerce', peep: 17, agent: 'Voice + chat agents',
     title: 'A store that talks back',
     before: 'Shoppers bounced when search could not find what they meant.',
-    after: 'Voice-led product discovery and order tracking, right inside the store.',
+    after: 'Shoppers ask out loud for what they mean, and track orders without leaving the store.',
   },
   {
-    industry: 'Real estate', altitude: '3,480 m', peep: 31, agent: 'Voice agent',
+    industry: 'Real estate', peep: 31, agent: 'Voice agent',
     title: 'Every inquiry, qualified',
     before: 'Brokers spent their mornings answering the same five questions.',
     after: 'Agents answer property inquiries, qualify the lead and book the viewing.',
   },
   {
-    industry: 'Education', altitude: '4,650 m', peep: 62, agent: 'Chat + video agents',
+    industry: 'Education', peep: 62, agent: 'Chat + video agents',
     title: 'Admissions at 2 a.m.',
     before: 'The helpline closed at six. Applicants did not.',
     after: 'An admissions agent and AI tutors answer students whenever they ask.',
   },
   {
-    industry: 'Healthcare', altitude: '5,820 m', peep: 77, agent: 'Voice agent',
+    industry: 'Healthcare', peep: 77, agent: 'Voice agent',
     title: 'The front desk, handled',
     before: 'Receptionists juggled phones, walk-ins and reminders all at once.',
-    after: 'Patient intake, booking and prescription reminders now run on their own.',
+    after: 'An agent handles intake, booking and reminders. The desk looks after the people in the room.',
   },
   {
-    industry: 'Finance & banking', altitude: '6,990 m', peep: 90, agent: 'Voice agent',
+    industry: 'Finance & banking', peep: 90, agent: 'Voice agent',
     title: 'Answers before the hold music',
     before: 'Customers waited on hold just to check a balance.',
-    after: 'Account inquiries, fraud alerts and loan pre-qualification, answered instantly.',
+    after: 'Balance checks, fraud alerts and loan pre-qualification take one short call.',
   },
 ]
 
@@ -72,16 +72,16 @@ export function Stories() {
       id="stories"
       ref={sectionRef}
       className={styles.stories}
-      data-stage="Eigi stories"
+      data-stage="Stories"
       style={{ ['--travel' as string]: `${distance}px` }}
     >
       <div className={styles.sticky}>
         <motion.div ref={trackRef} className={styles.track} style={{ x }}>
           <div className={styles.intro}>
-            <p className="eyebrow mono">Eigi stories</p>
+            <p className="eyebrow">§ 04 · Stories</p>
             <h2>Field notes from the climb.</h2>
             <p className="lead">
-              Teams we have roped in, the problem that kept them at base camp, and the agents that got them moving.
+              Typical climbs, by industry: what kept each team at base camp, and the agents that got it moving.
             </p>
             <p className={cx(styles.hint, 'mono')}>Keep scrolling →</p>
           </div>
@@ -91,10 +91,9 @@ export function Stories() {
               <li key={s.title} className={styles.card} style={{ ['--rise' as string]: i }}>
                 <header className={cx(styles.meta, 'mono')}>
                   <span>Log {String(i + 1).padStart(2, '0')}</span>
-                  <span>{s.altitude}</span>
+                  <span>{s.industry}</span>
                 </header>
                 <div className={styles.portrait}><span style={peepStyle(s.peep)} /></div>
-                <p className={cx(styles.industry, 'mono')}>{s.industry}</p>
                 <h3>{s.title}</h3>
                 <dl className={styles.story}>
                   <div className={styles.before}><dt className="mono">Before</dt><dd>{s.before}</dd></div>

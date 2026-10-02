@@ -46,7 +46,7 @@ src/
     components/              one component per section, each with a scoped *.module.css
     hooks/                   browser work: crowd canvas, singularity canvas, the sherpa that joins your cursor in the sherpas section
     utils/                   pure logic: crowd and singularity simulations (unit-tested), sprite-sheet helpers, altitude formatting
-  components/layout/Nav.tsx  shared nav: logo, Go to Studio and the full-screen section menu (sections, Documentation, Studio, email)
+  components/layout/Nav.tsx  shared nav: logo, Start your ascent and the full-screen section menu (sections, Documentation, Studio, email)
   components/layout/Footer.tsx  contact section + site footer
   hooks/                     shared browser behaviour: page lock while the menu is open
   styles/global.css          design tokens, reset, type scale, shared classes (.eyebrow, .lead, .btn, .mono)
@@ -54,6 +54,15 @@ src/
   utils/                     framework-free helpers (clamp/lerp/colour mix, contour paths, cx)
   assets/                    logo and the Open Peeps sprite, bundled by Vite
 ```
+
+### Design system
+
+The look is a founder's field manual: technical instruments plus an editorial expedition journal. Everything comes from tokens in `src/styles/global.css`, so use those instead of one-off values.
+
+- **Type.** Archivo for headlines and buttons (`--font-display`; h1/h2 slightly expanded), Newsreader for reading text (`--font-serif`, the body default) and Martian Mono for labels and readouts (`--font-mono`). Sizes come only from the scale: `--fs-label`, `--fs-small`, `--fs-body`, `--fs-lead`, `--fs-h4`, `--fs-h3`, `--fs-h2`, `--fs-h1`.
+- **Labels.** One style everywhere: mono, `--fs-label`, uppercase, `letter-spacing: var(--track-label)`. Section eyebrows read `§ NN · Name`, numbered like the menu.
+- **Colour.** Black and white, plus one sage accent, `--signal`, used only on things you can act on (buttons) and on where you are (live dot, altimeter fill, hiker, the "you are here" marker, Eigi's flag). Never use it for decoration or body text. Focus rings stay black/white because sage is too soft against white.
+- **Shape.** Radii are `--radius-sm` (chips, tags), `--radius` (cards) and `--radius-lg` (panels), plus fully round pills for buttons. No frosted glass: fixed chrome uses solid surfaces.
 
 Page colours are CSS variables (`--bg`, `--fg`, `--muted`, `--line`, `--accent`) defined in `src/styles/global.css`. As you scroll, `Atmosphere.tsx` changes them, flipping the page from white to black as you reach the sherpas. Anything coloured with them, including the nav, follows along. Two exceptions: the gateway section repaints the tokens locally (a black portal in the white page), and while the menu is open the nav bar is white and difference-blended so it always inverts whatever is behind it.
 
@@ -66,6 +75,7 @@ Scroll-driven effects use [`motion`](https://motion.dev) (`useScroll`, `useTrans
 - **A new section** goes in `features/landing/components/`. Export it from `features/landing/index.ts` and place it in `pages/HomePage.tsx`.
 - **Listeners, timers, canvas or `requestAnimationFrame`** go in a hook under `features/landing/hooks/`, with cleanup, never inline in a component.
 - **Pure logic** goes in `utils/`, with a colocated `*.test.ts`.
+- **A call to action** is a `<button className="btn" data-amit>`. `Radio.tsx` opens Amit's card for anything marked `data-amit`, so onboarding stays a WhatsApp chat or a call with Amit, never a form.
 - **Something a second feature needs** moves up to `src/components/` (UI) or `src/utils/` (logic).
 
 ## Credits

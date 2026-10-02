@@ -14,17 +14,17 @@
 .cards { position: relative; min-height: 300px; }
 .card { position: absolute; inset: 0; opacity: 0; transform: translateY(20px); transition: .6s var(--ease-out); }
 .shown { opacity: 1; transform: none; }
-.cardLabel { font-size: 12px; color: var(--accent); letter-spacing: .14em; }
-.card h3 { font-size: clamp(30px, 3.6vw, 52px); letter-spacing: -.035em; line-height: 1; margin: 14px 0 18px; }
-.card p { color: var(--muted); line-height: 1.55; font-weight: 300; font-size: 17px; max-width: 40ch; }
-.chip { display: inline-block; margin-top: 22px; font-size: 12px; border: 1px solid var(--line); padding: 8px 12px; border-radius: 6px; }
+.cardLabel { font-size: var(--fs-label); letter-spacing: var(--track-label); }
+.card h3 { margin: 14px 0 16px; }
+.card p { color: var(--muted); line-height: 1.55; max-width: 40ch; }
+.chip { display: inline-block; margin-top: 22px; font-size: var(--fs-label); border: 1px solid var(--line); padding: 8px 12px; border-radius: var(--radius-sm); }
 
-.race { margin-top: 22px; font-size: 12px; }
+.race { margin-top: 22px; font-size: var(--fs-label); }
 .lane { display: flex; align-items: center; gap: 10px; margin: 8px 0; }
 .lane span:first-child { width: 70px; color: var(--muted); }
 .track { flex: 1; height: 4px; background: var(--line); position: relative; border-radius: 2px; overflow: hidden; }
 .track i { position: absolute; inset: 0; background: var(--fg); transform-origin: left; }
-.ai i { background: var(--accent); }
+.ai i { background: var(--signal); }
 
 @media (max-width: 820px) {
   .sticky { grid-template-columns: 1fr; align-content: center; gap: 20px; }

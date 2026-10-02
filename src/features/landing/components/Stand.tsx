@@ -5,18 +5,18 @@ import { PositioningMap } from './PositioningMap.tsx'
 import styles from './Stand.module.css'
 
 const WHY = [
-  ['AI subscriptions', 'The most powerful tools ever built, and a blank chat box. You’re on your own.'],
-  ['AI coworker bots', 'One agent, one task. Nobody redesigns how your business runs.'],
-  ['Agencies', 'Build it, hand it over, leave. It breaks the week after.'],
-  ['Consultancies', 'Roped in, but at enterprise prices and enterprise pace.'],
-  ['Eigi', 'Forward-deployed sherpas who move at AI speed, stay until it sticks, and fit a two-person budget.'],
+  ['AI subscriptions', 'Powerful models and an empty chat box. Working out the rest is your job.'],
+  ['AI coworker bots', 'One bot, one task. Nobody rethinks how the business runs.'],
+  ['Agencies', 'They build it, hand it over and leave. It breaks the week after.'],
+  ['Consultancies', 'Roped in, at enterprise prices and enterprise pace.'],
+  ['Eigi', 'Engineers who join your team at AI speed and stay until it works.'],
 ]
 
 export function Stand() {
   return (
     <section id="stand" data-stage="Where we stand">
-      <motion.p className="eyebrow mono" {...reveal}>Where Eigi stands</motion.p>
-      <motion.h2 {...reveal}>Everyone else gives you tools. We get you to the top.</motion.h2>
+      <motion.p className="eyebrow" {...reveal}>§ 03 · Where we stand</motion.p>
+      <motion.h2 {...reveal}>Fast or hands-on. Rarely both.</motion.h2>
       <div className={styles.grid}>
         <PositioningMap />
         <ul className={styles.why}>

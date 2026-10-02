@@ -8,24 +8,24 @@ const TRAIL = 'M60 590 C 220 590, 200 470, 360 455 S 560 420, 470 330 S 560 230,
 /** `at` is how far along the trail (0–1) the camp sits. */
 const CAMPS = [
   {
-    at: 0.16, numeral: 'I', altitude: '1,200 m', title: 'Discover',
+    at: 0.16, numeral: 'I', title: 'Discover',
     body: 'Sherpas sit with your team for a week and map every repetitive hour: inbox, sales follow-ups, ops, reporting.',
     chip: '→ AI opportunity map, ranked by hours saved',
   },
   {
-    at: 0.42, numeral: 'II', altitude: '3,400 m', title: 'Integrate',
-    body: 'We wire agents into the tools you already use. No rip-and-replace. A voice agent takes the calls, Context learns your business.',
-    chip: '→ First agents live in days, not quarters',
+    at: 0.42, numeral: 'II', title: 'Integrate',
+    body: 'We wire agents into the tools you already use. A voice agent takes the calls and Context learns your business.',
+    chip: '→ First agents live within days',
   },
   {
-    at: 0.68, numeral: 'III', altitude: '5,900 m', title: 'Automate',
-    body: 'Workflows chain the agents together. A chat agent drafts, Instinct decides, humans approve.',
+    at: 0.68, numeral: 'III', title: 'Automate',
+    body: 'We chain the agents into workflows. A chat agent drafts, Instinct decides, humans approve.',
     race: true,
   },
   {
-    at: 0.93, numeral: 'IV', altitude: '7,800 m', title: 'Scale',
-    body: 'Your team learns to run it themselves. We stay roped in: tuning, adding agents, pushing the ceiling higher.',
-    chip: '→ AI-first, permanently',
+    at: 0.93, numeral: 'IV', title: 'Scale',
+    body: 'Your team learns to run it. We stay roped in to tune the agents and add new ones as you grow.',
+    chip: '→ Yours to run',
   },
 ]
 
@@ -85,14 +85,15 @@ export function Route() {
             </g>
           ))}
           <g ref={hikerRef}>
-            <circle r="7" fill="var(--accent)" />
-            <circle r="16" fill="none" stroke="var(--accent)" opacity=".35" />
+            {/* you: the one moving point on the route, in sage */}
+            <circle r="7" fill="var(--signal)" />
+            <circle r="16" fill="none" stroke="var(--signal)" opacity=".45" />
           </g>
         </svg>
         <div className={styles.cards}>
           {CAMPS.map((c, i) => (
             <div key={c.numeral} className={cx(styles.card, i === shown && styles.shown)} aria-hidden={i !== shown}>
-              <div className={cx(styles.cardLabel, 'mono')}>CAMP {c.numeral} · {c.altitude}</div>
+              <div className={cx(styles.cardLabel, 'mono')}>CAMP {c.numeral}</div>
               <h3>{c.title}</h3>
               <p>{c.body}</p>
               {c.race ? <SpeedRace progress={scrollYProgress} /> : <span className={cx(styles.chip, 'mono')}>{c.chip}</span>}

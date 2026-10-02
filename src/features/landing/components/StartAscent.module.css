@@ -1,0 +1,8 @@
+/* z-index keeps it above the base-camp crowd canvas */
+.cta { position: relative; z-index: 2; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 22px; margin-top: 36px; }
+.cta :global(.btn) { margin-top: 0; }
+/* a halo in the page colour, like a label on a topo map, keeps it legible over the crowd drawings */
+.note {
+  font-size: var(--fs-label); letter-spacing: var(--track-label); text-transform: uppercase; line-height: 1.7; color: var(--muted);
+  text-shadow: 0 0 3px var(--bg), 0 0 6px var(--bg), 0 0 10px var(--bg);
+}

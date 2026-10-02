@@ -3,6 +3,7 @@ import { useRef, useState } from 'react'
 import { reveal } from '../../../styles/motion.ts'
 import { cx } from '../../../utils/cx.ts'
 import { peepStyle } from '../utils/peeps.ts'
+import { StartAscent } from './StartAscent.tsx'
 import styles from './Summit.module.css'
 
 /** Two people from the base-camp crowd, now at the top. `peep` is their sprite cell. */
@@ -25,9 +26,9 @@ export function Summit() {
 
   return (
     <section id="summit" ref={ref} data-stage="Summit">
-      <motion.p className="eyebrow mono" {...reveal}>Summit · 8,848 m · Our mission</motion.p>
+      <motion.p className="eyebrow" {...reveal}>§ 08 · Summit</motion.p>
       <motion.h2 {...reveal}>Make every small team AI-first.</motion.h2>
-      <p className={cx(styles.count, 'mono')}>
+      <p className={styles.count}>
         {team}
         <small>{team === TEAM_SIZE ? ' · a 2-person team, working like 20' : ' on the team'}</small>
       </p>
@@ -45,6 +46,7 @@ export function Summit() {
           </li>
         ))}
       </ul>
+      <StartAscent />
     </section>
   )
 }

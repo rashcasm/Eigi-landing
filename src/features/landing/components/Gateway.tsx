@@ -1,16 +1,15 @@
 import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from 'motion/react'
 import { useRef, useState } from 'react'
-import { STUDIO_URL } from '../../../components/layout/Nav.tsx'
 import { cx } from '../../../utils/cx.ts'
 import { useSingularity } from '../hooks/useSingularity.ts'
 import { ORBITS, stepAt } from '../utils/singularity.ts'
 import styles from './Gateway.module.css'
 
 const STEPS = [
-  { title: 'Humans', body: 'The ambition, the taste, the judgment. Every gateway starts with people.' },
-  { title: 'Forward-deployed engineers', body: 'Sherpas who live inside your business and turn intent into working systems.' },
+  { title: 'Humans', body: 'You bring the judgment: what matters, and what good looks like.' },
+  { title: 'Forward-deployed engineers', body: 'Engineers who sit with your team and build the systems you describe.' },
   { title: 'Eigi computer', body: 'Voice, chat and video agents that run around the clock, on any model.' },
-  { title: 'Converging', body: 'Three forces, one orbit. Each makes the others stronger.' },
+  { title: 'All three', body: 'People decide, engineers build, and agents take the repetitive work.' },
 ]
 
 /** A black portal in the page: humans + FDEs + Eigi computer spiral into one event horizon. Pinned for 3 screens. */
@@ -51,9 +50,9 @@ export function Gateway() {
         <motion.div className={styles.finale} style={{ opacity: finale, scale: finaleScale }} aria-hidden={step < 4}>
           <h2>Your gateway to singularity.</h2>
           <p className={styles.finaleLead}>Take your step towards digital singularity with Eigi.</p>
-          <a className="btn" href={STUDIO_URL} tabIndex={step < 4 ? -1 : 0}>
+          <button type="button" className="btn" data-amit tabIndex={step < 4 ? -1 : 0}>
             Step through <span aria-hidden="true">→</span>
-          </a>
+          </button>
         </motion.div>
       </div>
     </section>
