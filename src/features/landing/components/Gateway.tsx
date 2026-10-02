@@ -1,60 +1,64 @@
-import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from 'motion/react'
-import { useRef, useState } from 'react'
-import { cx } from '../../../utils/cx.ts'
-import { useSingularity } from '../hooks/useSingularity.ts'
-import { ORBITS, stepAt } from '../utils/singularity.ts'
+import { motion, useReducedMotion } from 'motion/react'
+import { useState } from 'react'
+import { WorkIcon } from './WorkIcon.tsx'
 import styles from './Gateway.module.css'
 
-const STEPS = [
-  { title: 'Humans', body: 'You bring the judgment: what matters, and what good looks like.' },
-  { title: 'Forward-deployed engineers', body: 'Engineers who sit with your team and build the systems you describe.' },
-  { title: 'Eigi computer', body: 'Voice, chat and video agents that run around the clock, on any model.' },
-  { title: 'All three', body: 'People decide, engineers build, and agents take the repetitive work.' },
-]
+const INGREDIENTS = [
+  { icon: 'person', title: 'You', description: 'The vision. The judgment.', style: 'human' },
+  { icon: 'people', title: 'Forward-deployed engineers', description: 'The people who make it work.', style: 'engineers' },
+  { icon: 'computer', title: 'Eigi computer', description: 'Your agents. Working together.', style: 'computer' },
+] as const
 
-/** A black portal in the page: humans + FDEs + Eigi computer spiral into one event horizon. Pinned for 3 screens. */
+/** A finite, replayable equation. Reduced motion renders the complete, open gateway immediately. */
 export function Gateway() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end end'] })
-  // eased copy of the scroll: wheel notches and trackpad flicks glide instead of stepping
-  const progress = useSpring(scrollYProgress, { stiffness: 70, damping: 22, mass: 0.6, restDelta: 0.0005 })
-  const [step, setStep] = useState(0)
-  useMotionValueEvent(progress, 'change', (p) => setStep(stepAt(p)))
-  useSingularity(canvasRef, progress)
-  const finale = useTransform(progress, [0.88, 0.98], [0, 1])
-  const finaleScale = useTransform(finale, [0, 1], [0.92, 1])
+  const reducedMotion = useReducedMotion()
+  const [replay, setReplay] = useState(0)
+  const arrive = {
+    hidden: { opacity: 0, y: 18 },
+    visible: (index: number) => ({ opacity: 1, y: 0, transition: { duration: reducedMotion ? 0 : 0.65, delay: reducedMotion ? 0 : index * 0.22 } }),
+  }
+  const door = (direction: number) => ({
+    hidden: { x: '0%' },
+    visible: { x: `${direction * 102}%`, transition: { duration: reducedMotion ? 0 : 1.5, delay: reducedMotion ? 0 : 1.1, ease: [0.22, 1, 0.36, 1] as const } },
+  })
 
   return (
-    <section id="gateway" ref={sectionRef} className={styles.gateway} data-stage="The gateway" aria-label="Gateway to singularity">
-      <div className={styles.sticky}>
-        <a className="skip-section" href="#route">Skip the gateway ↓</a>
-        <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
-
-        <p className={cx(styles.equation, 'mono')} aria-label="Humans plus forward-deployed engineers plus Eigi computer equals singularity">
-          {ORBITS.map((o, i) => (
-            <span key={o.label} className={cx(step >= i && styles.lit)}>{i > 0 && <b>+</b>}{i === 1 ? 'Engineers' : o.label}</span>
-          ))}
-          <span className={cx(step >= 4 && styles.lit)}><b>=</b>Singularity</span>
-        </p>
-
-        <div className={styles.steps}>
-          {STEPS.map((s, i) => (
-            <div key={s.title} className={cx(styles.step, i === step && styles.shown)} aria-hidden={i !== step}>
-              <div className={cx(styles.stepLabel, 'mono')}>{String(i + 1).padStart(2, '0')} / 04</div>
-              <h3>{s.title}</h3>
-              <p>{s.body}</p>
-            </div>
+    <section id="gateway" className={styles.gateway} data-stage="The gateway" aria-labelledby="gateway-title">
+      <div className={styles.heading}>
+        <p className="eyebrow">The Eigi equation</p>
+        <h2 id="gateway-title">Your gateway<br />to singularity.</h2>
+        <p>Human ambition. Applied intelligence.<br />The possibility of both, working as one.</p>
+      </div>
+      <motion.div key={replay} className={styles.equation} initial={reducedMotion ? false : 'hidden'} whileInView="visible" viewport={{ once: true, amount: 0.3 }} role="group" aria-label="You plus forward-deployed engineers plus Eigi computer equals a gateway to singularity.">
+        <div className={styles.ingredients}>
+          {INGREDIENTS.map(({ icon, title, description, style }, index) => (
+            <motion.div key={title} className={styles.ingredient} variants={arrive} custom={index}>
+              {index > 0 && <span className={styles.plus} aria-hidden="true">+</span>}
+              <div className={`${styles.object} ${styles[style]}`}><WorkIcon name={icon} /><span className={styles.objectFloor} /></div>
+              <h3>{title}</h3><p>{description}</p>
+            </motion.div>
           ))}
         </div>
-
-        <motion.div className={styles.finale} style={{ opacity: finale, scale: finaleScale }} aria-hidden={step < 4}>
-          <h2>Your gateway to singularity.</h2>
-          <p className={styles.finaleLead}>Take your step towards digital singularity with Eigi.</p>
-          <button type="button" className="btn" data-amit tabIndex={step < 4 ? -1 : 0}>
-            Step through <span aria-hidden="true">→</span>
-          </button>
+        <motion.span className={styles.equals} variants={arrive} custom={3} aria-hidden="true">=</motion.span>
+        <motion.div className={styles.destination} variants={arrive} custom={3}>
+          <div className={styles.portal} aria-hidden="true">
+            <div className={styles.portalGlow} />
+            <div className={styles.frame}>
+              <div className={styles.inside}>
+                <div className={styles.horizon} />
+                <div className={styles.infinity}>∞</div>
+                <motion.div className={styles.doorLeft} variants={door(-1)} />
+                <motion.div className={styles.doorRight} variants={door(1)} />
+              </div>
+            </div>
+            <div className={styles.reflection} />
+          </div>
+          <h3>Gateway to singularity.</h3><p>Your business, AI-first.</p>
         </motion.div>
+      </motion.div>
+      <div className={styles.foot}>
+        <p>Our vision of singularity: the distance between an idea<br className={styles.lineBreak} /> and making it happen gets smaller, every day.</p>
+        <button type="button" className={styles.replay} onClick={() => setReplay((value) => value + 1)}><span aria-hidden="true">↻</span> Replay the connection</button>
       </div>
     </section>
   )

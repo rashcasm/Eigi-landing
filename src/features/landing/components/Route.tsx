@@ -1,107 +1,20 @@
-import { motion, useMotionValueEvent, useScroll, useTransform, type MotionValue } from 'motion/react'
-import { useLayoutEffect, useRef, useState } from 'react'
-import { cx } from '../../../utils/cx.ts'
 import styles from './Route.module.css'
 
-const TRAIL = 'M60 590 C 220 590, 200 470, 360 455 S 560 420, 470 330 S 560 230, 720 230 S 860 140, 940 40'
-
-/** `at` is how far along the trail (0–1) the camp sits. */
-const CAMPS = [
-  {
-    at: 0.16, numeral: 'I', title: 'Discover',
-    body: 'Sherpas sit with your team for a week and map every repetitive hour: inbox, sales follow-ups, ops, reporting.',
-    chip: '→ AI opportunity map, ranked by hours saved',
-  },
-  {
-    at: 0.42, numeral: 'II', title: 'Integrate',
-    body: 'We wire agents into the tools you already use. A voice agent takes the calls and Context learns your business.',
-    chip: '→ First agents live within days',
-  },
-  {
-    at: 0.68, numeral: 'III', title: 'Automate',
-    body: 'We chain the agents into workflows. A chat agent drafts, Instinct decides, humans approve.',
-    race: true,
-  },
-  {
-    at: 0.93, numeral: 'IV', title: 'Scale',
-    body: 'Your team learns to run it. We stay roped in to tune the agents and add new ones as you grow.',
-    chip: '→ Yours to run',
-  },
+const STEPS = [
+  { title: 'Find the right starting point.', body: 'We sit with you, learn the business, and find the repetitive work worth solving first.', output: 'A clear opportunity map' },
+  { title: 'Build around your business.', body: 'We choose the tools, connect your systems, and build your first working AI workflow.', output: 'A workflow in your real tools' },
+  { title: 'Make it second nature.', body: 'We test it with your team, handle the edge cases, and show everyone how to use it.', output: 'A team ready to take the reins' },
+  { title: 'Keep moving forward.', body: 'We stay close, improve what’s working, and help you take on the next opportunity.', output: 'Support as your business grows' },
 ]
 
-/** A camp lights up just before the hiker reaches it. */
-const campAt = (p: number) => CAMPS.findLastIndex((c) => p >= c.at - 0.05)
-
-/** Human vs. Eigi: the same job, six weeks against six hours. */
-function SpeedRace({ progress }: { progress: MotionValue<number> }) {
-  const human = useTransform(progress, [0.6, 0.75], [0, 0.14])
-  const eigi = useTransform(progress, [0.6, 0.61875], [0, 1])
-  return (
-    <div className={cx(styles.race, 'mono')}>
-      <div className={styles.lane}><span>Human</span><div className={styles.track}><motion.i style={{ scaleX: human }} /></div><span>6 weeks</span></div>
-      <div className={styles.lane}><span>Eigi</span><div className={cx(styles.track, styles.ai)}><motion.i style={{ scaleX: eigi }} /></div><span>6 hours</span></div>
-    </div>
-  )
-}
-
-/** Pinned for 4 screens: scrolling walks the hiker up the trail, camp by camp. */
 export function Route() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const trailRef = useRef<SVGPathElement>(null)
-  const hikerRef = useRef<SVGGElement>(null)
-  const [campPoints, setCampPoints] = useState<DOMPoint[]>([])
-  const [active, setActive] = useState(-1)
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end end'] })
-
-  const climb = (p: number) => {
-    const trail = trailRef.current!
-    const { x, y } = trail.getPointAtLength(trail.getTotalLength() * p)
-    hikerRef.current!.setAttribute('transform', `translate(${x},${y})`)
-    const camp = campAt(p)
-    setActive(camp)
-    // the altimeter reads this; empty until camp I so it keeps showing the section before
-    sectionRef.current!.dataset.stage = camp >= 0 ? `Camp ${CAMPS[camp].numeral}` : ''
-  }
-  useMotionValueEvent(scrollYProgress, 'change', climb)
-  useLayoutEffect(() => {
-    const trail = trailRef.current!
-    const length = trail.getTotalLength()
-    setCampPoints(CAMPS.map((c) => trail.getPointAtLength(length * c.at)))
-    climb(scrollYProgress.get())
-  }, [scrollYProgress]) // measure once; later updates come from the scroll listener
-
-  const shown = Math.max(0, active)
-
   return (
-    <section id="route" ref={sectionRef} className={styles.route}>
-      <div className={styles.sticky}>
-        <a className="skip-section" href="#sherpas">Skip the route ↓</a>
-        <svg className={styles.trail} viewBox="0 0 1000 620" aria-hidden="true">
-          <path ref={trailRef} className={styles.ghost} d={TRAIL} />
-          <motion.path className={styles.live} d={TRAIL} style={{ pathLength: scrollYProgress }} />
-          {campPoints.map(({ x, y }, i) => (
-            <g key={CAMPS[i].numeral}>
-              <circle className={cx(styles.camp, i <= active && styles.reached)} r="8" cx={x} cy={y} />
-              <text className={styles.campLabel} x={x + 16} y={y + 20}>{CAMPS[i].numeral} · {CAMPS[i].title}</text>
-            </g>
-          ))}
-          <g ref={hikerRef}>
-            {/* you: the one moving point on the route, in sage */}
-            <circle r="7" fill="var(--signal)" />
-            <circle r="16" fill="none" stroke="var(--signal)" opacity=".45" />
-          </g>
-        </svg>
-        <div className={styles.cards}>
-          {CAMPS.map((c, i) => (
-            <div key={c.numeral} className={cx(styles.card, i === shown && styles.shown)} aria-hidden={i !== shown}>
-              <div className={cx(styles.cardLabel, 'mono')}>CAMP {c.numeral}</div>
-              <h3>{c.title}</h3>
-              <p>{c.body}</p>
-              {c.race ? <SpeedRace progress={scrollYProgress} /> : <span className={cx(styles.chip, 'mono')}>{c.chip}</span>}
-            </div>
-          ))}
-        </div>
-      </div>
+    <section id="route" className={styles.route} data-stage="How it works">
+      <div className={styles.heading}><p className="eyebrow">From possibility to part of your day.</p><h2>A way forward.<br />And a team beside you.</h2><p className="lead">You don’t need an AI roadmap to start.<br />That’s what we’re here to build with you.</p></div>
+      <ol className={styles.steps}>
+        {STEPS.map(({ title, body, output }, index) => <li key={title}><span className={styles.number}>{index + 1}</span><h3>{title}</h3><p>{body}</p><span className={styles.output}>{output}</span></li>)}
+      </ol>
+      <div className={styles.invitation}><p>One workflow is a good place to begin.</p><button className="btn" type="button" data-amit>Let’s find yours <span aria-hidden="true">↗</span></button></div>
     </section>
   )
 }

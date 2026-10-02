@@ -10,11 +10,17 @@ export const AMIT_TEL = `tel:+${AMIT_NUMBER}`
 
 /** What a visitor at each stage most likely wants, in their own words. */
 const INTENT: Record<string, string> = {
+  'Your team': 'I would like help finding the first AI workflow for my business.',
+  'Why Eigi': 'I would like to learn how your engineers can help my team adopt AI.',
+  'What we do': 'I would like to explore an AI workflow for my business.',
+  'How it works': 'I would like to discuss where to start with AI in my business.',
+  'Our people': 'I would like to meet the team and talk about AI adoption.',
+  'Let’s talk': 'I would like help finding the first AI workflow for my business.',
   'Base camp': 'I want to start using AI in my business.',
   'The problem': 'I can see what AI can do, but not where it fits in my business.',
   'Where we stand': 'I have tried AI tools on my own. I would like a sherpa instead.',
   'Stories': 'I read the Eigi stories and would like one like that for my business.',
-  'The gateway': 'I am ready to step through the gateway.',
+  'The gateway': 'I would like to connect my team, your engineers, and Eigi computer.',
   'Camp I': 'I would like you to map where AI fits in my business.',
   'Camp II': 'I would like to wire agents into the tools I already use.',
   'Camp III': 'I would like to automate my workflows with agents.',
@@ -36,7 +42,7 @@ export const tagFor = (stage: string) => stage.toLowerCase().replace(/[^a-z0-9]+
 /** The visitor's first message to Amit, written from where they are. */
 export function messageFor(stage: string, altitude: string) {
   const intent = INTENT[stage] ?? FALLBACK
-  const where = PLACES[stage] ? `I'm at ${PLACES[stage]} (${altitude}) on eigi.ai. ` : ''
+  const where = PLACES[stage] && altitude ? `I'm at ${PLACES[stage]} (${altitude}) on eigi.ai. ` : ''
   return `Hi Amit, ${where}${intent}\n\nref: ${tagFor(stage) || 'site'}`
 }
 

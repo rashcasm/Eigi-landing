@@ -2,6 +2,17 @@ import { describe, expect, it } from 'vitest'
 import { AMIT_NUMBER, messageFor, tagFor, whatsappLink } from './amit.ts'
 
 describe('amit', () => {
+  it('preserves the new page context without inventing an altitude', () => {
+    const message = messageFor('Your team', '')
+    expect(message).toContain('first AI workflow')
+    expect(message).not.toContain('base camp')
+    expect(message).not.toContain('()')
+    expect(message).toMatch(/ref: your-team$/)
+    const link = new URL(whatsappLink(message))
+    expect(link.searchParams.get('text')).toBe(message)
+    expect(messageFor('The gateway', '')).not.toContain('()')
+    expect(messageFor('The gateway', '')).toContain('Eigi computer')
+  })
   it('writes the first message from where the visitor is', () => {
     const msg = messageFor('Camp II', '3,400 m')
     expect(msg).toContain("I'm at Camp II (3,400 m)")

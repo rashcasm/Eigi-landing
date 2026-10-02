@@ -1,159 +1,29 @@
-/* ---------- the bar ---------- */
-
-/* Fully transparent at the top of the page; once scrolled, a translucent strip keeps it readable
-   over whatever passes underneath. Colours come from the theme tokens, so it follows the white → black flip. */
 .nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 30;
-  display: flex; justify-content: space-between; align-items: center;
-  /* on very wide screens the bar lines up with the 1440px content instead of the window edges */
-  padding: 18px max(32px, (100vw - 1440px) / 2);
-  color: var(--fg);
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  transition: background .3s, border-color .3s;
+  position: fixed; inset: 0 0 auto; z-index: 30; height: 76px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding-inline: var(--gutter); background: rgb(255 255 255 / 86%);
+  border-bottom: 1px solid rgb(29 29 31 / 6%);
+  -webkit-backdrop-filter: saturate(160%) blur(20px); backdrop-filter: saturate(160%) blur(20px);
 }
-/* once scrolled, a translucent layer the page scrolls under; solid for people who ask for less transparency */
-.scrolled {
-  background: color-mix(in srgb, var(--bg) 72%, transparent);
-  -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
-}
-@media (prefers-reduced-transparency: reduce) {
-  .scrolled { background: var(--bg); border-bottom-color: var(--line); -webkit-backdrop-filter: none; backdrop-filter: none; }
-}
-/* While the menu is open the bar goes white + difference-blended, so it is always the inverse of what's
-   behind it: right on the page, right on the curtain, and split along the ridge as the curtain rises through it. */
-.menuOpen { color: #fff; mix-blend-mode: difference; }
-.menuOpen .toggle { color: #fff; }
-.menuOpen .logo { background: #fff; }
-.menuOpen .start { background: #fff; color: #000; }
-.menuOpen :focus-visible { outline-color: #fff; }
-
-/* logo.png is white-on-transparent; used as a mask it takes the bar's colour,
-   so it stays readable when the page flips from white to black near the summit. */
 .logo {
-  display: block; height: 24px; aspect-ratio: 594 / 163;
-  background: var(--fg);
-  -webkit-mask: url('../../assets/logo.png') center / contain no-repeat;
+  display: block; width: 95px; height: 44px; flex-shrink: 0; background: var(--fg);
   mask: url('../../assets/logo.png') center / contain no-repeat;
 }
-.links { display: flex; align-items: center; gap: 28px; }
-.start {
-  display: inline-flex; gap: 6px; align-items: center;
-  background: var(--signal); color: #000; border: 0;
-  padding: 10px 18px; border-radius: 999px; font: 600 14px/1 var(--font-display);
-  transition: transform .2s;
-}
-.start:hover { transform: translateY(-1px); }
-.start:active { transform: scale(.97); transition-duration: .08s; }
-.toggle:active .icon { transform: scale(.9); }
-.icon { transition: transform .1s ease-out; }
-@media (pointer: coarse) { .start { min-height: 44px; } }
-
-.toggle {
-  display: flex; align-items: center; gap: 12px; min-height: 44px; margin-left: -8px;
-  background: none; border: 0; color: var(--fg); cursor: var(--cursor-link);
-  font: 500 var(--fs-label)/1.2 var(--font-mono); letter-spacing: var(--track-label); text-transform: uppercase;
-}
-/* "Menu" and "Close" share one cell: opening rolls one up and out, the other up and in */
-.word { display: grid; overflow: hidden; }
-.word > span { grid-area: 1 / 1; transition: transform .6s var(--ease-out); }
-.word > span:last-child { transform: translateY(110%); }
-.toggle[aria-expanded="true"] .word > span:first-child { transform: translateY(-110%); }
-.toggle[aria-expanded="true"] .word > span:last-child { transform: none; }
-
-/* two lines; they draw together on hover and cross into an × when open */
-.icon { position: relative; width: 22px; height: 8px; }
-.icon::before, .icon::after {
-  content: ""; position: absolute; left: 0; width: 100%; height: 1.5px;
-  background: currentColor; transition: transform .6s var(--ease-out);
-}
-.icon::before { top: 0; }
-.icon::after { bottom: 0; }
-.toggle[aria-expanded="false"]:hover .icon::before { transform: translateY(1.5px); }
-.toggle[aria-expanded="false"]:hover .icon::after { transform: translateY(-1.5px); }
-.toggle[aria-expanded="true"] .icon::before { transform: translateY(3.25px) rotate(45deg); }
-.toggle[aria-expanded="true"] .icon::after { transform: translateY(-3.25px) rotate(-45deg); }
-
-/* ---------- the menu ---------- */
-
-/* Nav.tsx swaps the page's --bg and --fg here, so the menu is a patch of the opposite sky. */
-.overlay {
-  --muted: color-mix(in srgb, var(--fg) 55%, var(--bg));
-  --line: color-mix(in srgb, var(--fg) 14%, transparent);
-  --accent: var(--fg);
-  position: fixed; inset: 0; z-index: 29; overflow: hidden;
-  color: var(--fg);
-}
-
-/* each range is a full-screen block with its ridge sticking up off the top edge */
-.range { position: absolute; inset: 0; background: currentColor; }
-.range:nth-child(1) { color: color-mix(in srgb, var(--bg) 25%, var(--fg)); }
-.range:nth-child(2) { color: color-mix(in srgb, var(--bg) 55%, var(--fg)); }
-.range:nth-child(3) { color: var(--bg); }
-.range svg {
-  position: absolute; left: 0; bottom: calc(100% - 1px);
-  width: 100%; height: 22vh; fill: currentColor;
-}
-
-.rings { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--line); }
-
-.menu {
-  position: absolute; inset: 0; overflow-y: auto;
-  display: flex; flex-direction: column;
-  padding: 96px var(--gutter) 40px;
-}
-.list {
-  list-style: none; margin-block: auto;
-  /* nine stops have to fit one screen, so the size follows the height as well as the width */
-  --label-size: clamp(30px, min(7vw, 6.4vh), 88px);
-}
-.list a {
-  display: grid; grid-template-columns: 130px auto 1fr; align-items: center; column-gap: 2vw;
-  color: inherit; text-decoration: none;
-  transition: opacity .4s var(--ease-out);
-}
-/* pointing at (or tabbing to) one camp dims the rest */
-.list:has(a:hover) a:not(:hover),
-.list:has(a:focus-visible) a:not(:focus-visible) { opacity: .28; }
-
-.meta { display: flex; align-items: center; gap: 12px; font-size: var(--fs-label); letter-spacing: var(--track-label); color: var(--muted); }
-/* a camp marker, filled where you are now */
-.meta::before { content: ""; width: 7px; height: 7px; border: 1px solid currentColor; border-radius: 50%; }
-[aria-current] .meta { color: var(--fg); }
-[aria-current] .meta::before { background: var(--signal); border-color: var(--signal); }
-
-/* the label climbs in from below this mask; it clips only vertically, so the arrow can stick out */
-.mask { overflow-x: visible; overflow-y: clip; padding-bottom: .06em; }
-.label {
-  position: relative; display: inline-block; vertical-align: top;
-  font: 800 var(--label-size)/1.04 var(--font-display); font-stretch: 112%; letter-spacing: -.035em;
-}
-/* out of flow, so a long label never wraps to make room for it */
-.label::after {
-  content: "→"; position: absolute; left: 100%; margin-left: .25em; font-weight: 300;
-  opacity: 0; transform: translateX(-.3em);
-  transition: opacity .3s, transform .5s var(--ease-out);
-}
-.list a:hover .label::after,
-.list a:focus-visible .label::after { opacity: 1; transform: none; }
-
-/* the hover arrow sticks out past the label by about one label-letter, so the tag starts beyond it */
-.here {
-  padding-left: calc(var(--label-size) * 1.15);
-  font-size: var(--fs-label); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--muted);
-}
-
-.extras { display: flex; flex-wrap: wrap; gap: 10px 28px; padding-top: 28px; font-size: var(--fs-label); letter-spacing: .04em; }
-.extras a { color: var(--muted); text-decoration: none; transition: color .2s; }
-.extras a:hover { color: var(--fg); }
-
-@media (max-width: 820px) {
-  .nav { padding: 12px var(--gutter); }
-  .logo { height: 20px; }
-  .links { gap: 14px; }
-  .start { padding: 8px 14px; font-size: 13px; }
-  .word { display: none; }
-  .toggle { margin-left: 0; }
-  .list a { grid-template-columns: 1fr; row-gap: 4px; padding: 6px 0; }
-  .here { display: none; }
-}
+.desktop { display: flex; gap: 30px; }
+.desktop a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-size: .8125rem; color: #4c4c51; }
+.desktop a:hover { color: var(--signal); }
+.actions { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+.start { min-height: 44px; padding: 10px 20px; display: flex; gap: 16px; align-items: center; border: 0; border-radius: 99px; background: var(--fg); color: #fff; font-size: .8125rem; white-space: nowrap; }
+.start:hover { background: #38383a; }
+.start:active { transform: scale(.98); }
+.mobile { display: none; }
+.mobile summary { width: 44px; height: 44px; list-style: none; display: flex; flex-direction: column; gap: 6px; align-items: center; justify-content: center; cursor: pointer; }
+.mobile summary::-webkit-details-marker { display: none; }
+.mobile summary span { display: block; width: 20px; height: 1.5px; background: var(--fg); transition: transform .2s; }
+.mobile[open] summary span:first-child { transform: translateY(3.75px) rotate(45deg); }
+.mobile[open] summary span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
+.mobile nav { position: absolute; top: 75px; inset-inline: 0; padding: 16px var(--gutter) 24px; background: #fff; border-bottom: 1px solid var(--line); box-shadow: 0 20px 28px rgb(0 0 0 / 4%); }
+.mobile nav a { display: flex; align-items: center; min-height: 52px; justify-content: space-between; text-decoration: none; }
+@media (max-width: 760px) { .desktop { display: none; } .mobile { display: block; } .actions { gap: 8px; } }
+@media (max-width: 380px) { .logo { width: 80px; } .start { padding-inline: 16px; } }
+@media (prefers-reduced-transparency: reduce) { .nav { background: #fff; backdrop-filter: none; -webkit-backdrop-filter: none; } }

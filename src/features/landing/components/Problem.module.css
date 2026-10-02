@@ -1,8 +1,13 @@
-.ridgeWrap { margin-top: var(--gap-content); }
-.ridge { display: block; width: 100%; overflow: visible; }
-/* faint dashed ghost of the whole ridge; the solid line draws over it as you scroll */
-.ghost { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 5; }
-.line { fill: none; stroke: var(--fg); stroke-width: 1.4; stroke-linejoin: round; }
-.ridge text { font-family: var(--font-mono); font-size: 12px; fill: var(--muted); }
-.ridge circle { fill: var(--accent); }
-.dash { stroke: var(--muted); stroke-dasharray: 3 4; stroke-width: 1; }
+.problem { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: center; }
+.problem :global(.lead) { font-size: 1.0625rem; max-width: 41ch; }
+.promise { padding: 36px; background: var(--signal-soft); border-radius: var(--radius-lg); }
+.team { display: flex; align-items: center; gap: 10px; color: var(--signal); margin-bottom: 38px; font-size: .8125rem; font-weight: 500; }
+.team > span:last-child { margin-left: auto; font-size: .6875rem; background: #ddeade; padding: 4px 9px; border-radius: 99px; white-space: nowrap; }
+.promise h3 { font-size: 1.75rem; }
+.promise > p { margin-top: 16px; font-size: 1rem; color: #536258; }
+.promise ul { list-style: none; display: grid; gap: 18px; margin: 28px 0 20px; }
+.promise li { display: flex; align-items: start; gap: 10px; font-size: .875rem; }
+.promise li svg { width: 18px; height: 22px; color: var(--signal); flex-shrink: 0; }
+@media (max-width: 1000px) { .problem { gap: 40px; } .promise { padding: 28px; } }
+@media (max-width: 760px) { .problem { grid-template-columns: 1fr; gap: 36px; } .problem :global(.lead) { max-width: 52ch; } .promise { padding: 28px 24px; } }
+@media (max-width: 380px) { .team { flex-wrap: wrap; gap: 8px; } .team > span:last-child { margin-left: 0; } }
