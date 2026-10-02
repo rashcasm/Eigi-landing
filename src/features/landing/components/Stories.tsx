@@ -79,7 +79,7 @@ export function Stories() {
         <a className="skip-section" href="#gateway">Skip stories ↓</a>
         <motion.div ref={trackRef} className={styles.track} style={{ x }}>
           <div className={styles.intro}>
-            <p className="eyebrow">§ 04 · Stories</p>
+            <p className="eyebrow">Stories</p>
             <h2>Field notes from the climb.</h2>
             <p className="lead">
               Typical climbs, by industry: what kept each team at base camp, and the agents that got it moving.
@@ -90,10 +90,7 @@ export function Stories() {
           <ol className={styles.log}>
             {STORIES.map((s, i) => (
               <li key={s.title} className={styles.card} style={{ ['--rise' as string]: i }}>
-                <header className={cx(styles.meta, 'mono')}>
-                  <span>Log {String(i + 1).padStart(2, '0')}</span>
-                  <span>{s.industry}</span>
-                </header>
+                <p className={cx(styles.meta, 'mono')}>{s.industry}</p>
                 <div className={styles.portrait}><span style={peepStyle(s.peep)} /></div>
                 <h3>{s.title}</h3>
                 <dl className={styles.story}>

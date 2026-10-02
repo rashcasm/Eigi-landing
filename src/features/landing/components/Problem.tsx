@@ -39,7 +39,7 @@ export function Problem() {
 
   return (
     <section id="problem" data-stage="The problem">
-      <motion.p className="eyebrow" {...reveal}>§ 02 · The problem</motion.p>
+      <motion.p className="eyebrow" {...reveal}>The problem</motion.p>
       <motion.h2 {...reveal}>Everyone can see the summit. Almost no one knows the route.</motion.h2>
       <motion.p className="lead" {...reveal}>
         Claude, GPT, Fable and Gemini are one login away, and businesses still stall at the foot of the

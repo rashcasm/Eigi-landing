@@ -33,7 +33,7 @@ export function Gateway() {
 
         <p className={cx(styles.equation, 'mono')} aria-label="Humans plus forward-deployed engineers plus Eigi computer equals singularity">
           {ORBITS.map((o, i) => (
-            <span key={o.label} className={cx(step >= i && styles.lit)}>{i > 0 && <b>+</b>}{i === 1 ? 'FDE' : o.label}</span>
+            <span key={o.label} className={cx(step >= i && styles.lit)}>{i > 0 && <b>+</b>}{i === 1 ? 'Engineers' : o.label}</span>
           ))}
           <span className={cx(step >= 4 && styles.lit)}><b>=</b>Singularity</span>
         </p>

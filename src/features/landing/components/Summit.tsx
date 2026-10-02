@@ -26,7 +26,7 @@ export function Summit() {
 
   return (
     <section id="summit" ref={ref} data-stage="Summit">
-      <motion.p className="eyebrow" {...reveal}>§ 08 · Summit</motion.p>
+      <motion.p className="eyebrow" {...reveal}>Summit</motion.p>
       <motion.h2 {...reveal}>Make every small team AI-first.</motion.h2>
       <p className={styles.count}>
         {team}

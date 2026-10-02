@@ -15,15 +15,9 @@
   border-top: 1px dashed var(--line); transform: skewY(-3deg); transform-origin: left;
 }
 .card {
-  position: relative; flex: 0 0 340px; padding: 22px 22px 24px;
+  position: relative; flex: 0 0 340px; padding: var(--pad-card);
   background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
   transform: translateY(calc(70px - var(--rise) * 28px));
-  transition: border-color .3s, transform .4s var(--ease-out), box-shadow .4s;
-}
-.card:hover {
-  border-color: var(--fg);
-  transform: translateY(calc(62px - var(--rise) * 28px));
-  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, .35);
 }
 .meta { display: flex; justify-content: space-between; gap: 12px; font-size: var(--fs-label); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--muted); }
 .portrait {
@@ -36,7 +30,7 @@
 .story { display: grid; gap: 12px; }
 .story dt { font-size: var(--fs-label); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
 .story dd { font-size: var(--fs-small); line-height: 1.5; }
-.before dd { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line); }
+.before dd { color: var(--muted); }
 
 .agent { display: inline-block; margin-top: 18px; font-size: var(--fs-label); border: 1px solid var(--line); padding: 6px 10px; border-radius: var(--radius-sm); }
 
@@ -57,5 +51,4 @@
   }
   .log::before, .progress { display: none; }
   .card { flex: 0 0 82vw; transform: none; scroll-snap-align: center; }
-  .card:hover { transform: none; }
 }

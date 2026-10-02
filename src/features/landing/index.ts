@@ -2,7 +2,7 @@
 export { Atmosphere } from './components/Atmosphere.tsx'
 export { SherpaCompanion } from './components/SherpaCompanion.tsx'
 export { Radio } from './components/Radio.tsx'
-export { Minds } from './components/Minds.tsx'
+export { Founders } from './components/Founders.tsx'
 export { Altimeter } from './components/Altimeter.tsx'
 export { BaseCamp } from './components/BaseCamp.tsx'
 export { Problem } from './components/Problem.tsx'

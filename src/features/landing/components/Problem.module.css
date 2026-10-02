@@ -1,4 +1,4 @@
-.ridgeWrap { margin-top: 60px; }
+.ridgeWrap { margin-top: var(--gap-content); }
 .ridge { display: block; width: 100%; overflow: visible; }
 /* faint dashed ghost of the whole ridge; the solid line draws over it as you scroll */
 .ghost { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 5; }

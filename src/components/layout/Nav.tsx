@@ -93,7 +93,7 @@ export function Nav({ links, formatProgress }: NavProps) {
       <motion.header
         className={cx(styles.nav, scrolled && !open && styles.scrolled, open && styles.menuOpen)}
         animate={{ y: tucked && !open ? '-110%' : '0%' }}
-        transition={{ duration: 0.4, ease: easeOut }}
+        transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
         onFocusCapture={() => setTucked(false)}
       >
         <a href="#top" className={styles.logo} aria-label="eigi.ai, back to top" onClick={close} />

@@ -1,4 +1,4 @@
-.grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 4vw; align-items: center; margin-top: 50px; }
+.grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 4vw; align-items: center; margin-top: var(--gap-content); }
 
 .why { list-style: none; display: flex; flex-direction: column; gap: 18px; }
 .why li {

@@ -24,7 +24,7 @@ export function Footer() {
     <footer id="contact" className={styles.footer}>
       <div className={styles.contact}>
         <div>
-          <motion.p className="eyebrow" {...reveal}>§ 10 · Contact</motion.p>
+          <motion.p className="eyebrow" {...reveal}>Contact</motion.p>
           <motion.h2 {...reveal}>Talk to a person.</motion.h2>
           <motion.p className="lead" {...reveal}>
             For anything that isn’t onboarding, email or call the team directly.

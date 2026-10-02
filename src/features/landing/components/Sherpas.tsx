@@ -1,7 +1,6 @@
 import { motion } from 'motion/react'
 import type { Ref } from 'react'
 import { reveal } from '../../../styles/motion.ts'
-import { cx } from '../../../utils/cx.ts'
 import styles from './Sherpas.module.css'
 
 const POINTS = [
@@ -13,15 +12,14 @@ const POINTS = [
 export function Sherpas({ ref }: { ref?: Ref<HTMLElement> }) {
   return (
     <section id="sherpas" ref={ref} data-stage="With your sherpa">
-      <motion.p className="eyebrow" {...reveal}>§ 07 · Sherpas</motion.p>
+      <motion.p className="eyebrow" {...reveal}>Sherpas</motion.p>
       <motion.h2 {...reveal}>You never climb alone.</motion.h2>
       <motion.p className="lead" {...reveal}>
         Our engineers stay roped to your team for the whole climb.
       </motion.p>
       <motion.ol className={styles.grid} {...reveal}>
-        {POINTS.map(([title, body], i) => (
+        {POINTS.map(([title, body]) => (
           <li key={title}>
-            <div className={cx(styles.index, 'mono')}>{String(i + 1).padStart(2, '0')}</div>
             <h3>{title}</h3>
             <p>{body}</p>
           </li>

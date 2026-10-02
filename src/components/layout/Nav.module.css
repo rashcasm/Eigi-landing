@@ -1,6 +1,6 @@
 /* ---------- the bar ---------- */
 
-/* Fully transparent at the top of the page; once scrolled, a solid strip keeps it readable
+/* Fully transparent at the top of the page; once scrolled, a translucent strip keeps it readable
    over whatever passes underneath. Colours come from the theme tokens, so it follows the white → black flip. */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 30;
@@ -12,7 +12,14 @@
   border-bottom: 1px solid transparent;
   transition: background .3s, border-color .3s;
 }
-.scrolled { background: var(--bg); border-bottom-color: var(--line); }
+/* once scrolled, a translucent layer the page scrolls under; solid for people who ask for less transparency */
+.scrolled {
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .scrolled { background: var(--bg); border-bottom-color: var(--line); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
 /* While the menu is open the bar goes white + difference-blended, so it is always the inverse of what's
    behind it: right on the page, right on the curtain, and split along the ridge as the curtain rises through it. */
 .menuOpen { color: #fff; mix-blend-mode: difference; }
@@ -38,6 +45,8 @@
 }
 .start:hover { transform: translateY(-1px); }
 .start:active { transform: scale(.97); transition-duration: .08s; }
+.toggle:active .icon { transform: scale(.9); }
+.icon { transition: transform .1s ease-out; }
 @media (pointer: coarse) { .start { min-height: 44px; } }
 
 .toggle {

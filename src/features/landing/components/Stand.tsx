@@ -15,7 +15,7 @@ const WHY = [
 export function Stand() {
   return (
     <section id="stand" data-stage="Where we stand">
-      <motion.p className="eyebrow" {...reveal}>§ 03 · Where we stand</motion.p>
+      <motion.p className="eyebrow" {...reveal}>Where we stand</motion.p>
       <motion.h2 {...reveal}>Fast or hands-on. Rarely both.</motion.h2>
       <div className={styles.grid}>
         <PositioningMap />

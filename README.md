@@ -2,7 +2,7 @@
 
 Marketing site for [eigi.ai](https://eigi.ai), built with React 19, Vite 8 and TypeScript.
 
-The page is **The Ascent**: one scroll from base camp (0 m) to the summit (8,848 m). Along the way it shows why AI adoption stalls, where Eigi stands against the alternatives, field notes from teams Eigi has roped in (Eigi stories), the gateway to singularity (humans + forward-deployed engineers + Eigi computer), the four camps of an Eigi engagement, the creative eigi_ai minds behind the work, and finally contact.
+The page is **The Ascent**: one scroll from base camp (0 m) to the summit (8,848 m). Along the way it shows why AI adoption stalls, where Eigi stands against the alternatives, typical climbs by industry (Stories), the gateway to singularity (humans + forward-deployed engineers + Eigi computer), the four camps of an Eigi engagement, the founders, and finally contact.
 
 ## Run it locally
 
@@ -60,9 +60,10 @@ src/
 The look is a founder's field manual: technical instruments plus an editorial expedition journal. Everything comes from tokens in `src/styles/global.css`, so use those instead of one-off values.
 
 - **Type.** Archivo for headlines and buttons (`--font-display`; h1/h2 slightly expanded), Newsreader for reading text (`--font-serif`, the body default) and Martian Mono for labels and readouts (`--font-mono`). Sizes come only from the scale: `--fs-label`, `--fs-small`, `--fs-body`, `--fs-lead`, `--fs-h4`, `--fs-h3`, `--fs-h2`, `--fs-h1`.
-- **Labels.** One style everywhere: mono, `--fs-label`, uppercase, `letter-spacing: var(--track-label)`. Section eyebrows read `§ NN · Name`, numbered like the menu.
+- **Labels.** One style everywhere: mono, `--fs-label`, uppercase, `letter-spacing: var(--track-label)`. A section's eyebrow is its name as it appears in the menu, nothing more. No counters (01, 02…) on cards or lists.
 - **Colour.** Black and white, plus one sage accent, `--signal`, used only on things you can act on (buttons) and on where you are (live dot, altimeter fill, hiker, the "you are here" marker, Eigi's flag). Never use it for decoration or body text. Focus rings stay black/white because sage is too soft against white.
-- **Shape.** Radii are `--radius-sm` (chips, tags), `--radius` (cards) and `--radius-lg` (panels), plus fully round pills for buttons. No frosted glass: fixed chrome uses solid surfaces.
+- **Shape and spacing.** Radii are `--radius-sm` (chips, tags, photos), `--radius` (cards) and `--radius-lg` (panels), plus fully round pills for buttons. A card is always a hairline border, `--radius` and `--pad-card` padding. Cards that aren't clickable have no hover effect. `--gap-content` separates a section's heading from its content, and `--gap-card` sits between cards.
+- **Materials.** Once you scroll, the top bar becomes a translucent layer the page scrolls under, and turns solid for people who ask for reduced transparency. Everything else is solid. There's no decorative texture.
 - **Behaviour** (from Apple's Human Interface Guidelines: design principles, designing for macOS, foundations):
   - Every pinned, scroll-driven section has a `.skip-section` link to the next one. Don't trap people in a flow.
   - Controls stay where people left them. The top bar is fixed on desktop and tucks away only on phones.

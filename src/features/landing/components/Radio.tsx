@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useId, useRef, useState } from 'react'
-import { easeOut } from '../../../styles/motion.ts'
 import { cx } from '../../../utils/cx.ts'
 import { AMIT_DISPLAY, AMIT_TEL, messageFor, whatsappLink } from '../utils/amit.ts'
 import { readAltitude, readStage } from '../utils/climb.ts'
@@ -84,9 +83,9 @@ export function Radio() {
             initial={{ opacity: 0, y: 14, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.98, transition: { duration: 0.2 } }}
-            transition={{ duration: 0.4, ease: easeOut }}
+            transition={{ type: 'spring', bounce: 0, duration: 0.35 }}
           >
-            <p className={cx(styles.kicker, 'mono')}><span className={styles.live} /> Radio base camp</p>
+            <p className={cx(styles.kicker, 'mono')}><span className={styles.live} /> Onboarding</p>
             <h3>Amit is on the line.</h3>
             <p className={styles.who}>
               Eigi’s AI onboarding agent. A few questions on WhatsApp or a call, then he hands you to a sherpa.
