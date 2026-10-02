@@ -19,8 +19,10 @@ type NavProps = {
   formatProgress: (progress: number) => string
 }
 
-/** Past this many pixels the bar may tuck away while scrolling down. */
+/** Past this many pixels the bar may tuck away while scrolling down (small screens only). */
 const HIDE_AFTER = 120
+/** Desktop keeps the bar in place, so its controls never move; phones need the room. */
+const tucksAway = () => matchMedia('(max-width: 820px)').matches
 
 /** The menu's curtain: mountain ranges, far to near, as 1000×200 silhouettes. */
 const RANGES = [
@@ -60,8 +62,8 @@ const ringMotion: Variants = {
 }
 
 /**
- * Fixed top bar: transparent at the top, frosted once you scroll; tucks away while you scroll down and
- * drops back when you scroll up. Holds Start your ascent (`data-amit` opens Amit, the onboarding agent) and the
+ * Fixed top bar: transparent at the top, solid once you scroll. On desktop it stays put; on phones it
+ * tucks away while you scroll down and drops back when you scroll up. Holds Start your ascent (`data-amit` opens Amit, the onboarding agent) and the
  * menu toggle; Documentation, Studio and Contact live in the menu.
  * The menu is a full-screen route map that rises over the page as a mountain range.
  */
@@ -76,7 +78,7 @@ export function Nav({ links, formatProgress }: NavProps) {
   useMotionValueEvent(scrollY, 'change', (y) => {
     const dy = y - (scrollY.getPrevious() ?? y)
     // a jump (menu link, Home/End) isn't a scroll, so it leaves the bar in place
-    setTucked(y > HIDE_AFTER && dy > 0 && dy < innerHeight)
+    setTucked(tucksAway() && y > HIDE_AFTER && dy > 0 && dy < innerHeight)
     setScrolled(y > 8)
   })
 

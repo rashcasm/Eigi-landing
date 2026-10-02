@@ -29,6 +29,7 @@ export function HomePage() {
 
   return (
     <>
+      <a className="skip-to-content" href="#base-camp">Skip to content</a>
       <Atmosphere climb={climbRef} flipAt={sherpasRef} />
       <SherpaCompanion shown={sherpaTalks} />
       <Nav links={SECTIONS} formatProgress={altitude} />

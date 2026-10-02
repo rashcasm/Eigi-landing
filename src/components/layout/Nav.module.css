@@ -5,7 +5,8 @@
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 30;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 18px 32px;
+  /* on very wide screens the bar lines up with the 1440px content instead of the window edges */
+  padding: 18px max(32px, (100vw - 1440px) / 2);
   color: var(--fg);
   background: transparent;
   border-bottom: 1px solid transparent;
@@ -36,6 +37,8 @@
   transition: transform .2s;
 }
 .start:hover { transform: translateY(-1px); }
+.start:active { transform: scale(.97); transition-duration: .08s; }
+@media (pointer: coarse) { .start { min-height: 44px; } }
 
 .toggle {
   display: flex; align-items: center; gap: 12px; min-height: 44px; margin-left: -8px;

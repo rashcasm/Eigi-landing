@@ -10,7 +10,7 @@
   opacity: 0; transform: translateY(16px) scale(.9); transition: .5s var(--ease-out);
 }
 .in { opacity: 1; transform: none; }
-.member > span:last-child { font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); text-align: center; }
+.member > span:last-child { font-family: var(--font-mono); font-size: var(--fs-label); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); text-align: center; }
 .member svg { width: 34px; height: 46px; }
 .member svg * { fill: none; stroke: var(--fg); stroke-width: 1.4; }
 
@@ -20,4 +20,5 @@
 
 @media (max-width: 820px) {
   .team { grid-template-columns: repeat(5, 1fr); }
+  .member > span:last-child { letter-spacing: 0; }
 }

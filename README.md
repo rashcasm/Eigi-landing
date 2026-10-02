@@ -46,7 +46,7 @@ src/
     components/              one component per section, each with a scoped *.module.css
     hooks/                   browser work: crowd canvas, singularity canvas, the sherpa that joins your cursor in the sherpas section
     utils/                   pure logic: crowd and singularity simulations (unit-tested), sprite-sheet helpers, altitude formatting
-  components/layout/Nav.tsx  shared nav: logo, Start your ascent and the full-screen section menu (sections, Documentation, Studio, email)
+  components/layout/Nav.tsx  shared nav: logo, Start your ascent (fixed on desktop, tucks away on phones) and the full-screen section menu (sections, Documentation, Studio, email)
   components/layout/Footer.tsx  contact section + site footer
   hooks/                     shared browser behaviour: page lock while the menu is open
   styles/global.css          design tokens, reset, type scale, shared classes (.eyebrow, .lead, .btn, .mono)
@@ -63,6 +63,14 @@ The look is a founder's field manual: technical instruments plus an editorial ex
 - **Labels.** One style everywhere: mono, `--fs-label`, uppercase, `letter-spacing: var(--track-label)`. Section eyebrows read `§ NN · Name`, numbered like the menu.
 - **Colour.** Black and white, plus one sage accent, `--signal`, used only on things you can act on (buttons) and on where you are (live dot, altimeter fill, hiker, the "you are here" marker, Eigi's flag). Never use it for decoration or body text. Focus rings stay black/white because sage is too soft against white.
 - **Shape.** Radii are `--radius-sm` (chips, tags), `--radius` (cards) and `--radius-lg` (panels), plus fully round pills for buttons. No frosted glass: fixed chrome uses solid surfaces.
+- **Behaviour** (from Apple's Human Interface Guidelines: design principles, designing for macOS, foundations):
+  - Every pinned, scroll-driven section has a `.skip-section` link to the next one. Don't trap people in a flow.
+  - Controls stay where people left them. The top bar is fixed on desktop and tucks away only on phones.
+  - System cursors only. Buttons get a pressed state, and touch targets are at least 44px.
+  - Type sizes are in rem, so they follow the reader's text-size setting. Nothing is smaller than 11px.
+  - Motion confirms rather than performs. Reveals are 0.6s, and everything respects reduced motion.
+  - Content stops widening at 1440px (`--gutter`); on bigger screens the margins grow instead.
+  - Nothing is sent that people can't see: Amit's card shows the whole pre-written message, ref tag included.
 
 Page colours are CSS variables (`--bg`, `--fg`, `--muted`, `--line`, `--accent`) defined in `src/styles/global.css`. As you scroll, `Atmosphere.tsx` changes them, flipping the page from white to black as you reach the sherpas. Anything coloured with them, including the nav, follows along. Two exceptions: the gateway section repaints the tokens locally (a black portal in the white page), and while the menu is open the nav bar is white and difference-blended so it always inverts whatever is behind it.
 

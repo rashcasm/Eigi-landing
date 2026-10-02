@@ -24,5 +24,5 @@
   .bar { display: none; }
   .readout { min-width: 0; }
   .altitude { font-size: 14px; }
-  .stage { font-size: 10px; letter-spacing: .06em; }
+  .stage { letter-spacing: .04em; }
 }

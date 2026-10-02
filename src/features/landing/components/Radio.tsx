@@ -95,6 +95,8 @@ export function Radio() {
             <figure className={styles.bubble}>
               <figcaption className="mono">Your first message, ready to send</figcaption>
               <p>{call.message.split('\n\nref:')[0]}</p>
+              {/* the ref line is sent too, so show it and say why it is there */}
+              <p className={cx(styles.ref, 'mono')}>ref: {call.message.split('\n\nref: ')[1]} · tells Amit which part of the page you came from</p>
             </figure>
 
             <div className={styles.scan}>
@@ -125,8 +127,8 @@ export function Radio() {
           <path d="M4 7a8.5 8.5 0 0 1 12 0" />
         </svg>
         <span className={styles.badgeText}>
-          <span className="mono">Radio base camp</span>
-          <span><i className={styles.live} /> Amit online</span>
+          <span className="mono">Get started</span>
+          <span><i className={styles.live} /> Talk to Amit</span>
         </span>
       </button>
     </div>

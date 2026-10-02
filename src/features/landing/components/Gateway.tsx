@@ -28,6 +28,7 @@ export function Gateway() {
   return (
     <section id="gateway" ref={sectionRef} className={styles.gateway} data-stage="The gateway" aria-label="Gateway to singularity">
       <div className={styles.sticky}>
+        <a className="skip-section" href="#route">Skip the gateway ↓</a>
         <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
 
         <p className={cx(styles.equation, 'mono')} aria-label="Humans plus forward-deployed engineers plus Eigi computer equals singularity">

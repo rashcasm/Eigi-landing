@@ -75,6 +75,7 @@ export function Route() {
   return (
     <section id="route" ref={sectionRef} className={styles.route}>
       <div className={styles.sticky}>
+        <a className="skip-section" href="#sherpas">Skip the route ↓</a>
         <svg className={styles.trail} viewBox="0 0 1000 620" aria-hidden="true">
           <path ref={trailRef} className={styles.ghost} d={TRAIL} />
           <motion.path className={styles.live} d={TRAIL} style={{ pathLength: scrollYProgress }} />

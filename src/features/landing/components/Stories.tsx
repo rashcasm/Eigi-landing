@@ -76,6 +76,7 @@ export function Stories() {
       style={{ ['--travel' as string]: `${distance}px` }}
     >
       <div className={styles.sticky}>
+        <a className="skip-section" href="#gateway">Skip stories ↓</a>
         <motion.div ref={trackRef} className={styles.track} style={{ x }}>
           <div className={styles.intro}>
             <p className="eyebrow">§ 04 · Stories</p>
