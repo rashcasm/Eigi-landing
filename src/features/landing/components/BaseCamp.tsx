@@ -1,3 +1,5 @@
+import { motion, useInView, useReducedMotion, useScroll, useTransform } from 'motion/react'
+import { useRef, useState } from 'react'
 import { WorkIcon } from './WorkIcon.tsx'
 import styles from './BaseCamp.module.css'
 
@@ -9,6 +11,13 @@ const FUNCTIONS = [
 ] as const
 
 export function BaseCamp() {
+  const networkRef = useRef<HTMLDivElement>(null)
+  const reduced = useReducedMotion()
+  const onScreen = useInView(networkRef)
+  const [paused, setPaused] = useState(false)
+  const { scrollYProgress } = useScroll({ target: networkRef, offset: ['start end', 'end start'] })
+  const y = useTransform(scrollYProgress, [0, 1], [18, -18])
+
   return (
     <section id="base-camp" className={styles.hero} data-stage="Your team">
       <div className={styles.intro}>
@@ -22,10 +31,11 @@ export function BaseCamp() {
       </div>
 
       <figure className={styles.ecosystem} aria-label="Your team is connected to customer care, sales, operations, and product through Eigi's engineers and AI workflows.">
-        <div className={styles.network} aria-hidden="true">
+        <motion.div ref={networkRef} className={styles.network} data-running={onScreen && !paused && !reduced} style={reduced ? undefined : { y }} aria-hidden="true">
           <svg className={styles.connections} viewBox="0 0 1000 360" preserveAspectRatio="none" fill="none">
             <defs><linearGradient id="connection" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#b9d1c0" /><stop offset="1" stopColor="#d3d7d4" /></linearGradient></defs>
             <path d="M500 42V120M430 170H225Q200 170 200 145V114M570 170H775Q800 170 800 145V114M440 210H345Q320 210 320 240V266M560 210H655Q680 210 680 240V266" stroke="url(#connection)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+            <path className={styles.flow} d="M500 42V120M430 170H225Q200 170 200 145V114M570 170H775Q800 170 800 145V114M440 210H345Q320 210 320 240V266M560 210H655Q680 210 680 240V266" stroke="#648b70" strokeWidth="2.5" strokeLinecap="round" pathLength="100" vectorEffect="non-scaling-stroke" />
             <circle cx="280" cy="170" r="4" fill="#6e947b" /><circle cx="730" cy="170" r="4" fill="#6e947b" />
             <circle cx="320" cy="244" r="3.5" fill="#6e947b" /><circle cx="680" cy="244" r="3.5" fill="#6e947b" />
           </svg>
@@ -39,8 +49,8 @@ export function BaseCamp() {
               <div><strong>{title}</strong><span>{detail}</span></div>
             </div>
           ))}
-        </div>
-        <figcaption>Your people at the center. A whole new capacity around them.</figcaption>
+        </motion.div>
+        <figcaption>Your people at the center. A whole new capacity around them.{!reduced && <button className={styles.motionToggle} type="button" aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused ? 'Resume animation' : 'Pause animation'} <span aria-hidden="true">{paused ? '▷' : 'Ⅱ'}</span></button>}</figcaption>
       </figure>
       <div className={styles.audience}>
         <p>Built for founders who want to stay lean.</p>

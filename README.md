@@ -28,14 +28,16 @@ npm run build
 [Design contract and sources](docs/design-apple-hig.md) documents the Apple research, audience, visual decisions, and checks.
 
 - System typography, white and silver surfaces, deep green accents. All main design tokens live in `src/styles/global.css`.
-- A custom SVG/CSS graphic connects the founder to business functions through Eigi.
+- A custom SVG/CSS graphic connects the founder to business functions through Eigi. Connections flow and cards float while visible; visitors can pause the animation. Reduced-motion preferences disable movement.
 - The gateway section animates **you + forward-deployed engineers + Eigi computer = gateway to singularity**. Motion plays once on entry; a button replays it. Reduced-motion users see the open portal immediately. Scrolling is never pinned or intercepted.
 - Three selectable workflow examples describe both the agent's work and the engineer's role. These are illustrations, not customer testimonials or live activity.
 - Navigation, FAQs, and the onboarding dialog use native HTML behavior. Contact stays on WhatsApp, telephone, or email; no form or backend is introduced.
 
 ## Structure
 
-- `src/pages/HomePage.tsx`: page composition and navigation destinations.
+- `src/pages/HomePage.tsx`: service page composition and navigation destinations.
+- `src/pages/ComputerPage.tsx`: standalone Eigi Computer page at `/computer/`. `computer/index.html` is a second Vite entry so static hosts can serve it directly.
+- `src/features/computer/components/`: shared animated product demonstration, capabilities, and approval examples. Demonstrations are illustrative, run once on entry, and can be replayed or switched between three tasks.
 - `src/features/landing/components/`: section components with colocated CSS Modules.
 - `src/features/landing/components/Radio.tsx`: the contact dialog. Any button marked `data-amit` opens it. Native dialog behavior handles modal focus, Escape, and focus restoration. The QR dependency loads only when the dialog opens.
 - `src/features/landing/utils/amit.ts`: public contact details and contextual WhatsApp messages, with unit tests.

@@ -1,0 +1,49 @@
+.figure { margin-top: 64px; padding-top: 36px; border-top: 1px solid var(--line); }
+.diagram { position: relative; max-width: 880px; height: 360px; margin: auto; isolation: isolate; }
+.halo { position: absolute; z-index: -1; width: 340px; height: 340px; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, #edf4ee 0, #f8faf8 50%, transparent 72%); }
+.halo::before, .halo::after { content: ''; position: absolute; border: 1px solid #e5ece6; border-radius: 50%; inset: 28px; }
+.halo::after { inset: 56px; }
+.lines { position: absolute; width: 100%; height: 100%; inset: 0; }
+.mobileLines { display: none; }
+.app { position: absolute; display: flex; align-items: center; gap: 12px; width: 190px; min-height: 74px; padding: 14px 16px; background: #fff; border: 1px solid #e1e6e2; border-radius: 17px; box-shadow: 0 8px 20px -12px #253d2a24; }
+.appIcon { width: 36px; height: 36px; display: grid; place-items: center; flex-shrink: 0; }
+.app strong { display: block; font-weight: 500; font-size: .8125rem; letter-spacing: -.015em; }
+.detail { display: block; color: var(--muted); font-size: .6875rem; margin-top: 2px; }
+.port { position: absolute; top: calc(50% - 3px); right: -4px; width: 7px; height: 7px; background: #a8bcad; border: 2px solid #fff; border-radius: 50%; }
+.gmail, .slack, .notion { left: 3%; }
+.whatsapp, .telegram, .browser { right: 3%; }
+.gmail, .whatsapp { top: 28px; }
+.slack, .telegram { top: 143px; }
+.notion, .browser { top: 258px; }
+.whatsapp .port, .telegram .port, .browser .port { right: auto; left: -4px; }
+.hub { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; flex-direction: column; width: 176px; text-align: center; }
+.device { position: relative; display: grid; place-items: center; width: 126px; height: 126px; border-radius: 30px; border: 1px solid #ced8d0; background: linear-gradient(140deg, #fff, #edf1ed); box-shadow: 0 16px 28px -18px #344d3d55, inset 0 0 0 5px #f8faf8, inset 0 0 0 6px #e1e7e2; }
+.device img { display: block; width: 76px; height: 76px; border-radius: 20px; }
+.indicator { position: absolute; bottom: 10px; width: 4px; height: 4px; border-radius: 50%; background: #699576; }
+.hub > strong { margin-top: 16px; font-size: .875rem; font-weight: 600; }
+.hub > span { font-size: .6875rem; color: var(--muted); margin-top: 3px; }
+.figure figcaption { margin: 24px auto 0; text-align: center; font-size: .875rem; color: var(--muted); max-width: 58ch; }
+.figure figcaption strong { color: var(--fg); font-weight: 500; }
+@media (max-width: 760px) {
+  .figure { margin-top: 40px; padding-top: 24px; }
+  .diagram { height: 380px; max-width: 440px; }
+  .desktopLines { display: none; } .mobileLines { display: block; }
+  .halo { width: 270px; height: 270px; }
+  .app { flex-direction: column; justify-content: center; gap: 6px; width: 29%; min-height: 88px; padding: 12px 4px; border-radius: 14px; text-align: center; }
+  .app strong { font-size: .6875rem; }
+  .detail { display: none; }
+  .gmail, .slack, .notion { top: 14px; }
+  .whatsapp, .telegram, .browser { top: auto; bottom: 14px; }
+  .gmail, .whatsapp { left: 2%; right: auto; }
+  .slack, .telegram { left: 35.5%; right: auto; }
+  .notion, .browser { left: auto; right: 2%; }
+  .app .port { top: auto; bottom: -4px; left: calc(50% - 3px); right: auto; }
+  .whatsapp .port, .telegram .port, .browser .port { top: -4px; bottom: auto; }
+  .hub { width: 160px; }
+  .device { width: 92px; height: 92px; border-radius: 24px; }
+  .device img { width: 54px; height: 54px; border-radius: 14px; }
+  .indicator { bottom: 8px; }
+  .hub > strong { margin-top: 10px; font-size: .8125rem; }
+  .hub > span { display: none; }
+  .figure figcaption { font-size: .8125rem; max-width: 36ch; margin-top: 16px; }
+}

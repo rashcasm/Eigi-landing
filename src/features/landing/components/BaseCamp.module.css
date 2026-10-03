@@ -70,3 +70,20 @@
   .audience { gap: 12px; font-size: .6875rem; padding-block: 24px; }
 }
 @media (max-width: 360px) { .function { padding: 9px; gap: 5px; } .function strong { font-size: .6875rem; } }
+
+/* Flow follows the actual business connections; stop the loop offscreen or on request. */
+.flow { stroke-dasharray: 3 22; animation: connectionFlow 5s linear infinite; }
+.function { animation: workFloat 6s ease-in-out infinite; }
+.sales { animation-delay: -1.5s; }
+.operations { animation-delay: -3s; }
+.product { animation-delay: -4.5s; }
+.coreFace { animation: coreBreath 6s ease-in-out infinite; }
+.network[data-running='false'] .flow,
+.network[data-running='false'] .function,
+.network[data-running='false'] .coreFace { animation-play-state: paused; }
+.motionToggle { display: flex; align-items: center; gap: 10px; margin: 4px auto -12px; min-height: 44px; border: 0; background: none; color: var(--muted); font-size: .6875rem; }
+.motionToggle:hover { color: var(--signal); }
+@keyframes connectionFlow { to { stroke-dashoffset: -50; } }
+@keyframes workFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -9px; } }
+@keyframes coreBreath { 0%, 100% { box-shadow: inset 0 -1px 3px #d3d8d3; } 50% { box-shadow: inset 0 -1px 3px #d3d8d3, 0 0 25px #9dbda333; } }
+@media (prefers-reduced-motion: reduce) { .flow { display: none; } .motionToggle { display: none; } }

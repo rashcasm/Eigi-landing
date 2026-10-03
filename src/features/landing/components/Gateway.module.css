@@ -52,3 +52,5 @@
   .lineBreak { display: none; }
 }
 @media (max-width: 380px) { .object { width: 65px; height: 75px; border-radius: 17px; } .object > svg { width: 32px; height: 32px; } .ingredients { gap: 20px; } .plus { top: 23px; left: -15px; } }
+
+.computerLogo { position: relative; z-index: 1; width: 56%; height: auto; object-fit: contain; border-radius: 12px; }

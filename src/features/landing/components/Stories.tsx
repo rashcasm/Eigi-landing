@@ -1,3 +1,4 @@
+import { motion, useReducedMotion } from 'motion/react'
 import { useId, useState } from 'react'
 import { WorkIcon } from './WorkIcon.tsx'
 import styles from './Stories.module.css'
@@ -37,6 +38,7 @@ const WORKFLOWS = [
 
 /** Selectable examples, deliberately labeled as illustrations rather than live product activity. */
 export function Stories() {
+  const reduced = useReducedMotion()
   const [selected, setSelected] = useState(0)
   const panelId = useId()
   const workflow = WORKFLOWS[selected]
@@ -52,24 +54,24 @@ export function Stories() {
           <button key={name} type="button" aria-pressed={index === selected} aria-controls={panelId} onClick={() => setSelected(index)}><WorkIcon name={icon} />{name}</button>
         ))}
       </div>
-      <div id={panelId} className={styles.panel} role="region" aria-label={`${workflow.name} workflow example`} aria-live="polite" aria-atomic="true">
+      <motion.div initial={reduced ? false : { opacity: .6, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .35 }} id={panelId} className={styles.panel} role="region" aria-label={`${workflow.name} workflow example`} aria-live="polite" aria-atomic="true">
         <div className={styles.explanation}>
           <span className={styles.category}><WorkIcon name={workflow.icon} />{workflow.name}</span>
           <h3>{workflow.title}</h3>
           <p>{workflow.description}</p>
           <div className={styles.human}><WorkIcon name="people" /><div><strong>Built with you, by us.</strong><p>{workflow.human}</p></div></div>
         </div>
-        <div className={styles.example}>
+        <div key={selected} className={styles.example}>
           <p className={styles.caption}>An example of what we can build together</p>
           <div className={styles.request}><span className={styles.avatar}>C</span><div><span>{workflow.source}</span><p>“{workflow.request}”</p></div></div>
-          <div className={styles.workflow}>
+          <motion.div className={styles.workflow} initial={reduced ? false : { opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .45, delay: reduced ? 0 : .15 }}>
             <div className={styles.workflowTitle}><span className={styles.eigiMark} /><span>A little intelligence goes a long way.</span></div>
-            <ol>{workflow.steps.map((step) => <li key={step}><WorkIcon name="check" />{step}</li>)}</ol>
-          </div>
-          <div className={styles.result}><WorkIcon name="check" /><span>{workflow.result}</span></div>
+            <ol>{workflow.steps.map((step, index) => <motion.li key={step} initial={reduced ? false : { opacity: 0, x: 8 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: .35, delay: reduced ? 0 : .45 + index * .3 }}><WorkIcon name="check" />{step}</motion.li>)}</ol>
+          </motion.div>
+          <motion.div initial={reduced ? false : { opacity: 0, scale: .96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: .45, delay: reduced ? 0 : 1.45 }} className={styles.result}><WorkIcon name="check" /><span>{workflow.result}</span></motion.div>
           <div className={styles.tools}><span>{workflow.tools}</span><span aria-hidden="true">↔</span><span>Eigi</span><span aria-hidden="true">↔</span><span>{workflow.destination}</span></div>
         </div>
-      </div>
+      </motion.div>
       <p className={styles.beyond}>Already exploring Claude, GPT, or AI agents? <span>We help make the right tools work together.</span></p>
     </section>
   )

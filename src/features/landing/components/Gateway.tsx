@@ -34,7 +34,7 @@ export function Gateway() {
           {INGREDIENTS.map(({ icon, title, description, style }, index) => (
             <motion.div key={title} className={styles.ingredient} variants={arrive} custom={index}>
               {index > 0 && <span className={styles.plus} aria-hidden="true">+</span>}
-              <div className={`${styles.object} ${styles[style]}`}><WorkIcon name={icon} /><span className={styles.objectFloor} /></div>
+              <div className={`${styles.object} ${styles[style]}`}><>{icon === 'computer' ? <img className={styles.computerLogo} src="/favicon.jpg" alt="" width="64" height="64" /> : <WorkIcon name={icon} />}</><span className={styles.objectFloor} /></div>
               <h3>{title}</h3><p>{description}</p>
             </motion.div>
           ))}

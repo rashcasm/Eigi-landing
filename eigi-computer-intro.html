@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What is Eigi Computer? - eigi.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  /* Swap --primary for the colors.primary value in your docs.json */
+  :root {
+    --primary: #16a34a;
+    --bg: #ffffff;
+    --ink: #111827;
+    --body: #374151;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --hover: #f9fafb;
+    --code: #f3f4f6;
+    --note-bg: #eff6ff;
+    --note-border: #bfdbfe;
+    --note-ink: #1e3a8a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --primary: #4ade80; --bg: #0b0d0e; --ink: #f3f4f6; --body: #d1d5db;
+      --muted: #9ca3af; --border: #24272b; --hover: #15181b; --code: #1c1f23;
+      --note-bg: #0f1a2e; --note-border: #1e3a8a; --note-ink: #bfdbfe;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 130px; }
+  body { margin: 0; background: var(--bg); color: var(--body); font: 16px/1.75 "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+  a { color: inherit; text-decoration: none; }
+  article a.inline { color: var(--ink); font-weight: 500; border-bottom: 1px solid var(--primary); }
+  article a.inline:hover { border-bottom-width: 2px; }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
+  code { background: var(--code); border-radius: 6px; padding: 1px 6px; font-size: 14px; }
+
+  .draft { background: #fff8e1; color: #6b5400; font-size: 13px; padding: 6px 24px; text-align: center; }
+
+  /* Top nav */
+  .topnav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+  .row1 { max-width: 1440px; margin: 0 auto; height: 64px; padding: 0 32px; display: flex; align-items: center; gap: 24px; }
+  .logo { font-weight: 700; font-size: 18px; color: var(--ink); letter-spacing: -0.01em; }
+  .search { flex: 1; max-width: 420px; margin: 0 auto; display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 14px; border: 1px solid var(--border); border-radius: 12px; color: var(--muted); font-size: 14px; }
+  .search kbd { margin-left: auto; font: 12px Inter, sans-serif; border: 1px solid var(--border); border-radius: 6px; padding: 0 6px; }
+  .navlinks { display: flex; align-items: center; gap: 20px; font-size: 14px; }
+  .navlinks a { color: var(--muted); }
+  .navlinks a:hover { color: var(--ink); }
+  .btn { background: var(--ink); color: var(--bg) !important; border-radius: 999px; padding: 6px 14px; font-weight: 500; }
+  .row2 { max-width: 1440px; margin: 0 auto; padding: 0 32px; display: flex; gap: 28px; font-size: 14px; }
+  .row2 a { padding: 10px 0 12px; color: var(--muted); border-bottom: 2px solid transparent; }
+  .row2 a:hover { color: var(--ink); }
+  .row2 a.on { color: var(--ink); font-weight: 600; border-bottom-color: var(--primary); }
+
+  .layout { max-width: 1440px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 260px minmax(0, 1fr) 220px; gap: 48px; }
+
+  /* Left sidebar */
+  .sidebar { position: sticky; top: 112px; align-self: start; max-height: calc(100vh - 112px); overflow-y: auto; padding: 32px 0 48px; font-size: 14px; }
+  .sidebar h5 { margin: 24px 0 8px 12px; font-size: 13px; font-weight: 600; color: var(--ink); }
+  .sidebar h5:first-child { margin-top: 0; }
+  .sidebar ul { list-style: none; margin: 0; padding: 0; }
+  .sidebar li a, .sidebar li span.item { display: flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 10px; color: var(--muted); }
+  .sidebar li a:hover { background: var(--hover); color: var(--ink); }
+  .sidebar li a.on { background: color-mix(in srgb, var(--primary) 10%, transparent); color: var(--primary); font-weight: 600; }
+  .new { margin-left: auto; font-size: 10px; font-weight: 600; color: var(--primary); border: 1px solid color-mix(in srgb, var(--primary) 40%, transparent); border-radius: 6px; padding: 0 5px; line-height: 16px; }
+
+  /* Content */
+  article { max-width: 720px; padding: 40px 0 120px; }
+  .crumb { color: var(--primary); font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  h1 { margin: 0; color: var(--ink); font-size: 30px; line-height: 1.25; font-weight: 700; letter-spacing: -0.02em; }
+  .desc { margin: 8px 0 32px; font-size: 18px; color: var(--muted); }
+  h2 { margin: 48px 0 12px; color: var(--ink); font-size: 22px; line-height: 1.35; font-weight: 600; letter-spacing: -0.01em; }
+  article p { margin: 0 0 18px; }
+
+  /* Table */
+  .table-wrap { overflow-x: auto; margin: 8px 0 20px; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.6; }
+  th { text-align: left; font-weight: 600; color: var(--ink); padding: 10px 16px 10px 0; border-bottom: 1px solid var(--border); }
+  td { padding: 12px 16px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; width: 1%; }
+
+  /* Steps */
+  .steps { list-style: none; margin: 16px 0 24px; padding: 0; counter-reset: step; }
+  .steps li { counter-increment: step; position: relative; padding: 0 0 24px 48px; }
+  .steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%;
+    background: var(--code); color: var(--ink); font-size: 13px; font-weight: 600; display: grid; place-items: center;
+  }
+  .steps li::after { content: ""; position: absolute; left: 13.5px; top: 34px; bottom: 6px; width: 1px; background: var(--border); }
+  .steps li:last-child { padding-bottom: 0; }
+  .steps li:last-child::after { display: none; }
+  .steps strong { display: block; color: var(--ink); font-weight: 600; line-height: 28px; }
+  .steps span { display: block; font-size: 15px; }
+
+  /* Callout */
+  .note { display: flex; gap: 12px; background: var(--note-bg); border: 1px solid var(--note-border); color: var(--note-ink); border-radius: 12px; padding: 14px 16px; font-size: 15px; line-height: 1.6; margin: 8px 0 20px; }
+  .note i { margin-top: 4px; }
+
+  /* Next-step cards */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 16px 0; }
+  .card { display: block; border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; }
+  .card:hover { border-color: var(--primary); }
+  .card i { color: var(--primary); font-size: 18px; display: block; margin-bottom: 12px; }
+  .card h3 { margin: 0 0 2px; color: var(--ink); font-size: 15px; font-weight: 600; }
+  .card p { margin: 0; font-size: 14px; line-height: 1.55; }
+
+  /* Right TOC */
+  .toc { position: sticky; top: 112px; align-self: start; padding: 40px 0; font-size: 13px; }
+  .toc h6 { margin: 0 0 12px; font-size: 13px; font-weight: 600; color: var(--ink); display: flex; gap: 8px; align-items: center; }
+  .toc ul { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--border); }
+  .toc li a { display: block; padding: 5px 0 5px 14px; margin-left: -1px; color: var(--muted); border-left: 1px solid transparent; }
+  .toc li a:hover { color: var(--ink); }
+  .toc li a.on { color: var(--primary); border-left-color: var(--primary); font-weight: 500; }
+
+  .pager { display: flex; justify-content: flex-end; margin-top: 56px; }
+  .pager a { border: 1px solid var(--border); border-radius: 12px; padding: 12px 18px; text-align: right; font-size: 14px; }
+  .pager a:hover { border-color: var(--primary); }
+  .pager small { display: block; color: var(--muted); }
+  .pager strong { color: var(--ink); font-weight: 600; }
+
+  @media (max-width: 1200px) { .layout { grid-template-columns: 240px minmax(0, 1fr); } .toc { display: none; } }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; padding: 0 20px; }
+    .sidebar, .search, .navlinks a:not(.btn) { display: none; }
+    .row1, .row2 { padding: 0 20px; }
+    .row2 { overflow-x: auto; }
+    .cards { grid-template-columns: 1fr; }
+    td:first-child { white-space: normal; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<div class="draft">Draft preview of <code>eigi-computer/introduction.mdx</code>. Sidebar pages tagged "New" are proposed. Test the example task in Studio QA before publishing.</div>
+
+<header class="topnav">
+  <div class="row1">
+    <a class="logo" href="#">eigi.ai</a>
+    <div class="search"><i class="fa-solid fa-magnifying-glass"></i>Search...<kbd>Ctrl K</kbd></div>
+    <nav class="navlinks">
+      <a href="mailto:buddy@eigi.ai">Support</a>
+      <a class="btn" href="https://eigi.ai">Dashboard</a>
+    </nav>
+  </div>
+  <nav class="row2" aria-label="Sections">
+    <a href="eigi-docs-home.html">Home</a>
+    <a class="on" href="#">Eigi Computer</a>
+    <a href="https://docs.eigi.ai/features/agent-builder">Voice Agents</a>
+    <a href="https://docs.eigi.ai/api-reference/introduction">API Reference</a>
+  </nav>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" aria-label="Eigi Computer pages">
+    <h5>Get started</h5>
+    <ul>
+      <li><a class="on" href="#">What is Eigi Computer?</a></li>
+      <li><a href="https://docs.eigi.ai/eigi-computer/getting-started">Getting Started</a></li>
+      <li><span class="item">Plans<span class="new">New</span></span></li>
+    </ul>
+    <h5>Give it a job</h5>
+    <ul>
+      <li><span class="item">Operations<span class="new">New</span></span></li>
+      <li><span class="item">Customer Support<span class="new">New</span></span></li>
+      <li><span class="item">Technical Help<span class="new">New</span></span></li>
+      <li><span class="item">Investor Updates<span class="new">New</span></span></li>
+      <li><span class="item">Hiring<span class="new">New</span></span></li>
+      <li><span class="item">Service Businesses<span class="new">New</span></span></li>
+    </ul>
+    <h5>Work with Eigi</h5>
+    <ul>
+      <li><a href="https://docs.eigi.ai/eigi-computer/chat">Chat &amp; Workspace</a></li>
+      <li><a href="https://docs.eigi.ai/eigi-computer/channels">Channels</a></li>
+      <li><a href="https://docs.eigi.ai/eigi-computer/automation">Automation</a></li>
+      <li><a href="https://docs.eigi.ai/eigi-computer/connectors">Connectors &amp; Tools</a></li>
+      <li><a href="https://docs.eigi.ai/eigi-computer/plugins">Plugins</a></li>
+      <li><span class="item">Phone Calls<span class="new">New</span></span></li>
+    </ul>
+    <h5>Your team</h5>
+    <ul>
+      <li><span class="item">Network<span class="new">New</span></span></li>
+    </ul>
+    <h5>Stay in control</h5>
+    <ul>
+      <li><span class="item">Permissions &amp; Approvals<span class="new">New</span></span></li>
+      <li><a href="https://docs.eigi.ai/eigi-computer/memory">Memory</a></li>
+      <li><span class="item">Activity &amp; History<span class="new">New</span></span></li>
+      <li><span class="item">Security &amp; Data<span class="new">New</span></span></li>
+    </ul>
+    <h5>Reference</h5>
+    <ul>
+      <li><a href="https://docs.eigi.ai/eigi-computer/settings">Settings &amp; Personalization</a></li>
+      <li><span class="item">Eigi Computer API<span class="new">New</span></span></li>
+    </ul>
+  </aside>
+
+  <article>
+    <div class="crumb">Get started</div>
+    <h1>What is Eigi Computer?</h1>
+    <p class="desc">An AI co-worker with its own computer. It works in your apps around the clock and checks with you before doing anything you haven't approved.</p>
+
+    <p>Eigi Computer runs an AI co-worker, called an Eigi, on a computer reserved for your account. That computer stays on, so your Eigi keeps working after you close the dashboard. It answers messages, runs scheduled jobs, and finishes long tasks overnight.</p>
+    <p>You give it work by messaging it in Slack, WhatsApp, or the dashboard. There's no code to write and no workflow builder. It's built for small teams, usually under ten people, who want an Eigi to cover the ops, support, or technical work they haven't hired for yet.</p>
+
+    <h2 id="how">How an Eigi works</h2>
+    <p>Every Eigi has five parts. Each one has its own page in these docs.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Part</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td>Pod</td><td>The computer your Eigi runs on. It has a browser, files, and a terminal, and it stays on 24/7.</td></tr>
+          <tr><td>Memory</td><td>What your Eigi knows about your company, like your customers, prices, and how you want things done. You can read and edit it on the <a class="inline" href="https://docs.eigi.ai/eigi-computer/memory">Memory</a> page.</td></tr>
+          <tr><td>Connectors</td><td>Access to apps like Gmail, Slack, and Notion. If an app has no connector, your Eigi can use its website in the browser instead.</td></tr>
+          <tr><td>Channels</td><td>Where you talk to your Eigi. Every channel shares the same memory, so you can start a task in Slack and check on it from WhatsApp.</td></tr>
+          <tr><td>Permissions</td><td>Rules for what your Eigi does on its own, what needs your approval, and what it's never allowed to do.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="example">A task, start to finish</h2>
+    <p>A home-cleaning company uses an Eigi to handle new leads. At 11 p.m., someone fills out the quote form on their website. Here's what happens.</p>
+    <ol class="steps">
+      <li><strong>The form triggers an automation</strong><span>A webhook sends the lead's name, phone number, address, and preferred date to the Eigi.</span></li>
+      <li><strong>The Eigi checks what it knows</strong><span>Memory has the service area and price list. The address is in range, so the lead qualifies.</span></li>
+      <li><strong>It waits for a reasonable hour</strong><span>The owner's standing instructions say no calls after 8 p.m., so the Eigi schedules the call for 9 a.m.</span></li>
+      <li><strong>It calls the lead</strong><span>At 9 a.m. it calls through an eigi.ai voice agent, confirms the details, and offers two open slots from the owner's calendar.</span></li>
+      <li><strong>It books the job and drafts the quote</strong><span>The lead picks Thursday at 2 p.m. The Eigi adds the booking to the calendar and drafts a confirmation email with the price.</span></li>
+      <li><strong>It asks before emailing a customer</strong><span>Customer emails are set to need approval, so the Eigi posts the draft in chat and waits. The owner replies "send" and the email goes out.</span></li>
+    </ol>
+    <p>The owner can open the session history later and see each of these steps.</p>
+
+    <h2 id="first-jobs">Jobs teams hand off first</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Job</th><th>What you'd send your Eigi</th></tr></thead>
+        <tbody>
+          <tr><td>Inbox</td><td>"Every morning, sort my inbox. Draft replies to clients and flag anything from investors."</td></tr>
+          <tr><td>Support</td><td>"Answer the support emails you're confident about. Send me anything about refunds."</td></tr>
+          <tr><td>Technical help</td><td>"Our contact form stopped sending leads to HubSpot. Find out why."</td></tr>
+          <tr><td>Investor updates</td><td>"Draft this month's investor update from Stripe and our signup sheet. I'll review it before it goes out."</td></tr>
+          <tr><td>Hiring</td><td>"Screen applicants for the ops role against this scorecard and book calls with the top five."</td></tr>
+          <tr><td>Collections</td><td>"Chase invoices more than 14 days overdue. Call them if they don't answer the email."</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="team">Using Eigi with your team</h2>
+    <p>Everyone on your team gets their own Eigis, each with private memory. One person can run several, for example one for sales and one for support.</p>
+    <p>To let two people's Eigis work together, add each other to your networks and grant access. After that, your Eigi can ask your CTO's Eigi when a fix ships instead of messaging your CTO. Each Eigi shares only what its access allows. <a class="inline" href="#">Network</a> covers the setup.</p>
+
+    <h2 id="control">What it checks with you first</h2>
+    <p>You choose how independent your Eigi is in <strong>Settings → Permissions</strong>. In Careful mode, it asks before it sends, deletes, buys, or posts anything. Start there, then let specific tasks run on their own once you trust how your Eigi handles them.</p>
+    <p>Your Eigi never asks for passwords or one-time codes in chat. It uses a secure prompt instead. Everything it does is recorded in the session history.</p>
+    <div class="note"><i class="fa-solid fa-circle-info"></i><div>You can talk to your Eigi in Slack, WhatsApp, Telegram, Instagram, or the dashboard. See <a class="inline" href="https://docs.eigi.ai/eigi-computer/channels">Channels</a> to connect one.</div></div>
+
+    <h2 id="next">Next steps</h2>
+    <div class="cards">
+      <a class="card" href="https://docs.eigi.ai/eigi-computer/getting-started"><i class="fa-solid fa-rocket"></i><h3>Getting Started</h3><p>Launch your Eigi and give it a first task.</p></a>
+      <a class="card" href="#"><i class="fa-solid fa-shield-halved"></i><h3>Permissions</h3><p>Decide what needs your approval.</p></a>
+      <a class="card" href="#"><i class="fa-solid fa-users"></i><h3>Network</h3><p>Connect your Eigis with your team's.</p></a>
+    </div>
+
+    <div class="pager">
+      <a href="https://docs.eigi.ai/eigi-computer/getting-started"><small>Next</small><strong>Getting Started</strong></a>
+    </div>
+  </article>
+
+  <nav class="toc" aria-label="On this page">
+    <h6><i class="fa-solid fa-bars-staggered"></i>On this page</h6>
+    <ul>
+      <li><a class="on" href="#how">How an Eigi works</a></li>
+      <li><a href="#example">A task, start to finish</a></li>
+      <li><a href="#first-jobs">Jobs teams hand off first</a></li>
+      <li><a href="#team">Using Eigi with your team</a></li>
+      <li><a href="#control">What it checks with you first</a></li>
+      <li><a href="#next">Next steps</a></li>
+    </ul>
+  </nav>
+</div>
+
+<script>
+  const links = [...document.querySelectorAll('.toc a')];
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-130px 0px -70% 0px' });
+  document.querySelectorAll('article h2[id]').forEach(h => obs.observe(h));
+</script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+import { ComputerOverview } from '../features/computer/components/ComputerOverview.tsx'
 import { Footer } from '../components/layout/Footer.tsx'
 import { Nav } from '../components/layout/Nav.tsx'
 import {
@@ -24,6 +25,7 @@ export function HomePage() {
         <Problem />
         <Gateway />
         <Stories />
+        <ComputerOverview />
         <Route />
         <Founders />
       </main>

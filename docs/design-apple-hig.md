@@ -35,3 +35,19 @@ The earlier expedition metaphor makes visitors traverse several pinned sections 
 - Contact opens as a native modal, confines focus, closes with Escape, and restores focus to the triggering control. Desktop QR generation succeeds. WhatsApp, phone, and email destinations retain the existing contact details. No external message was sent during testing.
 - Reviewed core text contrast pairs, all at least 4.7:1. Visible focus styles and 44px minimum action targets remain in place.
 - Lint, 13 unit checks (including page-anchor integrity and contextual contact messages), and the production build pass. No dependencies added. Earlier crowd assets are excluded from the active build.
+
+## Eigi Computer and motion — apple-v2
+
+Keep the existing type, palette, spacing, and Eigi service positioning. Add a Product disclosure linking to a standalone `/computer/` page and a persistent Go to Studio action. Eigi Computer copy comes from the supplied `eigi-computer-intro.html`: a dedicated always-on computer, editable memory, connected apps and channels, and user-defined approvals. Product examples are illustrations, not live activity or verified outcomes.
+
+Adapt the large product demonstrations and progressive storytelling of [Meet Computer](https://devrev.ai/meet-computer) into Eigi's visual language. Animate the homepage network connections, give workflow selections a short staged response, and use scroll progress to reveal an illustrative Computer task. Keep normal scrolling; use no scroll interception. Motion must have an immediate, complete reduced-motion state, and any continuous decorative motion must be pausable. Use the installed Motion package and CSS; add no dependency.
+
+Acceptance: both pages and their links work on direct load; Product and mobile navigation work by keyboard; Studio uses https://studio.eigi.ai/; original contact behavior remains available; responsive layouts work down to 320px; lint, tests, and production build pass. Inspect the rendered pages in an available browser.
+
+### Verification for this update
+
+- Both pages render in Chrome. Inspected the desktop homepage, the standalone Computer hero and completed demo, and the Computer page at 320px.
+- At 320px, the measured viewport and document widths are both 320px. Studio remains visible; mobile navigation exposes the product, documentation, and contact. Contact opens and closes; selecting Investor update changes both the pressed state and example content.
+- The product build emits `dist/computer/index.html` as well as the homepage, with separate page titles and descriptions.
+- Reduced-motion paths render the new demos immediately and disable the network loop and scroll transforms. The network pauses offscreen and has a manual pause control.
+- Lint and all 15 tests pass. Browser console inspection showed a warning from an installed extension; no application error appeared during the inspected interactions. Intermediate viewport widths and reduced-motion emulation were reviewed in source but not exhaustively exercised in the browser.
