@@ -12,6 +12,7 @@ it('gives the standalone product valid anchors and a route back to Eigi', () => 
   expect(html).toContain('href="/"')
   expect(html).toContain('aria-current="page"')
   expect(html).toContain('Can I use Eigi Computer on its own?')
+  for (const app of ['Slack', 'Microsoft Teams', 'Claude', 'ChatGPT', 'Email', 'Your browser']) expect(html).toContain(app)
 })
 
 it('connects both pages to the product and the requested Studio destination', () => {
@@ -21,5 +22,6 @@ it('connects both pages to the product and the requested Studio destination', ()
     expect(html).toContain('href="/computer/"')
     expect(html).toContain('Illustrative example')
     expect(html).toContain('Replay example')
+    expect(html).not.toMatch(/100x|a third of/i)
   }
 })

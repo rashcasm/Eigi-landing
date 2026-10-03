@@ -6,7 +6,7 @@ import styles from './Gateway.module.css'
 const INGREDIENTS = [
   { icon: 'person', title: 'You', description: 'The vision. The judgment.', style: 'human' },
   { icon: 'people', title: 'Forward-deployed engineers', description: 'The people who make it work.', style: 'engineers' },
-  { icon: 'computer', title: 'Eigi computer', description: 'Your agents. Working together.', style: 'computer' },
+  { icon: 'computer', title: 'Eigi Computer', description: 'Works where your team does.', style: 'computer' },
 ] as const
 
 /** A finite, replayable equation. Reduced motion renders the complete, open gateway immediately. */
@@ -29,7 +29,7 @@ export function Gateway() {
         <h2 id="gateway-title">Your gateway<br />to singularity.</h2>
         <p>Human ambition. Applied intelligence.<br />The possibility of both, working as one.</p>
       </div>
-      <motion.div key={replay} className={styles.equation} initial={reducedMotion ? false : 'hidden'} whileInView="visible" viewport={{ once: true, amount: 0.3 }} role="group" aria-label="You plus forward-deployed engineers plus Eigi computer equals a gateway to singularity.">
+      <motion.div key={replay} className={styles.equation} initial={reducedMotion ? false : 'hidden'} whileInView="visible" viewport={{ once: true, amount: 0.3 }} role="group" aria-label="You plus forward-deployed engineers plus Eigi Computer equals a gateway to singularity.">
         <div className={styles.ingredients}>
           {INGREDIENTS.map(({ icon, title, description, style }, index) => (
             <motion.div key={title} className={styles.ingredient} variants={arrive} custom={index}>

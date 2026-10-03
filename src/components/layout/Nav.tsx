@@ -42,7 +42,7 @@ export function Nav({ links, computer = false }: NavProps) {
           <div className={styles.productMenu}>
             <a href={COMPUTER_URL} aria-current={computer ? 'page' : undefined} onClick={close}>
               <img className={styles.productIcon} src="/favicon.jpg" alt="" width="40" height="40" />
-              <span><strong>Eigi Computer</strong><small>Your AI co-worker. Its own computer.</small></span>
+              <span><strong>Eigi Computer</strong><small>Your AI co-worker, anywhere you work.</small></span>
               <span aria-hidden="true">↗</span>
             </a>
             <a href={DOCS_URL} onClick={close}>Explore the documentation <span aria-hidden="true">↗</span></a>

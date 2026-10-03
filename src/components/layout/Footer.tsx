@@ -5,16 +5,16 @@ const YEAR = new Date().getFullYear()
 
 const QUESTIONS = [
   { question: 'Do I need to be technical?', answer: 'No. You bring your understanding of the business. We bring the engineering, help you choose what to automate, and show your team how to use what we build.' },
-  { question: 'Is Eigi another AI tool to manage?', answer: 'Eigi brings engineers into your business to put AI to work and help your team adopt it. Eigi Computer is our AI co-worker product. Use it on its own, or have our engineers connect it to your business.' },
+  { question: 'Is Eigi another AI tool to manage?', answer: 'Eigi brings engineers into your business to put AI to work and help your team adopt it. Eigi Computer is our product: an AI co-worker you message wherever your team already works. Use it on its own, or have our engineers integrate it with your business.' },
   { question: 'Can we start with just one workflow?', answer: 'Yes. Starting with one useful workflow gives us a way to learn what works for your team before taking on more. We’ll agree on the scope and what success looks like together.' },
   { question: 'What happens after the first conversation?', answer: 'Amit, our AI onboarding guide, gathers some context about your business and connects you with the team. We’ll discuss the opportunity, scope, and pricing before any work begins. You can also email us directly.' },
 ]
 
 const COMPUTER_QUESTIONS = [
-  { question: 'Can I use Eigi Computer on its own?', answer: 'Yes. Open Studio to launch your Eigi and give it a first task. If you want help connecting it to your business, Eigi’s engineers can work alongside your team.' },
-  { question: 'Does it keep working when I leave?', answer: 'Yes. Your Eigi runs on a computer reserved for your account. It stays on to handle scheduled jobs and long tasks after you close the dashboard.' },
-  { question: 'What does it ask me about first?', answer: 'You set the rules. In Careful mode, your Eigi asks before it sends, deletes, buys, or posts. You can allow specific tasks as you build trust.' },
-  { question: 'Where can I talk to my Eigi?', answer: 'Use the dashboard or connect a channel such as Slack, WhatsApp, or Telegram. Your Eigi keeps the same memory across its connected channels.' },
+  { question: 'Can I use Eigi Computer on its own?', answer: 'Yes. Get started in Studio. If you’d like help implementing it and integrating it with your business, Eigi’s engineers can work alongside your team.' },
+  { question: 'Where does my team use it?', answer: 'In the tools they already use. Text it in Slack or Teams, forward it your emails, or call it from Claude or ChatGPT. The browser is where it does the work.' },
+  { question: 'What does “call it in Claude or ChatGPT” mean?', answer: 'You can reach Eigi Computer from inside a Claude or ChatGPT conversation, so you can use your company’s memory and have it do the work without switching apps. It isn’t a phone or voice call.' },
+  { question: 'How is it different from a consumer AI assistant?', answer: 'It keeps the ease of a consumer assistant and adds what a company needs: dynamic memory across your tools, history, and people; controls over what it can do; and an audit trail of what it did.' },
 ]
 
 export function Footer({ computer = false }: { computer?: boolean }) {
@@ -26,10 +26,10 @@ export function Footer({ computer = false }: { computer?: boolean }) {
       </div>
       <div className={styles.contact}>
         <p className="eyebrow">Your next chapter starts here.</p>
-        <h2>{computer ? <>Your next co-worker.<br />Ready for a first task.</> : <>Keep the ambition.<br />Lose the busywork.</>}</h2>
-        <p className="lead">{computer ? <>Start with the work you’d like to hand off.<br />Give your Eigi a job in Studio.</> : <>Tell us what’s taking up your day.<br />Let’s see what we can give back.</>}</p>
+        <h2>{computer ? <>Your AI co-worker<br />is one message away.</> : <>Keep the ambition.<br />Lose the busywork.</>}</h2>
+        <p className="lead">{computer ? <>Get started with Eigi Computer in Studio.<br />Then message it wherever you work.</> : <>Tell us what’s taking up your day.<br />Let’s see what we can give back.</>}</p>
         {computer ? <a className="btn" href={STUDIO_URL}>Go to Studio <span aria-hidden="true">↗</span></a> : <button type="button" className="btn" data-amit>Find your first AI workflow <span aria-hidden="true">↗</span></button>}
-        <p className={styles.note}>{computer ? 'Use it independently. Bring in our engineers when you need a hand.' : 'Start with Amit, our AI guide. Meet your human team next.'}</p>
+        <p className={styles.note}>{computer ? 'Available on its own. Eigi’s engineers can help you integrate it.' : 'Start with Amit, our AI guide. Meet your human team next.'}</p>
         <a className="text-link" href="mailto:buddy@eigi.ai">Prefer email? Say hello <span aria-hidden="true">↗</span></a>
       </div>
       <div className={styles.bottom}>

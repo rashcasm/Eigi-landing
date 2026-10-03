@@ -6,7 +6,7 @@ import { ComputerCapabilities, ComputerControl, ComputerOverview } from '../feat
 const LINKS = [
   { href: '/', label: 'Why Eigi' },
   { href: '#how-computer-works', label: 'How it works' },
-  { href: '#your-control', label: 'Your control' },
+  { href: '#your-control', label: 'Controls' },
 ] as const
 
 export function ComputerPage() {

@@ -10,12 +10,13 @@
 .app strong { display: block; font-weight: 500; font-size: .8125rem; letter-spacing: -.015em; }
 .detail { display: block; color: var(--muted); font-size: .6875rem; margin-top: 2px; }
 .port { position: absolute; top: calc(50% - 3px); right: -4px; width: 7px; height: 7px; background: #a8bcad; border: 2px solid #fff; border-radius: 50%; }
-.gmail, .slack, .notion { left: 3%; }
-.whatsapp, .telegram, .browser { right: 3%; }
-.gmail, .whatsapp { top: 28px; }
-.slack, .telegram { top: 143px; }
-.notion, .browser { top: 258px; }
-.whatsapp .port, .telegram .port, .browser .port { right: auto; left: -4px; }
+.slack, .teams, .email { left: 3%; }
+.claude, .chatgpt, .browser { right: 3%; }
+.slack, .claude { top: 28px; }
+.teams, .chatgpt { top: 143px; }
+.email, .browser { top: 258px; }
+.claude .port, .chatgpt .port, .browser .port { right: auto; left: -4px; }
+.browser { background: #f7faf7; border-color: #d3e1d6; }
 .hub { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; flex-direction: column; width: 176px; text-align: center; }
 .device { position: relative; display: grid; place-items: center; width: 126px; height: 126px; border-radius: 30px; border: 1px solid #ced8d0; background: linear-gradient(140deg, #fff, #edf1ed); box-shadow: 0 16px 28px -18px #344d3d55, inset 0 0 0 5px #f8faf8, inset 0 0 0 6px #e1e7e2; }
 .device img { display: block; width: 76px; height: 76px; border-radius: 20px; }
@@ -32,18 +33,18 @@
   .app { flex-direction: column; justify-content: center; gap: 6px; width: 29%; min-height: 88px; padding: 12px 4px; border-radius: 14px; text-align: center; }
   .app strong { font-size: .6875rem; }
   .detail { display: none; }
-  .gmail, .slack, .notion { top: 14px; }
-  .whatsapp, .telegram, .browser { top: auto; bottom: 14px; }
-  .gmail, .whatsapp { left: 2%; right: auto; }
-  .slack, .telegram { left: 35.5%; right: auto; }
-  .notion, .browser { left: auto; right: 2%; }
+  .slack, .teams, .email { top: 14px; }
+  .claude, .chatgpt, .browser { top: auto; bottom: 14px; }
+  .slack, .claude { left: 2%; right: auto; }
+  .teams, .chatgpt { left: 35.5%; right: auto; }
+  .email, .browser { left: auto; right: 2%; }
   .app .port { top: auto; bottom: -4px; left: calc(50% - 3px); right: auto; }
-  .whatsapp .port, .telegram .port, .browser .port { top: -4px; bottom: auto; }
+  .claude .port, .chatgpt .port, .browser .port { top: -4px; bottom: auto; }
   .hub { width: 160px; }
   .device { width: 92px; height: 92px; border-radius: 24px; }
   .device img { width: 54px; height: 54px; border-radius: 14px; }
   .indicator { bottom: 8px; }
-  .hub > strong { margin-top: 10px; font-size: .8125rem; }
+  .hub > strong { margin-top: 10px; padding: 2px 8px; border-radius: 8px; background: #f8faf8; font-size: .8125rem; }
   .hub > span { display: none; }
   .figure figcaption { font-size: .8125rem; max-width: 36ch; margin-top: 16px; }
 }

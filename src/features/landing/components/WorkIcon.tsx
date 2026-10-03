@@ -7,6 +7,7 @@ const PATHS = {
   product: 'm9 7-5 5 5 5m6-10 5 5-5 5M13 4l-2 16',
   people: 'M9 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8v-2c0-3 3-4 7-4s7 1 7 4v2m0-16a4 4 0 0 1 0 8m3 3c2 1 3 2 3 5',
   check: 'm5 12 4 4L19 6',
+  browser: 'M3 5h18v14H3zM3 9h18M6 7h.01M9 7h.01',
 } as const
 
 export function WorkIcon({ name }: { name: keyof typeof PATHS }) {

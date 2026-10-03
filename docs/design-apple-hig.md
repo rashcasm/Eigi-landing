@@ -38,7 +38,7 @@ The earlier expedition metaphor makes visitors traverse several pinned sections 
 
 ## Eigi Computer and motion — apple-v2
 
-Keep the existing type, palette, spacing, and Eigi service positioning. Add a Product disclosure linking to a standalone `/computer/` page and a persistent Go to Studio action. Eigi Computer copy comes from the supplied `eigi-computer-intro.html`: a dedicated always-on computer, editable memory, connected apps and channels, and user-defined approvals. Product examples are illustrations, not live activity or verified outcomes.
+Keep the existing type, palette, spacing, and Eigi service positioning. Add a Product disclosure linking to a standalone `/computer/` page and a persistent Go to Studio action. Eigi Computer copy follows the interface positioning below, not the older `eigi-computer-intro.html`. Product examples are illustrations, not live activity or verified outcomes.
 
 Adapt the large product demonstrations and progressive storytelling of [Meet Computer](https://devrev.ai/meet-computer) into Eigi's visual language. Animate the homepage network connections, give workflow selections a short staged response, and use scroll progress to reveal an illustrative Computer task. Keep normal scrolling; use no scroll interception. Motion must have an immediate, complete reduced-motion state, and any continuous decorative motion must be pausable. Use the installed Motion package and CSS; add no dependency.
 
@@ -51,3 +51,12 @@ Acceptance: both pages and their links work on direct load; Product and mobile n
 - The product build emits `dist/computer/index.html` as well as the homepage, with separate page titles and descriptions.
 - Reduced-motion paths render the new demos immediately and disable the network loop and scroll transforms. The network pauses offscreen and has a manual pause control.
 - Lint and all 15 tests pass. Browser console inspection showed a warning from an installed extension; no application error appeared during the inspected interactions. Intermediate viewport widths and reduced-motion emulation were reviewed in source but not exhaustively exercised in the browser.
+
+## Eigi Computer positioning — the interface
+
+Source of truth: the next big shift in work isn't the model or the agent, it's the interface. The headline frames Eigi as an AI co-worker you can message anytime, anywhere your team works, like a teammate with its own computer; that phrase stands for doing work in the browser, not for dedicated hardware. The hero demo is an original Slack-style conversation (not a copied screenshot) so Eigi reads as a teammate you message. The Computer page follows one progression: interface → fragmented work (work about work, searching, app switching) → familiar entry points → dynamic company memory → browser execution → company controls.
+
+- Entry points have different roles. Slack, Microsoft Teams, and email are where a team asks. Claude and ChatGPT are where someone calls (invokes) Eigi Computer mid-conversation; this is never a voice call. The browser is where it does the work.
+- Supported capabilities are only those in the positioning: the entry points above, dynamic memory across tools, history, and people, browser work, and controls, an audit trail, and shared knowledge. Do not describe dedicated infrastructure, scheduled jobs, named permission modes, or channels outside this list.
+- "A third of their time" and "100x productivity" are unverified, so the page uses qualitative wording ("looking for information", "the productivity of a consumer AI assistant"). Restore numbers only with a cited source.
+- Eigi is the engineering service that implements and integrates AI; Eigi Computer is a product that is also available on its own. Studio stays at https://studio.eigi.ai/ and `public/favicon.jpg` remains the product mark.
