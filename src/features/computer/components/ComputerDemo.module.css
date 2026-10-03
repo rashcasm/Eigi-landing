@@ -11,7 +11,7 @@
 .lights i { width: 8px; height: 8px; border: 1px solid #8a6d8b; border-radius: 50%; }
 .search { flex: 1; max-width: 420px; margin-inline: auto; padding: 5px 12px; border-radius: 6px; background: #5a3a5b; color: #d8c8d8; text-align: center; }
 .exampleLabel { font-size: .6875rem; white-space: nowrap; }
-.workspace { display: grid; grid-template-columns: 200px minmax(0, 1fr); }
+.workspace { display: grid; grid-template-columns: 216px minmax(0, 1fr); }
 .sidebar { display: flex; flex-direction: column; gap: 2px; padding: 18px 10px; background: #3f0e40; color: #cfbdcf; font-size: .8125rem; }
 .workspaceName { color: #fff; font-size: .9375rem; padding: 0 10px 14px; }
 .workspaceName span { font-weight: 400; opacity: .7; }

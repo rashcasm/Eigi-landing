@@ -37,7 +37,7 @@ npm run build
 
 - `src/pages/HomePage.tsx`: service page composition and navigation destinations.
 - `src/pages/ComputerPage.tsx`: standalone Eigi Computer page at `/computer/`. `computer/index.html` is a second Vite entry so static hosts can serve it directly.
-- `src/features/computer/components/`: shared product demonstration, capabilities, entry-point diagram, and company controls. Demonstrations are illustrative, run once on entry, and can be replayed or switched between three entry points (team chat, AI assistant, email). Positioning lives in `docs/design-apple-hig.md`.
+- `src/features/computer/components/`: shared product demonstration with the AI team roster, entry-point diagram, and approval rules. Demonstrations are illustrative, run once on entry, and can be replayed or switched between three jobs handed to different team members. Positioning lives in `docs/design-apple-hig.md`.
 - `src/features/landing/components/`: section components with colocated CSS Modules.
 - `src/features/landing/components/Radio.tsx`: the contact dialog. Any button marked `data-amit` opens it. Native dialog behavior handles modal focus, Escape, and focus restoration. The QR dependency loads only when the dialog opens.
 - `src/features/landing/utils/amit.ts`: public contact details and contextual WhatsApp messages, with unit tests.
