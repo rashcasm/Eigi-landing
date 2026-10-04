@@ -28,7 +28,8 @@ it('keeps every page navigation destination valid after shortening the landing p
 it('opens on onboarding with Amit, with the AI disclosure and terms beside the actions', () => {
   const html = renderToStaticMarkup(<HomePage />)
   const sections = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map(match => match[1])
-  expect(sections.slice(0, 2)).toEqual(['base-camp', 'meet-your-eigi'])
+  expect(sections[0]).toBe('base-camp')
+  expect(sections).toContain('meet-your-eigi')
   expect(sections).not.toContain('computer')
   const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')
   expect(text).toContain('Talk to Amit')

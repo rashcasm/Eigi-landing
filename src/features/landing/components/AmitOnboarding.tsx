@@ -122,10 +122,10 @@ export function AmitOnboarding() {
       <p className={styles.status} role="status"><span aria-hidden="true" />{statusLabel(state)}</p>
 
       {(status === 'idle' || status === 'ended' || status === 'mic-denied' || status === 'unavailable') && <>
-        <h2 className={styles.title}>{status === 'ended' ? 'Thanks for talking with Amit.' : status === 'mic-denied' ? 'Amit needs your microphone to talk.' : status === 'unavailable' ? 'Amit isn’t available on this page right now.' : 'Talk to Amit. He’ll find your first job.'}</h2>
+        <h2 className={styles.title}>{status === 'ended' ? 'Thanks for talking with Amit.' : status === 'mic-denied' ? 'Amit needs your microphone to talk.' : status === 'unavailable' ? 'Talk to Amit on WhatsApp.' : 'Talk to Amit. He’ll find your first job.'}</h2>
         {status === 'idle' && <p className={styles.body}>Two minutes. Amit asks about your business and finds the first job we can take off your plate.</p>}
         {status === 'mic-denied' && <p className={styles.body}>You can chat with him instead, or allow the microphone and try again.</p>}
-        {status === 'unavailable' && <p className={styles.body}>Message him on WhatsApp instead. He’ll ask about your business and introduce you to a sherpa.</p>}
+        {status === 'unavailable' && <p className={styles.body}>Two minutes. Amit asks about your business, finds the first job we can take off your plate, and introduces you to your sherpa.</p>}
         {status === 'ended' && plan && <div className={styles.plan}>
           <p>Here’s how a sherpa would set up <strong>{plan.task.toLowerCase()}</strong>:</p>
           <ol>{plan.steps.map(step => <li key={step}>{step}</li>)}</ol>

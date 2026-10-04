@@ -39,16 +39,16 @@
 .reaction { display: inline-flex; margin-top: 6px; padding: 1px 8px; border: 1px solid #1d9bd1; border-radius: 99px; background: #e8f5fa; color: #1264a3; font-size: .75rem; }
 .work { margin-top: 8px; padding: 2px 0 2px 12px; border-left: 4px solid #b9cfbf; }
 .workLabel { display: flex; align-items: center; gap: 8px; font-weight: 600; }
-.message .workLabel { font-size: .75rem; color: #32664d; }
+.message .workLabel { font-size: .75rem; color: var(--signal); }
 .workLabel svg { width: 16px; height: 16px; }
 .work ol { list-style: none; display: grid; gap: 6px; margin-top: 8px; }
 .work li { display: flex; gap: 8px; align-items: center; color: #454245; font-size: .8125rem; }
-.work li svg { width: 14px; height: 14px; color: #32664d; flex-shrink: 0; }
+.work li svg { width: 14px; height: 14px; color: var(--signal); flex-shrink: 0; }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .actions span { padding: 5px 12px; border: 1px solid #c8c8c8; border-radius: 6px; color: #1d1c1d; font-size: .75rem; font-weight: 600; }
 .actions .primary { border-color: #007a5a; background: #007a5a; color: #fff; }
 .message .note { display: flex; align-items: center; gap: 6px; margin-top: 8px; color: #616061; font-size: .6875rem; }
-.note svg { width: 13px; height: 13px; color: #32664d; flex-shrink: 0; }
+.note svg { width: 13px; height: 13px; color: var(--signal); flex-shrink: 0; }
 .composer { display: flex; justify-content: space-between; align-items: center; margin: 14px 24px 20px; padding: 10px 10px 10px 14px; border: 1px solid #c8c8c8; border-radius: 10px; color: #868686; font-size: .8125rem; }
 .send { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 6px; background: #007a5a; color: #fff; }
 

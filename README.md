@@ -2,7 +2,7 @@
 
 Marketing site for [eigi.ai](https://eigi.ai), built with React, Vite, TypeScript, CSS Modules, and Motion.
 
-The page presents Eigi as a hands-on AI adoption team for founders who want to stay lean. The story moves from the founder's ambition to the adoption gap, the Eigi equation, concrete workflow examples, the engagement process, the founders, and contact.
+The page is written for early-stage US founders running teams under ten. It moves from recognition to action: talk to Amit (the hero is the onboarding), “Sound familiar?”, why the work is still on your plate, what Eigi is, how an Eigi works, the first jobs to hand over, how sherpas set it up, real stories, the founders, questions, and a closing ask.
 
 ## Run locally
 
@@ -25,20 +25,20 @@ npm run build
 
 ## Design
 
-[Design contract and sources](docs/design-apple-hig.md) documents the Apple research, audience, visual decisions, and checks.
+The visual system comes from Pawan's “Ascent” work, reconciled with the onboarding hero:
 
-- System typography, white and silver surfaces, deep green accents. All main design tokens live in `src/styles/global.css`.
-- A custom SVG/CSS graphic connects the founder to business functions through Eigi. Connections flow and cards float while visible; visitors can pause the animation. Reduced-motion preferences disable movement.
-- The gateway section animates **you + forward-deployed engineers + Eigi computer = gateway to singularity**. Motion plays once on entry; a button replays it. Reduced-motion users see the open portal immediately. Scrolling is never pinned or intercepted.
-- Three selectable workflow examples describe both the agent's work and the engineer's role. These are illustrations, not customer testimonials or live activity.
-- Navigation, FAQs, and the onboarding dialog use native HTML behavior. Contact stays on WhatsApp, telephone, or email; no form or backend is introduced.
+- Fraunces for headlines (one italic phrase per headline), Inter for reading, JetBrains Mono for labels. Tokens live in `src/styles/global.css`.
+- Warm paper white with ink, and one terracotta accent taken from the red panda. A `.dark` class repaints the same tokens for the Eigi equation and the closing footer.
+- Hairline borders, topographic contours in the hero, a dashed rope between the four camps of an engagement.
+- The Open Peeps crowd closes the page in the footer: everyone still carrying everything themselves. The sprite loads only when the footer is near.
+- Statistics are limited to two verified, cited sources in the problem section. Examples are labelled illustrative; stories are real client and community work.
 
 ## Structure
 
 - `src/pages/HomePage.tsx`: service page composition and navigation destinations.
 - `src/pages/ComputerPage.tsx`: standalone Eigi Computer page at `/computer/`. `computer/index.html` is a second Vite entry so static hosts can serve it directly.
 - `src/features/computer/components/`: shared product demonstration with the AI team roster, entry-point diagram, and approval rules. Demonstrations are illustrative, run once on entry, and can be replayed or switched between three jobs handed to different team members. Positioning lives in `docs/design-apple-hig.md`.
-- `src/features/landing/components/`: section components with colocated CSS Modules.
+- `src/features/landing/components/`: section components with colocated CSS Modules. `AmitOnboarding.tsx` is the hero's voice/chat card; `Recognition.tsx` and `FirstJobs.tsx` hold the founder questions and first jobs.
 - `src/features/landing/components/Radio.tsx`: the contact dialog. Any button marked `data-amit` opens it. Native dialog behavior handles modal focus, Escape, and focus restoration. The QR dependency loads only when the dialog opens.
 - `src/features/landing/utils/amit.ts`: public contact details and contextual WhatsApp messages, with unit tests.
 - `src/components/layout/`: shared navigation and footer.

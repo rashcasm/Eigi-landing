@@ -4,9 +4,9 @@ import { WorkIcon } from './WorkIcon.tsx'
 import styles from './Gateway.module.css'
 
 const INGREDIENTS = [
-  { icon: 'person', title: 'You', description: 'The vision. The judgment.', style: 'human' },
-  { icon: 'people', title: 'Forward-deployed engineers', description: 'The people who make it work.', style: 'engineers' },
-  { icon: 'computer', title: 'Your Eigis', description: 'Works where your team does.', style: 'computer' },
+  { icon: 'person', title: 'You', description: 'Your judgment. The final say.', style: 'human' },
+  { icon: 'people', title: 'Forward-deployed engineers', description: 'Your sherpas. They set it up and stay.', style: 'engineers' },
+  { icon: 'computer', title: 'Your Eigis', description: 'AI teammates that do the work.', style: 'computer' },
 ] as const
 
 /** A finite, replayable equation. Reduced motion renders the complete, open gateway immediately. */
@@ -23,11 +23,11 @@ export function Gateway() {
   })
 
   return (
-    <section id="gateway" className={styles.gateway} data-stage="The gateway" aria-labelledby="gateway-title">
+    <section id="gateway" className={`dark ${styles.gateway}`} data-stage="The gateway" aria-labelledby="gateway-title">
       <div className={styles.heading}>
-        <p className="eyebrow">The Eigi equation</p>
+        <p className="eyebrow">What Eigi is</p>
         <h2 id="gateway-title">Your gateway<br />to singularity.</h2>
-        <p>Human ambition. Applied intelligence.<br />The possibility of both, working as one.</p>
+        <p>Three parts, working as one. You keep the judgment.<br />The engineers make it stick. Your Eigis do the work.</p>
       </div>
       <motion.div key={replay} className={styles.equation} initial={reducedMotion ? false : 'hidden'} whileInView="visible" viewport={{ once: true, amount: 0.3 }} role="group" aria-label="You plus forward-deployed engineers plus your Eigis equals a gateway to singularity.">
         <div className={styles.ingredients}>
@@ -42,16 +42,14 @@ export function Gateway() {
         <motion.span className={styles.equals} variants={arrive} custom={3} aria-hidden="true">=</motion.span>
         <motion.div className={styles.destination} variants={arrive} custom={3}>
           <div className={styles.portal} aria-hidden="true">
-            <div className={styles.portalGlow} />
-            <div className={styles.frame}>
+                        <div className={styles.frame}>
               <div className={styles.inside}>
-                <div className={styles.horizon} />
+                <svg className={styles.rings} viewBox="0 0 100 100">{[46, 38, 30, 22, 14].map(r => <circle key={r} cx="50" cy="50" r={r} />)}</svg>
                 <div className={styles.infinity}>∞</div>
                 <motion.div className={styles.doorLeft} variants={door(-1)} />
                 <motion.div className={styles.doorRight} variants={door(1)} />
               </div>
             </div>
-            <div className={styles.reflection} />
           </div>
           <h3>Gateway to singularity.</h3><p>Your business, AI-first.</p>
         </motion.div>

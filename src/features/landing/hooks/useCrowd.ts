@@ -13,9 +13,12 @@ export function useCrowd(canvasRef: RefObject<HTMLCanvasElement | null>) {
   const crowdRef = useRef<Crowd | null>(null)
   const [status, setStatus] = useState<CrowdStatus>('loading')
   const onScreen = useInView(canvasRef)
+  // the sprite is heavy and the crowd lives at the bottom of the page: fetch it only once it is close
+  const near = useInView(canvasRef, { once: true, margin: '0px 0px 800px 0px' })
   const still = useReducedMotion()
 
   useEffect(() => {
+    if (!near) return
     const canvas = canvasRef.current!
     const img = new Image()
     let observer: ResizeObserver | undefined
@@ -37,7 +40,7 @@ export function useCrowd(canvasRef: RefObject<HTMLCanvasElement | null>) {
       img.onload = img.onerror = null
       observer?.disconnect()
     }
-  }, [canvasRef])
+  }, [canvasRef, near])
 
   useEffect(() => {
     const crowd = crowdRef.current

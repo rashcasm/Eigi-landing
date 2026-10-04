@@ -21,8 +21,4 @@ export const EIGI_CAPABILITIES = {
   waiting: 'Waiting for your approval',
   captions: ['A message to start.', 'Room to do the work.', 'Your business, remembered.', 'The final say is yours.'],
   draft: 'Hi there — I noticed your clinic doesn’t offer online booking. Would a free 30-minute audit be useful?',
-  bridge: {
-    title: 'And you never set it up alone.',
-    description: 'A sherpa connects your tools, writes the rules with you and checks the first results. Then they stay on call.',
-  },
 } as const
