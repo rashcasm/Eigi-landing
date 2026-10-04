@@ -1,4 +1,4 @@
-import { ComputerOverview } from '../features/computer/components/ComputerOverview.tsx'
+import { MeetYourEigi } from '../features/landing/components/MeetYourEigi.tsx'
 import { Footer } from '../components/layout/Footer.tsx'
 import { Nav } from '../components/layout/Nav.tsx'
 import {
@@ -21,10 +21,10 @@ export function HomePage() {
       <Radio />
       <main id="top">
         <BaseCamp />
+        <MeetYourEigi />
         <Stories />
         <Problem />
         <Gateway />
-        <ComputerOverview />
         <Route />
         <Founders />
       </main>

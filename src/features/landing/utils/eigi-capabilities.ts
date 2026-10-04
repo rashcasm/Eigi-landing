@@ -17,6 +17,9 @@ export const EIGI_CAPABILITIES = {
   log: ['Searched maps', 'Checked 34 websites', '20 match', 'Drafted 20 intros'],
   memories: ['Tone: warm, short, no jargon', 'Never promise a start date', 'Offer the free 30-minute audit'],
   approval: 'Send 20 intro emails from you@yourstudio.com?',
+  approvalLog: ['20 matches saved to files', '20 intro drafts prepared'],
+  waiting: 'Waiting for your approval',
+  captions: ['A message to start.', 'Room to do the work.', 'Your business, remembered.', 'The final say is yours.'],
   draft: 'Hi there — I noticed your clinic doesn’t offer online booking. Would a free 30-minute audit be useful?',
   bridge: {
     title: 'And you never set it up alone.',

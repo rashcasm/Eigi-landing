@@ -34,7 +34,7 @@ export function Nav({ links, computer = false }: NavProps) {
     }}>
       <a href={computer ? '/' : '#top'} className={styles.logo} aria-label={computer ? 'Eigi home' : 'Eigi, back to top'} onClick={close} />
       <nav className={styles.desktop} aria-label="Main navigation">
-        <a href={COMPUTER_URL} aria-current={computer ? 'page' : undefined}>Meet your Eigi</a>
+        <a href={computer ? COMPUTER_URL : '#meet-your-eigi'} aria-current={computer ? 'page' : undefined}>Meet your Eigi</a>
         {links.map(({ href, label }) => <a key={href} href={href}>{label}</a>)}
       </nav>
       <div className={styles.actions}>
@@ -44,7 +44,7 @@ export function Nav({ links, computer = false }: NavProps) {
           <summary aria-label="Navigation menu"><span /><span /></summary>
           <nav aria-label="Mobile navigation">
             {links.map(({ href, label }) => <a key={href} href={href} onClick={close}>{label}</a>)}
-            <a href={COMPUTER_URL} aria-current={computer ? 'page' : undefined} onClick={close}>Meet your Eigi <span aria-hidden="true">↗</span></a>
+            <a href={computer ? COMPUTER_URL : '#meet-your-eigi'} aria-current={computer ? 'page' : undefined} onClick={close}>Meet your Eigi <span aria-hidden="true">↗</span></a>
             <a href={DOCS_URL}>Documentation <span aria-hidden="true">↗</span></a>
             <button type="button" data-amit onClick={close}>Let’s talk <span aria-hidden="true">↗</span></button>
           </nav>
