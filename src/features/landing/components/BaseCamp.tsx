@@ -57,7 +57,7 @@ export function BaseCamp({ product = false }: { product?: boolean }) {
       <header className={styles.intro}>
         <p className="eyebrow">For small teams that need to move fast</p>
         <h1 id="hero-title">Everyone sold you AI.<br />Nobody <em>showed you how.</em></h1>
-        <p className={styles.subhead}>Eigi gives your business AI teammates that do real work, and a sherpa, a real engineer, who sets them up with you and stays until it sticks.</p>
+        <p className={styles.subhead}>Your Eigis handle jobs like lead replies and invoice follow-ups. A sherpa, a real engineer, sets them up with you and stays until it sticks.</p>
       </header>
       <div className={styles.hook}>
         <div className={styles.composer}>
@@ -73,7 +73,7 @@ export function BaseCamp({ product = false }: { product?: boolean }) {
           <article className={styles.eigiCard}>
             <div className={styles.cardHeading}><span className={styles.avatar} aria-hidden="true">e.</span><h2>Your Eigi</h2><span className={styles.exampleTag}>Example reply</span></div>
             <div className={styles.reply}>
-              <p aria-hidden="true" className={!job || reading ? styles.placeholder : undefined}>{job ? reading ? 'Reading your job…' : job.reply.slice(0, Math.ceil(job.reply.length * progress)) : 'A little less on your plate starts with one job.'}{job && !reading && !complete && <span className={styles.cursor} />}</p>
+              <p aria-hidden="true" className={!job || reading ? styles.placeholder : undefined}>{job ? reading ? 'Reading your job…' : job.reply.slice(0, Math.ceil(job.reply.length * progress)) : 'Choose a job or type your own to see an example reply.'}{job && !reading && !complete && <span className={styles.cursor} />}</p>
               <p className={styles.srOnly} aria-live="polite" aria-atomic="true">{complete ? job?.reply : ''}</p>
             </div>
             <p className={styles.cardFooter}>An example of how your Eigi replies. Tell us your real job and we'll set it up with you.</p>
@@ -81,12 +81,11 @@ export function BaseCamp({ product = false }: { product?: boolean }) {
           <article className={styles.sherpaCard}>
             <div className={styles.cardHeading}><span className={styles.sherpaMark} aria-hidden="true">↗</span><h2>Your sherpa</h2><span className={styles.humanTag}>A real engineer</span></div>
             <p className={styles.planIntro}>Here's how we'd set this up with you:</p>
-            {job ? <ol className={styles.steps}>{job.steps.map((step, index) => <li key={step} data-ready={complete || elapsed >= READING_MS + index * 1250}><span aria-hidden="true">{complete || elapsed >= READING_MS + index * 1250 ? '✓' : index + 1}</span>{step}</li>)}</ol> : <p className={styles.emptyPlan}>Your tools. Your way of working.<br />A plan we put into practice together.</p>}
+            {job ? <ol className={styles.steps}>{job.steps.map((step, index) => <li key={step} data-ready={complete || elapsed >= READING_MS + index * 1250}><span aria-hidden="true">{complete || elapsed >= READING_MS + index * 1250 ? '✓' : index + 1}</span>{step}</li>)}</ol> : <p className={styles.emptyPlan}>Choose a job to see how a sherpa would set it up with you.</p>}
             <p className={styles.cardFooter}>An example plan. We shape it around your business.</p>
           </article>
         </div>
         <div className={styles.payoff} data-visible={!!complete} inert={!complete}>
-          <p>Your Eigi does the work. Your sherpa makes it stick.</p>
           <div><a className={styles.primary} href={heroOnboardingLink(job?.task ?? '')} target="_blank" rel="noopener noreferrer">Set this up with a sherpa <span aria-hidden="true">↗</span></a><button type="button" onClick={reset}>Try another job</button></div>
         </div>
       </div>
