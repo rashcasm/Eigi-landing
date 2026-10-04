@@ -13,7 +13,7 @@
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 36px; }
 .actions button { border: 0; background: none; cursor: pointer; }
 .details { display: grid; gap: 22px; }
-.details dt { color: var(--muted); font: 500 .6875rem/1.5 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+.details dt { color: var(--muted); font: 500 .6875rem/1.5 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; }
 .details dd { margin-top: 6px; font-size: 1.125rem; letter-spacing: -.01em; }
 .details a { text-decoration: none; border-bottom: 1px solid var(--line); transition: border-color .2s; }
 .details a:hover { border-color: var(--fg); }
@@ -22,18 +22,18 @@
 .brandRow { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding-bottom: 24px; }
 .logo { display: block; width: 92px; height: 42px; background: var(--fg); mask: url('../../assets/logo.png') center / contain no-repeat; flex-shrink: 0; }
 .brandRow p { color: var(--muted); font-size: .875rem; }
-.linksRow { display: flex; justify-content: space-between; gap: 30px; align-items: center; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font: 500 .6875rem/1.4 var(--font-mono); letter-spacing: .06em; }
+.linksRow { display: flex; justify-content: space-between; gap: 30px; align-items: center; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font: 500 .75rem/1.4 var(--font-sans); }
 .linksRow nav { display: flex; flex-wrap: wrap; gap: 0 24px; }
 .linksRow a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
 .linksRow a:hover { color: var(--fg); }
 
 /* the close: the base-camp crowd walks along the bottom edge of the page, drawn white on black */
 .band { position: relative; margin-top: 88px; }
-.line { max-width: 22ch; font: 400 clamp(1.75rem, 1.2rem + 2vw, 3.25rem)/1.08 var(--font-display); letter-spacing: -.025em; font-variation-settings: "opsz" 144; }
-.line em { color: var(--muted); }
+.line { max-width: 22ch; font: 400 clamp(1.75rem, 1.2rem + 2vw, 3.25rem)/1.08 var(--font-display); letter-spacing: -.025em; }
+.line em { color: var(--muted); white-space: nowrap; }
 .crowd { position: relative; height: clamp(220px, 30vh, 320px); margin: 16px calc(-1 * var(--gutter)) 0; padding: 0 var(--gutter); }
 .crowd canvas { filter: invert(1); }
-.credit { position: absolute; right: 0; bottom: 10px; z-index: 2; color: var(--muted); font: 400 .5625rem/1.4 var(--font-mono); letter-spacing: .04em; opacity: .7; }
+.credit { position: absolute; right: 0; bottom: 10px; z-index: 2; color: var(--muted); font: 400 .75rem/1.4 var(--font-sans); opacity: .7; }
 
 @media (max-width: 900px) {
   .faq { grid-template-columns: 1fr; gap: 32px; }

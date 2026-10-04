@@ -1,16 +1,16 @@
 .section { border-top: 1px solid var(--line); }
-.heading h2 { max-width: 15ch; }
+.heading h2 { max-width: 12.8em; }
 
 .questions { list-style: none; margin-top: 64px; border-top: 1px solid var(--line); }
 .questions li {
   display: grid; grid-template-columns: 180px minmax(0, 1fr) auto; gap: 32px; align-items: baseline;
   padding: 28px 0; border-bottom: 1px solid var(--line); transition: background .25s;
 }
-.area { color: var(--muted); font: 500 .6875rem/1.6 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
-.questions p { max-width: 34ch; font: 380 clamp(1.375rem, 1rem + 1.2vw, 2.125rem)/1.2 var(--font-display); letter-spacing: -.02em; font-variation-settings: "opsz" 96; }
+.area { color: var(--muted); font: 500 .6875rem/1.6 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; }
+.questions p { max-width: 34ch; font: 400 clamp(1.375rem, 1rem + 1.2vw, 2.125rem)/1.2 var(--font-display); letter-spacing: -.02em; }
 .questions button {
   align-self: center; min-height: 40px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 99px; background: transparent;
-  color: var(--muted); font: 500 .6875rem/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap;
+  color: var(--muted); font: 500 .6875rem/1 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; white-space: nowrap;
   transition: background .2s, color .2s, border-color .2s, transform .1s ease-out;
 }
 .questions button:hover { border-color: var(--fg); color: var(--fg); }
@@ -19,9 +19,9 @@
 .questions li[data-mine='true'] .area { color: var(--signal); }
 
 .close { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px; align-items: end; margin-top: 56px; }
-.close > p:first-child { max-width: 30ch; font: 380 clamp(1.5rem, 1.1rem + 1.3vw, 2.375rem)/1.2 var(--font-display); letter-spacing: -.02em; }
+.close > p:first-child { max-width: 30ch; font: 400 clamp(1.5rem, 1.1rem + 1.3vw, 2.375rem)/1.2 var(--font-display); letter-spacing: -.02em; }
 .close em { font-style: italic; }
-.tally { justify-self: end; color: var(--muted); font: 500 .75rem/1.6 var(--font-mono); letter-spacing: .06em; text-align: right; }
+.tally { justify-self: end; color: var(--muted); font: 500 .75rem/1.6 var(--font-sans); text-align: right; }
 .tally a { color: var(--fg); text-underline-offset: 4px; }
 
 @media (max-width: 860px) {

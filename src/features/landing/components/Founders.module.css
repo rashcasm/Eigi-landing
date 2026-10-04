@@ -1,5 +1,5 @@
 .founders { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 80px; border-top: 1px solid var(--line); }
-.intro h2 { max-width: 10ch; }
+.intro h2 { max-width: 6.9em; }
 .intro :global(.lead) { max-width: 36ch; }
 .intro :global(.text-link) { margin-top: 18px; }
 .list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -7,7 +7,7 @@
 .person:nth-child(2) { transform: translateY(32px); }
 .person img { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px; filter: grayscale(1) contrast(1.05); background: var(--surface); }
 .person h3 { margin-top: 18px; padding-inline: 6px; font: 400 1.375rem/1.15 var(--font-display); letter-spacing: -.015em; }
-.role { margin-top: 6px; padding-inline: 6px; color: var(--signal); font: 500 .625rem/1.5 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+.role { margin-top: 6px; padding-inline: 6px; color: var(--signal); font: 500 .6875rem/1.5 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; }
 .bio { margin-top: 12px; padding-inline: 6px; color: var(--muted); font-size: .875rem; line-height: 1.55; }
 @media (max-width: 1000px) { .founders { gap: 40px; } }
 @media (max-width: 760px) { .founders { grid-template-columns: 1fr; } .list { gap: 14px; } .person:nth-child(2) { transform: none; } .person { padding: 8px 8px 16px; } }

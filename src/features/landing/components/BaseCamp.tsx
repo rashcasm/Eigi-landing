@@ -9,7 +9,7 @@ export function BaseCamp({ product = false }: { product?: boolean }) {
     </svg>
     <div className={styles.copy}>
       <p className="eyebrow">For founders doing ten jobs at once</p>
-      <h1 id="hero-title">Everyone sold you AI.<br /> Nobody <em>showed you&nbsp;how.</em></h1>
+      <h1 id="hero-title">Everyone sold you&nbsp;AI.<br className={styles.break} /> Nobody <em>showed you&nbsp;how.</em></h1>
       <p className={styles.subhead}>Eigi gives your business AI teammates that do real work, and a sherpa, a real engineer, who sets them up with you and stays until it sticks.</p>
       <p className={styles.proof}><span aria-hidden="true">↳</span> Amit is an Eigi too. Talking to him is the demo.</p>
       <a className={styles.discover} href={product ? '#how-computer-works' : '#sound-familiar'}>{product ? 'See how it works' : 'Sound familiar?'} <span aria-hidden="true">↓</span></a>

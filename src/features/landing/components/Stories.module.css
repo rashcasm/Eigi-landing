@@ -1,24 +1,24 @@
 .stories { border-top: 1px solid var(--line); }
 .heading { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; align-items: end; }
-.heading h2 { max-width: 13ch; }
-.heading > p { max-width: 38ch; padding-bottom: 8px; color: var(--muted); font-size: var(--fs-lead); font-weight: 350; line-height: 1.55; }
+.heading h2 { max-width: 8.6em; }
+.heading > p { max-width: 38ch; padding-bottom: 8px; color: var(--muted); font-size: var(--fs-lead); font-weight: 400; line-height: 1.55; }
 .realStories { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; margin-top: 64px; align-items: start; }
 .realStories article { display: flex; flex-direction: column; align-items: start; min-height: 100%; padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); transition: border-color .3s; }
 .realStories article:hover { border-color: var(--fg); }
 .realStories .community { transform: translateY(40px); }
-.category { display: flex; justify-content: space-between; gap: 16px; width: 100%; margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1px dashed var(--line); color: var(--muted); font: 500 .625rem/1.5 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+.category { display: flex; justify-content: space-between; gap: 16px; width: 100%; margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1px dashed var(--line); color: var(--muted); font: 500 .6875rem/1.5 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; }
 .category span:last-child { color: var(--signal); }
 .realStories h3 { font: 400 clamp(1.625rem, 2.4vw, 2.125rem)/1.12 var(--font-display); letter-spacing: -.02em; }
 .realStories h3 + p { margin-top: 20px; }
 .realStories article > p:not(.category) { margin-bottom: 14px; color: var(--muted); font-size: .9375rem; line-height: 1.65; }
 .workList { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 22px; }
-.workList span { padding: 5px 9px; border: 1px solid var(--line); border-radius: 6px; font: 500 .625rem/1.4 var(--font-mono); letter-spacing: .06em; }
+.workList span { padding: 5px 9px; border: 1px solid var(--line); border-radius: 6px; font: 500 .75rem/1.4 var(--font-sans); }
 .realStories a { display: inline-flex; gap: 10px; align-items: center; min-height: 44px; margin-top: auto; font-size: .875rem; font-weight: 500; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 5px; }
 .realStories a:hover { text-decoration-color: var(--fg); }
-.realStories small { display: block; margin-top: 10px; color: var(--muted); font: 400 .625rem/1.6 var(--font-mono); letter-spacing: .04em; }
+.realStories small { display: block; margin-top: 10px; color: var(--muted); font: 400 .75rem/1.6 var(--font-sans); }
 .message { margin: 8px 0 24px; padding-left: 16px; border-left: 2px solid var(--signal); }
-.message > span { color: var(--muted); font: 500 .625rem/1.5 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
-.message > p { margin-top: 6px; font: italic 380 1.125rem/1.45 var(--font-display); }
+.message > span { color: var(--muted); font: 500 .6875rem/1.5 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; }
+.message > p { margin-top: 6px; font: italic 400 1.125rem/1.45 var(--font-display); }
 @media (max-width: 860px) {
   .heading { grid-template-columns: 1fr; gap: 20px; }
   .realStories { grid-template-columns: 1fr; margin-top: 40px; }

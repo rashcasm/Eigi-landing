@@ -15,13 +15,13 @@
 .orb::before { background: radial-gradient(closest-side, rgb(var(--halo) / .26), rgb(var(--halo) / 0)); transform: scale(calc(.8 + var(--level, 0) * .6)); transition: transform 90ms linear; }
 .orb::after { border: 1.5px solid rgb(var(--halo) / 0); transform: scale(.92); }
 .orb img { width: 100%; height: auto; transform: translateY(calc(var(--level, 0) * -3px)); transition: transform 90ms linear; }
-.name { align-self: end; font: 420 1.625rem/1.1 var(--font-display); letter-spacing: -.02em; }
+.name { align-self: end; font: 400 1.625rem/1.1 var(--font-display); letter-spacing: -.02em; }
 .role { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 4px; color: var(--muted); font-size: .8125rem; }
-.role span { padding: 2px 7px; border: 1px solid var(--line); border-radius: 6px; color: var(--fg); font: 500 .625rem/1.5 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+.role span { padding: 2px 7px; border: 1px solid var(--line); border-radius: 6px; color: var(--fg); font: 500 .6875rem/1.5 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; }
 .trait { align-self: start; margin-top: 4px; color: var(--muted); font-size: .8125rem; font-style: italic; }
 
 .panel { min-width: 0; display: flex; flex-direction: column; min-height: 268px; }
-.status { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; color: var(--muted); font: 500 .6875rem/1.4 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+.status { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; color: var(--muted); font: 500 .6875rem/1.4 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; }
 .status span { width: 7px; height: 7px; border-radius: 50%; background: #8e8e93; }
 .card[data-status='idle'] .status span, .card[data-status='live'] .status span, .card[data-status='chat'] .status span { background: #2f9e58; }
 .card[data-status='connecting'] .status span, .card[data-status='requesting-mic'] .status span,
@@ -30,7 +30,7 @@
 .body { margin-top: 8px; color: var(--muted); font-size: .9375rem; line-height: 1.5; max-width: 44ch; }
 
 .topics { margin-top: 18px; }
-.topics > p { margin-bottom: 10px; color: var(--muted); font: 500 .6875rem/1.4 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+.topics > p { margin-bottom: 10px; color: var(--muted); font: 500 .6875rem/1.4 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; }
 .topics > div { display: flex; flex-wrap: wrap; gap: 8px; }
 .topics button { min-height: 38px; padding: 7px 14px; border: 1px solid var(--line); border-radius: 99px; background: transparent; color: var(--fg); font-size: .8125rem; transition: background .15s, border-color .15s, color .15s, transform .1s ease-out; }
 .topics button:hover { border-color: var(--fg); }
@@ -51,7 +51,7 @@
 .transcript { margin-top: 14px; height: 148px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding: 4px 2px; font-size: .9375rem; line-height: 1.5; overscroll-behavior: contain;
   mask-image: linear-gradient(to bottom, transparent, #000 18px); }
 .transcript p { overflow-wrap: anywhere; }
-.transcript b { display: block; color: var(--muted); font: 500 .625rem/1.6 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+.transcript b { display: block; color: var(--muted); font: 500 .6875rem/1.6 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; }
 .transcript p[data-role='user'] { color: var(--muted); }
 .hint { margin-top: auto; margin-bottom: auto; color: var(--muted); }
 .error { color: #b3261e; font-size: .8125rem; }

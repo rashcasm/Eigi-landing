@@ -27,7 +27,7 @@ npm run build
 
 The visual system comes from Pawan's “Ascent” work, reconciled with the onboarding hero:
 
-- Fraunces for headlines (one italic phrase per headline), Inter for reading, JetBrains Mono for labels. Tokens live in `src/styles/global.css`.
+- Two families from Fontshare: Sentient (variable serif) for headlines, with one unbreakable italic phrase per headline; Satoshi (variable sans) for reading, UI and tracked-caps labels. Headline measures are set in `em` so lines break on phrases. Tokens live in `src/styles/global.css`.
 - Warm paper white with ink, and one terracotta accent taken from the red panda. A `.dark` class repaints the same tokens for the Eigi equation and the closing footer.
 - Hairline borders, topographic contours in the hero, a dashed rope between the four camps of an engagement.
 - The Open Peeps crowd closes the page in the footer: everyone still carrying everything themselves. The sprite loads only when the footer is near.

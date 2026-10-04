@@ -3,7 +3,7 @@
 .heading { text-align: center; }
 .heading :global(.eyebrow) { justify-content: center; }
 .heading h2 { max-width: none; }
-.heading > p:last-child { max-width: 46ch; margin: 24px auto 0; color: var(--muted); font-size: var(--fs-lead); font-weight: 350; line-height: 1.55; }
+.heading > p:last-child { max-width: 46ch; margin: 24px auto 0; color: var(--muted); font-size: var(--fs-lead); font-weight: 400; line-height: 1.55; }
 
 .equation { display: grid; grid-template-columns: 1fr 56px 240px; align-items: center; gap: 18px; margin-top: 72px; padding-block: 10px 32px; }
 .ingredients { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; }
@@ -17,7 +17,7 @@
 .computerLogo { width: 56%; height: auto; object-fit: contain; border-radius: 10px; }
 .ingredient h3, .destination h3 { font-size: 1rem; font-weight: 600; letter-spacing: -.01em; line-height: 1.35; }
 .ingredient h3 { min-height: 2.7em; display: flex; align-items: center; justify-content: center; max-width: 20ch; margin: auto; }
-.ingredient p, .destination p { margin-top: 6px; color: var(--muted); font: 500 .6875rem/1.6 var(--font-mono); letter-spacing: .04em; }
+.ingredient p, .destination p { margin-top: 6px; color: var(--muted); font: 500 .75rem/1.6 var(--font-sans); }
 .plus, .equals { color: var(--muted); font: 300 1.75rem/1 var(--font-display); }
 .plus { position: absolute; top: 88px; left: -26px; }
 .equals { text-align: center; padding-bottom: 30px; }
@@ -34,7 +34,7 @@
 
 .foot { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); }
 .foot > p { color: var(--muted); font-size: .875rem; }
-.replay { display: flex; gap: 10px; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 99px; background: transparent; color: var(--fg); font: 500 .6875rem/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.replay { display: flex; gap: 10px; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 99px; background: transparent; color: var(--fg); font: 500 .6875rem/1 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; white-space: nowrap; }
 .replay:hover { border-color: var(--fg); }
 .replay > span { font-size: 1rem; line-height: 1; }
 

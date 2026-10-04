@@ -34,7 +34,7 @@ export function FirstJobs() {
     <div className={styles.heading}>
       <div>
         <p className="eyebrow">Picture it in your week</p>
-        <h2 id="first-jobs-title">Before you hire for it, <em>hand it to an Eigi.</em></h2>
+        <h2 id="first-jobs-title">Before you hire for&nbsp;it, <em>hand it to an Eigi.</em></h2>
       </div>
       <p className="lead">A first ops or support hire usually starts as a pile of repeat work. Start with the pile.</p>
     </div>

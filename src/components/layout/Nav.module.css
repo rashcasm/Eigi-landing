@@ -12,7 +12,7 @@
 .desktop { display: flex; align-items: center; gap: 28px; }
 .desktop a, .talk {
   display: inline-flex; align-items: center; gap: 6px; min-height: 44px; border: 0; background: none; text-decoration: none;
-  color: var(--muted); font: 500 .6875rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; white-space: nowrap;
+  color: var(--muted); font: 500 .6875rem/1 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; white-space: nowrap;
 }
 .desktop a:hover, .talk:hover { color: var(--fg); }
 .actions { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
@@ -29,7 +29,7 @@
 .mobile[open] summary span:first-child { transform: translateY(3.75px) rotate(45deg); }
 .mobile[open] summary span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
 .mobile nav { position: absolute; top: 71px; inset-inline: 0; padding: 12px var(--gutter) 24px; background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: 0 20px 28px rgb(0 0 0 / 4%); }
-.mobile nav a { display: flex; align-items: center; min-height: 52px; justify-content: space-between; text-decoration: none; border-bottom: 1px solid var(--line); font: 500 .75rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+.mobile nav a { display: flex; align-items: center; min-height: 52px; justify-content: space-between; text-decoration: none; border-bottom: 1px solid var(--line); font: 500 .75rem/1 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; }
 @media (max-width: 1020px) { .desktop { gap: 20px; } .talk { display: none; } }
 @media (max-width: 860px) { .desktop { display: none; } .mobile { display: block; } .actions { gap: 8px; } }
 @media (max-width: 380px) { .nav { gap: 12px; } .logo { width: 76px; } .start { padding-inline: 16px; } }

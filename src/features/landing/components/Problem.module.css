@@ -1,11 +1,11 @@
 .problem { background: var(--surface); }
 .top { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 72px; align-items: start; }
-.top h2 { max-width: 13ch; }
+.top h2 { max-width: 8.6em; }
 
-.label { margin-bottom: 18px; color: var(--muted); font: 500 .6875rem/1.4 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+.label { margin-bottom: 18px; color: var(--muted); font: 500 .6875rem/1.4 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; }
 .tried ul { list-style: none; display: grid; gap: 20px; }
-.tried li { padding-left: 18px; border-left: 1px solid var(--line); color: var(--muted); font-size: .9375rem; font-weight: 350; line-height: 1.55; }
-.tried li span { display: block; margin-bottom: 4px; color: var(--fg); font: 500 .6875rem/1.5 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+.tried li { padding-left: 18px; border-left: 1px solid var(--line); color: var(--muted); font-size: .9375rem; font-weight: 400; line-height: 1.55; }
+.tried li span { display: block; margin-bottom: 4px; color: var(--fg); font: 500 .6875rem/1.5 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; }
 .tried .us { border-left: 2px solid var(--signal); color: var(--fg); font-weight: 400; }
 .tried .us span { color: var(--signal); }
 
@@ -14,9 +14,9 @@
   border: 1px solid var(--line); background: var(--line);
 }
 .evidence > * { background: var(--surface); padding: 30px 28px; }
-.figure { font: 380 clamp(3rem, 2rem + 3vw, 4.5rem)/1 var(--font-display); letter-spacing: -.04em; font-variation-settings: "opsz" 144; }
+.figure { font: 400 clamp(3rem, 2rem + 3vw, 4.5rem)/1 var(--font-display); letter-spacing: -.04em; }
 .evidence figcaption p { margin-top: 14px; font-size: .9375rem; line-height: 1.5; }
-.evidence figcaption a { display: inline-block; margin-top: 14px; color: var(--muted); font: 500 .625rem/1.6 var(--font-mono); letter-spacing: .06em; text-underline-offset: 3px; }
+.evidence figcaption a { display: inline-block; margin-top: 14px; color: var(--muted); font: 500 .75rem/1.6 var(--font-sans); text-underline-offset: 3px; }
 .evidence figcaption a:hover { color: var(--fg); }
 .evidence > .closing { display: flex; align-items: flex-end; font: 400 clamp(1.25rem, 1rem + .7vw, 1.625rem)/1.3 var(--font-display); letter-spacing: -.015em; background: var(--fg); color: var(--bg); }
 

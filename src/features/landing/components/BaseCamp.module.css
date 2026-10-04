@@ -1,17 +1,19 @@
 /* Base camp: editorial serif promise on the left, Amit's card where Pawan's guide stood, contours behind. */
 .hero {
-  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: center;
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 56px; align-items: center;
   min-height: min(100svh, 980px); padding-top: 128px; padding-bottom: 72px; overflow: hidden;
 }
 .contours { position: absolute; inset: 0; width: 100%; height: 100%; stroke: var(--fg); stroke-width: 1; opacity: .09; pointer-events: none; }
 .copy, .onboarding { position: relative; }
-.copy h1 { font-size: clamp(2.625rem, 1.2rem + 4.4vw, 5rem); }
-.subhead { max-width: 46ch; margin-top: 28px; color: var(--muted); font-size: var(--fs-lead); font-weight: 350; line-height: 1.55; }
-.proof { display: flex; gap: 10px; margin-top: 22px; color: var(--fg); font: 500 .8125rem/1.5 var(--font-mono); letter-spacing: .02em; }
+.copy { container-type: inline-size; }
+/* sized to the column so "Everyone sold you AI." always holds one line on wide screens */
+.copy h1 { font-size: clamp(2.5rem, 10cqi, 4.25rem); }
+.subhead { max-width: 42ch; margin-top: 28px; color: var(--muted); font-size: var(--fs-lead); font-weight: 400; line-height: 1.5; }
+.proof { display: flex; gap: 10px; margin-top: 22px; color: var(--fg); font: 500 .9375rem/1.5 var(--font-sans); }
 .proof span { color: var(--signal); }
 .discover {
   display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 36px;
-  color: var(--muted); font: 500 .6875rem/1 var(--font-mono); letter-spacing: var(--track-label); text-transform: uppercase; text-decoration: none;
+  color: var(--muted); font: 500 .6875rem/1 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase; text-decoration: none;
 }
 .discover:hover { color: var(--fg); }
 .onboarding { scroll-margin-top: 96px; }
@@ -23,5 +25,7 @@
 @media (max-width: 600px) {
   .hero { padding-top: 104px; padding-bottom: 56px; gap: 32px; }
   .subhead { margin-top: 20px; }
-  .proof { margin-top: 16px; font-size: .75rem; }
+  .proof { margin-top: 16px; font-size: .875rem; }
+  .copy h1 { font-size: clamp(2.375rem, 11.4cqi, 2.875rem); }
+  .break { display: none; }
 }

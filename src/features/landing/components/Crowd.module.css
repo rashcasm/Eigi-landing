@@ -8,7 +8,7 @@
 .crowd:focus-visible { outline-offset: -3px; }
 .hint {
   position: relative; z-index: 2;
-  font: 500 .6875rem/1.5 var(--font-mono); letter-spacing: .14em; text-transform: uppercase;
+  font: 500 .6875rem/1.5 var(--font-sans); letter-spacing: var(--track-label); text-transform: uppercase;
   color: var(--muted); transition: color .3s;
   text-shadow: 0 0 3px var(--bg), 0 0 6px var(--bg), 0 0 10px var(--bg);
 }
