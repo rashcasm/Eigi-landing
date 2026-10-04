@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { ChatError, connectAgent, sendAgentMessage } from './api.ts'
+import { ChatError, DEFAULT_TERMS, connectAgent, getAgent, sendAgentMessage } from './api.ts'
 
 const config = { agentId: 'public-agent', baseUrl: 'https://example.test' }
 const signal = () => new AbortController().signal
@@ -24,14 +24,26 @@ describe('Eigi public chat transport', () => {
     expect(fetch.mock.calls[1][1].headers).toEqual({ 'X-Prompt-Token': connection.token })
   })
 
-  it.each([
-    { widget_interface: { enable_chat: false } },
-    { widget_tnc_config: { tnc_enabled: true } },
-  ])('does not bypass the agent’s chat or consent settings', async widget_config => {
-    const fetch = vi.fn().mockResolvedValue(Response.json({ prompt_access_token: connection.token, widget_config }))
-    vi.stubGlobal('fetch', fetch)
-    await expect(connectAgent(config, signal())).rejects.toBeInstanceOf(ChatError)
-    expect(fetch).toHaveBeenCalledTimes(1)
+  it('respects a disabled chat and a missing public token', async () => {
+    for (const settings of [
+      { prompt_access_token: connection.token, widget_config: { widget_interface: { enable_chat: false } } },
+      { widget_config: {} },
+    ]) {
+      const fetch = vi.fn().mockResolvedValue(Response.json(settings))
+      vi.stubGlobal('fetch', fetch)
+      await expect(connectAgent(config, signal())).rejects.toBeInstanceOf(ChatError)
+      expect(fetch).toHaveBeenCalledTimes(1)
+    }
+  })
+
+  it('returns the agent’s terms notice so the page can show it beside Talk and Chat', async () => {
+    const reply = (tnc: object) => vi.fn().mockResolvedValue(Response.json({ prompt_access_token: connection.token, widget_config: { widget_tnc_config: tnc } }))
+    vi.stubGlobal('fetch', reply({ tnc_enabled: true, tnc_content: 'By using this AI agent, you agree to the terms.' }))
+    expect(await getAgent(config, signal())).toEqual({ token: connection.token, terms: 'By using this AI agent, you agree to the terms.', chat: true })
+    vi.stubGlobal('fetch', reply({ tnc_enabled: true, tnc_content: ' ' }))
+    expect((await getAgent(config, signal())).terms).toBe(DEFAULT_TERMS)
+    vi.stubGlobal('fetch', reply({ tnc_enabled: false, tnc_content: 'Hidden' }))
+    expect((await getAgent(config, signal())).terms).toBe('')
   })
 
   it('streams arbitrary agent text across split UTF-8 chunks and retains its session', async () => {

@@ -5,11 +5,10 @@ import type { AgentConnection } from './api.ts'
 export type ChatMessage = { id: number; role: 'user' | 'assistant'; text: string }
 
 const ERROR_TEXT = {
-  unconfigured: 'Web chat is being connected. You can talk to Amit on WhatsApp now.',
-  unavailable: 'Eigi couldn’t connect. Try again, or continue with Amit on WhatsApp.',
-  busy: 'Eigi is busy right now. Please try again in a moment.',
-  empty: 'Eigi didn’t return a reply. Please try again.',
-  terms: 'This agent requires its own welcome flow. Continue with Amit on WhatsApp.',
+  unconfigured: 'Amit isn’t available here right now. Message him on WhatsApp instead.',
+  unavailable: 'Amit couldn’t connect. Try again, or message him on WhatsApp.',
+  busy: 'Amit is busy right now. Please try again in a moment.',
+  empty: 'Amit didn’t reply. Please try again.',
 }
 
 export function useEigiChat() {
@@ -47,7 +46,7 @@ export function useEigiChat() {
       if (!controller.signal.aborted) setMessages(current => [...current, { id: sequence.current++, role: 'assistant', text: reply }])
     } catch (cause) {
       if (!controller.signal.aborted || controller.signal.reason === 'timeout') {
-        setError(controller.signal.reason === 'timeout' ? 'Eigi took too long to reply. Please try again.' : ERROR_TEXT[cause instanceof ChatError ? cause.kind : 'unavailable'])
+        setError(controller.signal.reason === 'timeout' ? 'Amit took too long to reply. Please try again.' : ERROR_TEXT[cause instanceof ChatError ? cause.kind : 'unavailable'])
         connection.current = null
       }
     } finally {
