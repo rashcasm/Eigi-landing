@@ -10,6 +10,8 @@ export const AMIT_TEL = `tel:+${AMIT_NUMBER}`
 
 /** What a visitor at each stage most likely wants, in their own words. */
 const INTENT: Record<string, string> = {
+  'Meet your Eigi': 'I would like to meet my Eigi and hand over a first job.',
+  'Business stories': 'I would like help with the day-to-day work in my business.',
   'Your team': 'I would like help finding the first AI workflow for my business.',
   'Why Eigi': 'I would like to learn how your engineers can help my team adopt AI.',
   'What we do': 'I would like to explore an AI workflow for my business.',
@@ -20,7 +22,7 @@ const INTENT: Record<string, string> = {
   'The problem': 'I can see what AI can do, but not where it fits in my business.',
   'Where we stand': 'I have tried AI tools on my own. I would like a sherpa instead.',
   'Stories': 'I read the Eigi stories and would like one like that for my business.',
-  'The gateway': 'I would like to connect my team, your engineers, and Eigi computer.',
+  'The gateway': 'I would like to connect my team, your engineers, and your Eigis.',
   'Camp I': 'I would like you to map where AI fits in my business.',
   'Camp II': 'I would like to wire agents into the tools I already use.',
   'Camp III': 'I would like to automate my workflows with agents.',

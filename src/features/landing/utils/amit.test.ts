@@ -11,7 +11,7 @@ describe('amit', () => {
     const link = new URL(whatsappLink(message))
     expect(link.searchParams.get('text')).toBe(message)
     expect(messageFor('The gateway', '')).not.toContain('()')
-    expect(messageFor('The gateway', '')).toContain('Eigi computer')
+    expect(messageFor('The gateway', '')).toContain('your Eigis')
   })
   it('writes the first message from where the visitor is', () => {
     const msg = messageFor('Camp II', '3,400 m')

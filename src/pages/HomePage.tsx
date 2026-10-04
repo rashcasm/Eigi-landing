@@ -7,8 +7,7 @@ import {
 
 /** The menu's links, in page order. */
 const SECTIONS = [
-  { href: '#problem', label: 'Why Eigi' },
-  { href: '#stories', label: 'What we do' },
+  { href: '#stories', label: 'Business stories' },
   { href: '#route', label: 'How it works' },
   { href: '#founders', label: 'Our people' },
 ] as const
@@ -22,9 +21,9 @@ export function HomePage() {
       <Radio />
       <main id="top">
         <BaseCamp />
+        <Stories />
         <Problem />
         <Gateway />
-        <Stories />
         <ComputerOverview />
         <Route />
         <Founders />

@@ -5,17 +5,17 @@ const YEAR = new Date().getFullYear()
 
 const QUESTIONS = [
   { question: 'Do I need to be technical?', answer: 'No. You bring your understanding of the business. We bring the engineering, help you choose what to automate, and show your team how to use what we build.' },
-  { question: 'Is Eigi another AI tool to manage?', answer: 'Eigi brings engineers into your business to put AI to work and help your team adopt it. Eigi Computer is our product: an AI executive team you message wherever you already work. Use it on its own, or have our engineers integrate it with your business.' },
+  { question: 'Is Eigi another AI tool to manage?', answer: 'An Eigi is an AI teammate you give work to. Your Eigis remember your business, work in the browser, and bring decisions back to you. Eigi engineers can help connect them to your tools and show your staff how to work with them.' },
   { question: 'Can we start with just one workflow?', answer: 'Yes. Starting with one useful workflow gives us a way to learn what works for your team before taking on more. We’ll agree on the scope and what success looks like together.' },
   { question: 'What happens after the first conversation?', answer: 'Amit, our AI onboarding guide, gathers some context about your business and connects you with the team. We’ll discuss the opportunity, scope, and pricing before any work begins. You can also email us directly.' },
 ]
 
 const COMPUTER_QUESTIONS = [
-  { question: 'Can I use Eigi Computer on its own?', answer: 'Yes. Hire your AI team in Studio and give them their first job. If you want help wiring them into your business, Eigi’s engineers can work alongside you.' },
+  { question: 'Can I hire an Eigi on its own?', answer: 'Yes. Hire your AI team in Studio and give them their first job. If you want help wiring them into your business, Eigi’s engineers can work alongside you.' },
   { question: 'Can my co-founders use it too?', answer: 'Yes. Everyone on the founding team can brief the same AI team and works from one shared memory of the business, within the access you set.' },
   { question: 'Where do we talk to them?', answer: 'Wherever you already are. Message them in Slack or Teams, forward them emails, or call them from Claude or ChatGPT. They do the work in your browser.' },
   { question: 'What does “call them from Claude or ChatGPT” mean?', answer: 'You can bring your AI team into a Claude or ChatGPT conversation. They use what they know about your business and do the work without you switching apps. It isn’t a phone or voice call.' },
-  { question: 'How is this different from using ChatGPT?', answer: 'A chat assistant starts from zero and hands you text to paste somewhere. Your AI team remembers your business, does the work in the browser, asks before anything goes out in your name, and keeps a record of what it did.' },
+  { question: 'How is this different from using ChatGPT?', answer: 'Your Eigis remember your business and do work in the browser. You choose which actions need approval, and you can check the record of what they did. Eigi engineers can help connect them to your business processes.' },
 ]
 
 export function Footer({ computer = false }: { computer?: boolean }) {
@@ -35,7 +35,7 @@ export function Footer({ computer = false }: { computer?: boolean }) {
       </div>
       <div className={styles.bottom}>
         <div className={styles.brandRow}><a className={styles.logo} href="#top" aria-label="Eigi, back to top" /><p>Good people. Powerful AI. Your business, moving forward.</p></div>
-        <div className={styles.linksRow}><span>© {YEAR} Eigi AI</span><nav aria-label="Footer"><a href={COMPUTER_URL}>Eigi Computer</a><a href={DOCS_URL}>Documentation</a><a href={STUDIO_URL}>Studio</a><a href="https://eigi.ai/privacy-policy">Privacy</a><a href="https://eigi.ai/terms-of-service">Terms</a><a href="https://eigi.ai/data-deletion">Data deletion</a><a href="tel:+919823172692">Call the team</a></nav></div>
+        <div className={styles.linksRow}><span>© {YEAR} Eigi AI</span><nav aria-label="Footer"><a href={COMPUTER_URL}>Meet your Eigi</a><a href={DOCS_URL}>Documentation</a><a href={STUDIO_URL}>Studio</a><a href="https://eigi.ai/privacy-policy">Privacy</a><a href="https://eigi.ai/terms-of-service">Terms</a><a href="https://eigi.ai/data-deletion">Data deletion</a><a href="tel:+919823172692">Call the team</a></nav></div>
       </div>
     </footer>
   )

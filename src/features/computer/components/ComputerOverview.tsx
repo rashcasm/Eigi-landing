@@ -15,13 +15,12 @@ export function ComputerOverview({ standalone = false }: { standalone?: boolean 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end end'] })
   const rotateX = useTransform(scrollYProgress, [0, .85], [7, 0])
   const y = useTransform(scrollYProgress, [0, .85], [36, 0])
-  const Heading = standalone ? 'h1' : 'h2'
 
   return (
-    <section ref={ref} id="computer" className={`${styles.overview} ${standalone ? styles.hero : ''}`} aria-labelledby="computer-title">
+    <section ref={ref} id="computer" className={styles.overview} aria-labelledby="computer-title">
       <div className={styles.heading}>
-        <p className={`eyebrow ${styles.productIdentity}`}><img src="/favicon.jpg" alt="" width="32" height="32" />Meet Eigi Computer</p>
-        <Heading id="computer-title">Small team.<br />Full C-suite.</Heading>
+        <p className={`eyebrow ${styles.productIdentity}`}><img src="/favicon.jpg" alt="" width="32" height="32" />Hire your Eigis</p>
+        <h2 id="computer-title">Small team.<br />Full C-suite.</h2>
         <p className="lead">Hire AI executives and keep your founding team as small as it is today.</p>
         <ul className={styles.roster} aria-label="Your AI team">{ROLES.map(role => <li key={role}><span className={styles.rosterAvatar}><img src="/favicon.jpg" alt="" width="32" height="32" /></span><span><small>Chief of</small><strong>{role}</strong></span></li>)}</ul>
         <div className={styles.actions}>

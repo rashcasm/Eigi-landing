@@ -11,7 +11,7 @@ it('gives the standalone product valid anchors and a route back to Eigi', () => 
   expect(html.match(/<h1\b/g)).toHaveLength(1)
   expect(html).toContain('href="/"')
   expect(html).toContain('aria-current="page"')
-  expect(html).toContain('Can I use Eigi Computer on its own?')
+  expect(html).toContain('Can I hire an Eigi on its own?')
   for (const app of ['Slack', 'Microsoft Teams', 'Claude', 'ChatGPT', 'Email', 'Your browser']) expect(html).toContain(app)
 })
 

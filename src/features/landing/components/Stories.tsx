@@ -1,78 +1,53 @@
-import { motion, useReducedMotion } from 'motion/react'
-import { useId, useState } from 'react'
-import { WorkIcon } from './WorkIcon.tsx'
+import { heroOnboardingLink } from '../utils/hero-demo.ts'
+import { whatsappLink } from '../utils/amit.ts'
 import styles from './Stories.module.css'
 
-const WORKFLOWS = [
-  {
-    name: 'Customer care', icon: 'support', title: 'Be there. Even when you’re not.',
-    description: 'Give customers a useful first response, without building an entire support department.',
-    request: 'Can I move my appointment to Friday?',
-    source: 'A customer gets in touch',
-    steps: ['Understand the request', 'Check your calendar and policies', 'Confirm the change or ask your team'],
-    result: 'A customer helped. Your focus intact.',
-    human: 'Your Eigi engineer connects your channels and knowledge, sets the boundaries, and tests the handoff to your team.',
-    tools: 'Your inbox', destination: 'Your calendar',
-  },
-  {
-    name: 'Sales & growth', icon: 'sales', title: 'Keep the conversation moving.',
-    description: 'Turn incoming interest into a clear next step, while you focus on the conversations that matter.',
-    request: 'We’d love to learn more. Is this a fit for us?',
-    source: 'A new prospect reaches out',
-    steps: ['Gather the company’s context', 'Draft a relevant follow-up', 'Get your approval and update the CRM'],
-    result: 'Less follow-up work. More time to connect.',
-    human: 'Your Eigi engineer maps your sales process, connects your CRM, and builds in your voice and approval rules.',
-    tools: 'Your website', destination: 'Your CRM',
-  },
-  {
-    name: 'Operations', icon: 'operations', title: 'The little things. Taken care of.',
-    description: 'Bring the work scattered across your inbox, documents, and spreadsheets into one reliable flow.',
-    request: 'Here’s the invoice for this month’s project.',
-    source: 'An invoice lands in your inbox',
-    steps: ['Read and organize the invoice', 'Match it to the project', 'Prepare the record for your review'],
-    result: 'An organized business. A clearer head.',
-    human: 'Your Eigi engineer connects the tools you use, handles the exceptions, and keeps financial approvals with you.',
-    tools: 'Your email', destination: 'Your records',
-  },
+const JOB_IDEAS = [
+  { business: 'Agency', task: 'Follow up after a client call', detail: 'Turn the call notes into a follow-up and a list of next steps.' },
+  { business: 'Online shop', task: 'Find a missing order', detail: 'Check the order history and prepare a useful customer reply.' },
+  { business: 'Consultancy', task: 'Get the weekly update ready', detail: 'Pull project notes into a client update you can review.' },
+  { business: 'Warehouse', task: 'Check a stock discrepancy', detail: 'Compare stock records and flag the quantities that differ.' },
+  { business: 'Distributor', task: 'Chase a supplier update', detail: 'Read the purchase order and draft a request for the delivery date.' },
+  { business: 'Learning business', task: 'Answer repeat questions', detail: 'Use your course material to draft answers for learners.' },
+  { business: 'Community', task: 'Catch up on Discord', detail: 'Gather unanswered questions and flag the ones that need you.' },
+  { business: 'Coaching business', task: 'Prepare a mock interview', detail: 'Build a practice brief around the role and the learner’s experience.' },
+  { business: 'Sales team', task: 'Keep the CRM current', detail: 'Turn meeting notes into deal updates, ready for your approval.' },
+  { business: 'Studio', task: 'Check a supplier invoice', detail: 'Compare the invoice with the purchase order before you pay.' },
+  { business: 'Service business', task: 'Turn a brief into a proposal', detail: 'Use your scope and pricing notes to prepare a first draft.' },
+  { business: 'Founding team', task: 'Prepare for the morning', detail: 'Review the inbox and calendar, then list what needs a decision.' },
 ] as const
 
-/** Selectable examples, deliberately labeled as illustrations rather than live product activity. */
 export function Stories() {
-  const reduced = useReducedMotion()
-  const [selected, setSelected] = useState(0)
-  const panelId = useId()
-  const workflow = WORKFLOWS[selected]
-
   return (
-    <section id="stories" className={styles.stories} data-stage="What we do">
+    <section id="stories" className={styles.stories} data-stage="Business stories" aria-labelledby="stories-title">
       <div className={styles.heading}>
-        <div><p className="eyebrow">Less busywork. More business.</p><h2>Make room for<br />your next big thing.</h2></div>
-        <p className="lead">Start with the work that slows you down.<br />We’ll help you find a better way to do it.</p>
+        <div><p className="eyebrow">Eigi at work</p><h2 id="stories-title">A business to run.<br />Someone to help.</h2></div>
+        <p>From a founder’s customer support<br />to everyday paperwork in Khundia.</p>
       </div>
-      <div className={styles.choices} role="group" aria-label="Explore example workflows">
-        {WORKFLOWS.map(({ name, icon }, index) => (
-          <button key={name} type="button" aria-pressed={index === selected} aria-controls={panelId} onClick={() => setSelected(index)}><WorkIcon name={icon} />{name}</button>
-        ))}
+      <div className={styles.realStories}>
+        <article className={styles.business}>
+          <p className={styles.category}>Business story / Financial learning</p>
+          <h3>One founder.<br />A lot happening behind the app.</h3>
+          <p>For a financial learning business, we’re connecting the work its founder used to manage across separate systems: customer support, Discord bots, and day-to-day operations.</p>
+          <p>We’re also building voice and video agents for mock interviews, alongside automation for supply-chain and warehouse processes.</p>
+          <div className={styles.workList}><span>Customer support</span><span>Discord bots</span><span>Mock interviews</span><span>Business operations</span></div>
+          <a href={heroOnboardingLink('I run a business and want help connecting customer support and day-to-day operations.')} target="_blank" rel="noopener noreferrer">Talk about my business <span aria-hidden="true">↗</span></a>
+          <small>Ongoing client work with Eigi engineers. Client name withheld.</small>
+        </article>
+        <article className={styles.community}>
+          <p className={styles.category}>Community story / Khundia</p>
+          <h3>Meet Amit.<br />Already helping in Khundia.</h3>
+          <p>People in Khundia turn to Amit on WhatsApp for help with everyday work, from filing applications to finding information about loans.</p>
+          <p>Amit is also the first Eigi you’ll meet here. Tell him about your business and the job you’d like help with.</p>
+          <div className={styles.message}><span>A conversation can start with</span><p>“I have an application to fill in. Can you help me work through it?”</p></div>
+          <a href={whatsappLink('Hi Amit, I’d like to learn how Eigi can help with my everyday work.\n\nref: khundia-story')} target="_blank" rel="noopener noreferrer">Meet Amit on WhatsApp <span aria-hidden="true">↗</span></a>
+          <small>Community work in Khundia. Message shown is illustrative.</small>
+        </article>
       </div>
-      <motion.div initial={reduced ? false : { opacity: .6, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .35 }} id={panelId} className={styles.panel} role="region" aria-label={`${workflow.name} workflow example`} aria-live="polite" aria-atomic="true">
-        <div className={styles.explanation}>
-          <span className={styles.category}><WorkIcon name={workflow.icon} />{workflow.name}</span>
-          <h3>{workflow.title}</h3>
-          <p>{workflow.description}</p>
-          <div className={styles.human}><WorkIcon name="people" /><div><strong>Built with you, by us.</strong><p>{workflow.human}</p></div></div>
-        </div>
-        <div key={selected} className={styles.example}>
-          <p className={styles.caption}>An example of what we can build together</p>
-          <div className={styles.request}><span className={styles.avatar}>C</span><div><span>{workflow.source}</span><p>“{workflow.request}”</p></div></div>
-          <motion.div className={styles.workflow} initial={reduced ? false : { opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .45, delay: reduced ? 0 : .15 }}>
-            <div className={styles.workflowTitle}><span className={styles.eigiMark} /><span>A little intelligence goes a long way.</span></div>
-            <ol>{workflow.steps.map((step, index) => <motion.li key={step} initial={reduced ? false : { opacity: 0, x: 8 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: .35, delay: reduced ? 0 : .45 + index * .3 }}><WorkIcon name="check" />{step}</motion.li>)}</ol>
-          </motion.div>
-          <motion.div initial={reduced ? false : { opacity: 0, scale: .96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: .45, delay: reduced ? 0 : 1.45 }} className={styles.result}><WorkIcon name="check" /><span>{workflow.result}</span></motion.div>
-          <div className={styles.tools}><span>{workflow.tools}</span><span aria-hidden="true">↔</span><span>Eigi</span><span aria-hidden="true">↔</span><span>{workflow.destination}</span></div>
-        </div>
-      </motion.div>
-      <p className={styles.beyond}>Already exploring Claude, GPT, or AI agents? <span>We help make the right tools work together.</span></p>
+      <details className={styles.ideas}>
+        <summary><span>What would you hand to an Eigi?<small>12 job ideas for your business. Illustrative examples.</small></span><span className={styles.expand} aria-hidden="true">+</span></summary>
+        <div className={styles.ideaGrid}>{JOB_IDEAS.map(({ business, task, detail }) => <article key={task}><p>{business}</p><h3>{task}</h3><p>{detail}</p><a href={heroOnboardingLink(task)} target="_blank" rel="noopener noreferrer">Start with this job <span aria-hidden="true">↗</span></a></article>)}</div>
+      </details>
     </section>
   )
 }
