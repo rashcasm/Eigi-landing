@@ -45,15 +45,17 @@ export function AmitOnboarding() {
   const call = useRef<VoiceCall | null>(null)
   const request = useRef<AbortController | null>(null)
   const chatInput = useRef<HTMLInputElement>(null)
+  // Voice stays the first and only offer; a failed probe only decides what happens after the visitor taps Talk.
+  const reachable = useRef(true)
   const { status, task } = state
   const plan = task ? firstJobFor(task) : null
 
-  // Find out quietly whether the agent can take a conversation, so the first action always works.
+  // Find out quietly whether the agent can take a call, so a tap on Talk never waits on a dead line.
   useEffect(() => {
     const controller = new AbortController()
     getAgent(chatConfig, controller.signal)
-      .then(agent => { if (agent.terms) setTerms(agent.terms) })
-      .catch(() => { if (!controller.signal.aborted) dispatch({ type: 'unavailable' }) })
+      .then(agent => { reachable.current = true; if (agent.terms) setTerms(agent.terms) })
+      .catch(() => { if (!controller.signal.aborted) reachable.current = false })
     return () => controller.abort()
   }, [])
 
@@ -69,6 +71,7 @@ export function AmitOnboarding() {
   async function talk() {
     const audio = audioRef.current
     if (!audio) return
+    if (!reachable.current) { dispatch({ type: 'unavailable' }); return }
     request.current?.abort()
     const controller = new AbortController()
     request.current = controller
@@ -147,8 +150,8 @@ export function AmitOnboarding() {
           {status === 'ended' && <button type="button" className={styles.secondary} onClick={talk}>Talk again</button>}
           {status === 'unavailable'
             ? <a className={styles.secondary} href={AMIT_TEL}>Call {AMIT_DISPLAY}</a>
-            : <button type="button" className={styles.secondary} onClick={openChat}>Chat with Amit</button>}
-          {status !== 'unavailable' && status !== 'ended' && <a className={styles.secondary} href={whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a>}
+            : status !== 'idle' && <button type="button" className={styles.secondary} onClick={openChat}>Chat with Amit</button>}
+
         </div>
       </>}
 
