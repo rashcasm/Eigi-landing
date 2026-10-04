@@ -25,13 +25,14 @@ it('keeps every page navigation destination valid after shortening the landing p
   expect(html.match(/<h1\b/g)).toHaveLength(1)
 })
 
-it('introduces Eigi immediately after the hero with explicit example labels', () => {
+it('opens on onboarding with Amit, with the AI disclosure and terms beside the actions', () => {
   const html = renderToStaticMarkup(<HomePage />)
   const sections = [...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map(match => match[1])
   expect(sections.slice(0, 2)).toEqual(['base-camp', 'meet-your-eigi'])
   expect(sections).not.toContain('computer')
-  expect(html).toContain('Example reply')
-  expect(html).toContain('An example plan. We shape it around your business.')
-  expect(html).toContain('aria-live="polite"')
-  expect(html).toMatch(/maxlength="80"/i)
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')
+  expect(text).toContain('Talk to Amit')
+  expect(text).toContain('You’re talking to an AI agent built on Eigi.')
+  expect(text).toContain('agree to the terms and conditions')
+  expect(html).toContain('role="status"')
 })

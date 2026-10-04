@@ -1,0 +1,100 @@
+/* A light material card. Springs are not needed here: nothing is dragged, so short, interruptible CSS transitions carry the state changes. */
+.card {
+  --halo: 255 122 74;
+  position: relative; display: grid; grid-template-columns: 232px 1fr; gap: 36px; align-items: center;
+  max-width: 820px; margin: 0 auto; padding: 32px 36px 28px;
+  border: 1px solid rgb(29 29 31 / .07); border-radius: 32px;
+  background: rgb(255 255 255 / .74); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 1px 0 rgb(255 255 255 / .9) inset, 0 30px 80px -24px rgb(29 29 31 / .18), 0 2px 8px rgb(29 29 31 / .04);
+  text-align: left;
+}
+
+.persona { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.orb { position: relative; width: 196px; aspect-ratio: 3 / 2; display: grid; place-items: center; isolation: isolate; }
+.orb::before, .orb::after { content: ''; position: absolute; inset: -14% -2%; border-radius: 50%; z-index: -1; pointer-events: none; }
+.orb::before { background: radial-gradient(closest-side, rgb(var(--halo) / .30), rgb(var(--halo) / 0)); transform: scale(calc(.86 + var(--level, 0) * .5)); transition: transform 90ms linear; }
+.orb::after { border: 1.5px solid rgb(var(--halo) / 0); transform: scale(.92); }
+.orb img { width: 100%; height: auto; transform: translateY(calc(var(--level, 0) * -3px)); transition: transform 90ms linear; filter: drop-shadow(0 10px 18px rgb(var(--halo) / .25)); }
+.name { margin-top: 6px; font-size: 1.375rem; font-weight: 600; letter-spacing: -.025em; line-height: 1.2; }
+.role { display: flex; align-items: center; gap: 8px; margin-top: 2px; color: var(--muted); font-size: .8125rem; }
+.role span { padding: 2px 8px; border-radius: 99px; background: var(--surface); color: var(--fg); font-size: .6875rem; font-weight: 500; letter-spacing: .01em; }
+.trait { margin-top: 10px; color: var(--muted); font-size: .8125rem; font-style: italic; }
+
+.panel { min-width: 0; display: flex; flex-direction: column; min-height: 288px; }
+.status { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; padding: 5px 11px 5px 9px; border-radius: 99px; background: var(--surface); color: var(--muted); font-size: .75rem; font-weight: 500; }
+.status span { width: 7px; height: 7px; border-radius: 50%; background: #8e8e93; }
+.card[data-status='idle'] .status span, .card[data-status='live'] .status span, .card[data-status='chat'] .status span { background: #34c759; }
+.card[data-status='connecting'] .status span, .card[data-status='requesting-mic'] .status span { background: #ff9f0a; }
+.card[data-status='unavailable'] .status span, .card[data-status='mic-denied'] .status span { background: #ff9f0a; }
+.title { margin-top: 14px; font-size: 1.5rem; line-height: 1.2; letter-spacing: -.03em; font-weight: 600; }
+.body { margin-top: 8px; color: var(--muted); font-size: .9375rem; line-height: 1.5; max-width: 44ch; }
+
+.topics { margin-top: 18px; }
+.topics > p { font-size: .75rem; color: var(--muted); margin-bottom: 8px; }
+.topics > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.topics button { min-height: 36px; padding: 7px 14px; border: 1px solid var(--line); border-radius: 99px; background: rgb(255 255 255 / .8); color: var(--fg); font-size: .8125rem; transition: background .15s, border-color .15s, color .15s, transform .1s ease-out; }
+.topics button:hover { border-color: #c7c7cc; }
+.topics button[aria-pressed='true'] { background: var(--fg); border-color: var(--fg); color: #fff; }
+
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; margin-top: auto; padding-top: 22px; }
+.primary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 26px 0 22px; border: 0; border-radius: 999px; background: var(--fg); color: #fff; font-size: .9375rem; font-weight: 600; letter-spacing: -.01em; text-decoration: none; transition: background .15s, transform .1s ease-out; }
+.primary:hover { background: #3a3a3c; }
+.secondary { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; color: var(--signal); font-size: .875rem; font-weight: 500; text-decoration: none; }
+.secondary:hover { text-decoration: underline; text-underline-offset: 4px; }
+.control { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--fg); font-size: .875rem; font-weight: 500; transition: background .15s, transform .1s ease-out; }
+.control[aria-pressed='true'] { background: var(--surface); }
+.end { border-color: transparent; background: #ff3b30; color: #fff; }
+.end:hover { background: #e0352b; }
+/* Respond on press, not on release. */
+.primary:active, .control:active, .topics button:active { transform: scale(.97); }
+
+.transcript { margin-top: 14px; height: 148px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding: 4px 2px; font-size: .9375rem; line-height: 1.5; overscroll-behavior: contain;
+  mask-image: linear-gradient(to bottom, transparent, #000 18px); }
+.transcript p { overflow-wrap: anywhere; }
+.transcript b { display: block; font-size: .6875rem; font-weight: 600; color: var(--muted); letter-spacing: .02em; text-transform: uppercase; }
+.transcript p[data-role='user'] { color: var(--muted); }
+.hint { margin-top: auto; margin-bottom: auto; color: var(--muted); }
+.error { color: #b3261e; font-size: .8125rem; }
+.error a { color: inherit; }
+.typing { letter-spacing: .2em; color: var(--muted); }
+.composer { display: flex; gap: 8px; margin-top: 12px; padding: 6px; border: 1px solid var(--line); border-radius: 999px; background: #fff; }
+.composer input { flex: 1; min-width: 0; border: 0; background: none; padding: 0 14px; font: inherit; font-size: .9375rem; color: var(--fg); }
+.composer input:focus { outline: none; }
+.composer:focus-within { border-color: var(--signal); box-shadow: 0 0 0 3px rgb(50 102 77 / .15); }
+.composer button { width: 40px; height: 40px; flex-shrink: 0; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--fg); color: #fff; }
+.composer button:disabled { background: var(--surface); color: #aeaeb2; cursor: default; }
+
+.plan { margin-top: 12px; font-size: .875rem; color: var(--muted); }
+.plan strong { color: var(--fg); font-weight: 600; }
+.plan ol { margin: 8px 0 0 18px; display: grid; gap: 4px; color: var(--fg); }
+.plan small { display: block; margin-top: 8px; font-size: .6875rem; }
+
+.notice { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgb(29 29 31 / .07); color: var(--muted); font-size: .6875rem; line-height: 1.5; }
+.notice a { color: inherit; text-underline-offset: 3px; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .card[data-status='connecting'] .orb::after, .card[data-status='requesting-mic'] .orb::after { animation: ring 1.4s cubic-bezier(.2, .7, .2, 1) infinite; }
+  .panel > * { animation: arrive .32s cubic-bezier(.2, .7, .2, 1) both; }
+  @keyframes ring { from { border-color: rgb(var(--halo) / .45); transform: scale(.92); } to { border-color: rgb(var(--halo) / 0); transform: scale(1.12); } }
+  @keyframes arrive { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orb::before, .orb img { transition: none; transform: none; }
+  .primary:active, .control:active, .topics button:active { transform: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .card { background: #fff; backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+@media (max-width: 760px) {
+  .card { grid-template-columns: 1fr; gap: 10px; padding: 24px 20px 20px; border-radius: 28px; text-align: left; }
+  .persona { display: grid; grid-template-columns: 104px 1fr; column-gap: 14px; align-items: center; text-align: left; }
+  .orb { width: 104px; grid-row: span 3; }
+  .name { margin-top: 0; align-self: end; }
+  .role { flex-wrap: wrap; }
+  .trait { margin-top: 2px; align-self: start; font-size: .75rem; }
+  .panel { min-height: 0; }
+  .title { font-size: 1.3125rem; }
+  .primary { width: 100%; }
+  .actions { gap: 2px 18px; }
+}
