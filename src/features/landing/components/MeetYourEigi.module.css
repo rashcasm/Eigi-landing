@@ -67,7 +67,7 @@
 .editForm label { font-size: .75rem; }
 .editForm textarea { display: block; width: 100%; margin-block: 8px 12px; padding: 12px; font: inherit; resize: vertical; min-height: 100px; border: 1px solid var(--line); border-radius: 8px; color: var(--fg); background: var(--bg); }
 .editForm button + button { margin-left: 8px; }
-.savedDraft { margin-top: 16px; padding-left: 12px; border-left: 2px solid var(--signal); font-size: .8125rem; overflow-wrap: anywhere; }
+.savedDraft { margin-top: 16px; font-size: .8125rem; overflow-wrap: anywhere; }
 .bridge { display: flex; justify-content: space-between; align-items: center; gap: 48px; padding: 44px 48px; border-radius: 20px; background: var(--signal-soft); }
 .bridge :global(.eyebrow) { font-size: .75rem; margin-bottom: 12px; }
 .bridge h3 { font-size: clamp(1.75rem, 2.5vw, 2.25rem); }
