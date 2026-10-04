@@ -14,7 +14,7 @@ export function EigiChapterVisual({ chapter }: Props) {
         <div className={styles.channels}>{copy.channels.map(channel => <span key={channel}>{channel}</span>)}</div>
         <p className={styles.you}>You</p>
         <p className={styles.bubble}>{copy.request}</p>
-        <div className={styles.chatDivider}><span>e.</span><p>{copy.requestSummary}</p></div>
+        <div className={styles.chatDivider}><span>e.</span><p>One message.<br /><strong>A clear starting point.</strong></p></div>
         <div className={styles.chatComposer} aria-hidden="true">Message your Eigi <span>↑</span></div>
       </div>}
       {chapter === 1 && <div className={styles.computerScene}>
@@ -26,7 +26,7 @@ export function EigiChapterVisual({ chapter }: Props) {
         <ol className={styles.activity}>{copy.log.map(step => <li key={step}><span aria-hidden="true">✓</span>{step}</li>)}</ol>
       </div>}
       {chapter === 2 && <div className={styles.memoryScene}>
-        <div className={styles.memoryHeading}><span aria-hidden="true">≡</span><div><p>Business memory</p><strong>Your saved rules</strong></div></div>
+        <div className={styles.memoryHeading}><span aria-hidden="true">≡</span><div><p>Business memory</p><strong>The way you work.</strong></div></div>
         {copy.memories.map((memory, i) => <div key={memory} className={styles.memoryNote}><small>0{i + 1}</small><p>{memory}</p><span aria-hidden="true">✓</span></div>)}
       </div>}
       {chapter === 3 && <div className={styles.approvalScene}>

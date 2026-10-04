@@ -24,7 +24,7 @@ export function firstJobFor(input: string): FirstJob | null {
   if (!task) return null
   return FIRST_JOBS.find(job => job.task === task) ?? {
     task,
-    reply: `You want help with “${task}”. I'd learn how you do this today, draft the first round, and check with you before anything goes out. What tool do you use for this now?`,
+    reply: `Got it: “${task}”. Here's how I'd start: learn how you do this today, draft the first round for you, and check with you before anything goes out. What tool do you use for this now?`,
     steps: ['Map how this job runs today, on a 30-minute call.', 'Connect the tools it touches.', 'Check the first results with you.'],
   }
 }

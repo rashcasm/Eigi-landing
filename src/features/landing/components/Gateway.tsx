@@ -4,9 +4,9 @@ import { WorkIcon } from './WorkIcon.tsx'
 import styles from './Gateway.module.css'
 
 const INGREDIENTS = [
-  { icon: 'person', title: 'You', description: 'Choose the jobs and approve the work.', style: 'human' },
-  { icon: 'people', title: 'Your sherpa', description: 'Connect your tools and check the setup.', style: 'engineers' },
-  { icon: 'computer', title: 'Your Eigis', description: 'Research, draft, and report back.', style: 'computer' },
+  { icon: 'person', title: 'You', description: 'The vision. The judgment.', style: 'human' },
+  { icon: 'people', title: 'Forward-deployed engineers', description: 'The people who make it work.', style: 'engineers' },
+  { icon: 'computer', title: 'Your Eigis', description: 'Works where your team does.', style: 'computer' },
 ] as const
 
 /** A finite, replayable equation. Reduced motion renders the complete, open gateway immediately. */
@@ -25,11 +25,11 @@ export function Gateway() {
   return (
     <section id="gateway" className={styles.gateway} data-stage="The gateway" aria-labelledby="gateway-title">
       <div className={styles.heading}>
-        <p className="eyebrow">Who does what</p>
-        <h2 id="gateway-title">You, your sherpa,<br />and your Eigis.</h2>
-        <p>You know the business. Your sherpa connects the tools.<br />Your Eigis handle the jobs you give them.</p>
+        <p className="eyebrow">The Eigi equation</p>
+        <h2 id="gateway-title">Your gateway<br />to singularity.</h2>
+        <p>Human ambition. Applied intelligence.<br />The possibility of both, working as one.</p>
       </div>
-      <motion.div key={replay} className={styles.equation} initial={reducedMotion ? false : 'hidden'} whileInView="visible" viewport={{ once: true, amount: 0.3 }} role="group" aria-label="You, your sherpa, and your Eigis work together to set up an AI workflow.">
+      <motion.div key={replay} className={styles.equation} initial={reducedMotion ? false : 'hidden'} whileInView="visible" viewport={{ once: true, amount: 0.3 }} role="group" aria-label="You plus forward-deployed engineers plus your Eigis equals a gateway to singularity.">
         <div className={styles.ingredients}>
           {INGREDIENTS.map(({ icon, title, description, style }, index) => (
             <motion.div key={title} className={styles.ingredient} variants={arrive} custom={index}>
@@ -53,11 +53,12 @@ export function Gateway() {
             </div>
             <div className={styles.reflection} />
           </div>
-          <h3>A working AI workflow.</h3><p>In the tools you already use.</p>
+          <h3>Gateway to singularity.</h3><p>Your business, AI-first.</p>
         </motion.div>
       </motion.div>
       <div className={styles.foot}>
-        <button type="button" className={styles.replay} onClick={() => setReplay((value) => value + 1)}><span aria-hidden="true">↻</span> Replay</button>
+        <p>Our vision of singularity: the distance between an idea<br className={styles.lineBreak} /> and making it happen gets smaller, every day.</p>
+        <button type="button" className={styles.replay} onClick={() => setReplay((value) => value + 1)}><span aria-hidden="true">↻</span> Replay the connection</button>
       </div>
     </section>
   )

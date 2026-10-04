@@ -21,14 +21,14 @@ export function Stories() {
   return (
     <section id="stories" className={styles.stories} data-stage="Business stories" aria-labelledby="stories-title">
       <div className={styles.heading}>
-        <div><p className="eyebrow">Eigi at work</p><h2 id="stories-title">Where we’re<br />working today.</h2></div>
+        <div><p className="eyebrow">Eigi at work</p><h2 id="stories-title">A business to run.<br />Someone to help.</h2></div>
         <p>From a founder’s customer support<br />to everyday paperwork in Khundia.</p>
       </div>
       <div className={styles.realStories}>
         <article className={styles.business}>
           <p className={styles.category}>Business story / Financial learning</p>
-          <h3>Support and operations<br />for a financial learning business.</h3>
-          <p>We’re connecting customer support, Discord bots, and day-to-day operations that the founder managed in separate systems.</p>
+          <h3>One founder.<br />A lot happening behind the app.</h3>
+          <p>For a financial learning business, we’re connecting the work its founder used to manage across separate systems: customer support, Discord bots, and day-to-day operations.</p>
           <p>We’re also building voice and video agents for mock interviews, alongside automation for supply-chain and warehouse processes.</p>
           <div className={styles.workList}><span>Customer support</span><span>Discord bots</span><span>Mock interviews</span><span>Business operations</span></div>
           <a href={heroOnboardingLink('I run a business and want help connecting customer support and day-to-day operations.')} target="_blank" rel="noopener noreferrer">Talk about my business <span aria-hidden="true">↗</span></a>
@@ -36,7 +36,7 @@ export function Stories() {
         </article>
         <article className={styles.community}>
           <p className={styles.category}>Community story / Khundia</p>
-          <h3>Help with paperwork<br />in Khundia.</h3>
+          <h3>Meet Amit.<br />Already helping in Khundia.</h3>
           <p>People in Khundia turn to Amit on WhatsApp for help with everyday work, from filing applications to finding information about loans.</p>
           <p>Amit is also the first Eigi you’ll meet here. Tell him about your business and the job you’d like help with.</p>
           <div className={styles.message}><span>A conversation can start with</span><p>“I have an application to fill in. Can you help me work through it?”</p></div>

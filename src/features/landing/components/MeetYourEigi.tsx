@@ -29,6 +29,6 @@ export function MeetYourEigi() {
       </div>)}</div>
       <div className={styles.desktopVisual}><EigiChapterVisual key={active} chapter={active} /></div>
     </div>
-    <div className={styles.bridge}><div><p className="eyebrow">Setup and support</p><h3>{copy.bridge.title}</h3><p>{copy.bridge.description}</p></div><div className={styles.bridgeLinks}><a className="btn" href="#route">Meet your sherpa <span aria-hidden="true">↗</span></a><a className="text-link" href={STUDIO_URL}>Open Eigi Studio ↗</a></div></div>
+    <div className={styles.bridge}><div><p className="eyebrow">With you, from day one</p><h3>{copy.bridge.title}</h3><p>{copy.bridge.description}</p></div><div className={styles.bridgeLinks}><a className="btn" href="#route">Meet your sherpa <span aria-hidden="true">↗</span></a><a className="text-link" href={STUDIO_URL}>Open Eigi Studio ↗</a></div></div>
   </section>
 }
