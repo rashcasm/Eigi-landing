@@ -2,11 +2,11 @@ import { useState } from 'react'
 import styles from './Recognition.module.css'
 
 const QUESTIONS = [
-  { area: 'Hiring', text: 'Are you hiring because the company is growing, or because your systems aren’t?' },
-  { area: 'Follow-ups', text: 'How many things still move only when you personally follow up?' },
-  { area: 'Your week', text: 'How much of this week went to running the company instead of building it?' },
-  { area: 'Tools', text: 'How many tools did you add to avoid one hire, and who keeps them talking to each other?' },
-  { area: 'Growth', text: 'When your customers double and your team doesn’t, what breaks first?' },
+  { area: 'Hiring', text: 'Hiring for growth, or for broken systems?' },
+  { area: 'Follow-ups', text: 'Nothing moves until you chase it.' },
+  { area: 'Your week', text: 'You ran the company this week. You didn’t build it.' },
+  { area: 'Tools', text: 'Five tools to avoid one hire. Now you manage five tools.' },
+  { area: 'Growth', text: 'Customers double. Team doesn’t. What breaks?' },
 ] as const
 
 /** Recognition before explanation: the founder's week, asked back to them. */
